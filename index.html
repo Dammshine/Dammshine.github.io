@@ -93,7 +93,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Plan-Outline"><a href="#Plan-Outline" class="headerlink" title="Plan Outline"></a>Plan Outline</h1><h2 id="Thoery-Pary"><a href="#Thoery-Pary" class="headerlink" title="Thoery Pary"></a>Thoery Pary</h2><ul>
+        <h1 id="Plan-Outline"><a href="#Plan-Outline" class="headerlink" title="Plan Outline"></a>Plan Outline</h1><h2 id="Thoery-Part"><a href="#Thoery-Part" class="headerlink" title="Thoery Part"></a>Thoery Part</h2><ul>
 <li><strong>makefile</strong><ol>
 <li>Commands for compile fire</li>
 <li>Type of files</li>
@@ -316,7 +316,68 @@
 <li><p><strong>Tries (No idea right now)</strong></p>
 </li>
 </ul>
-
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h3 id="Commands-for-compile-file"><a href="#Commands-for-compile-file" class="headerlink" title="Commands for compile file"></a>Commands for compile file</h3><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
+<p>In C, the compiler have following stages</p>
+<ul>
+<li>Pre-processing<ol>
+<li>In this stage, the compiler will do things such as, macro substitution, testing for condition directives and file inclusion.</li>
+</ol>
+</li>
+<li>Compilation<ol>
+<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
+</ol>
+</li>
+<li>Linking<ol>
+<li>In this stage, the compiler will link multiple programs as one program.</li>
+</ol>
+</li>
+</ul>
+<p>Gcc compiler, for compilering</p>
+<ol>
+<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
+<li>-E : This command gives pro-processed file.</li>
+<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
+<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
+</ol>
+<p>Gcc compiler, for advanced</p>
+<ol>
+<li>-Werror: Will compile the source and show warning.</li>
+<li>-Wall  : Will check error, but treat all warning as error.</li>
+</ol>
+<h4 id="Makefile-1"><a href="#Makefile-1" class="headerlink" title="Makefile"></a>Makefile</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
+<ul>
+<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
+<li>Minimal re-compilation <ul>
+<li>Based on dependencies, and also the time of latest change.</li>
+</ul>
+</li>
+</ul>
+<p>A <strong>dependency</strong> specify</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
+<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
+<p>Few more things to note: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A <strong>target</strong> is always on a new line,<ul>
+<li>Followed by a ‘:’</li>
+<li>Followed by files that it depend on</li>
+<li>Make can also compile the target speicify in makefile</li>
+</ul>
+</li>
+<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
+<li>and must indented by a <strong>TAB</strong></li>
+</ul>
+</li>
+</ul>
+<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
+<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
+<ul>
+<li>CC refers to the compiler (gcc in this case)</li>
+<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
+<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
+</ul>
+<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
+<h2 id="Analysis-of-Algorithm"><a href="#Analysis-of-Algorithm" class="headerlink" title="Analysis of Algorithm"></a>Analysis of Algorithm</h2>
       
     </div>
     <footer class="article-footer">
