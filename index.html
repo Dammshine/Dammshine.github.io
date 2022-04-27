@@ -71,6 +71,549 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Sorting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/27/Sorting/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T19:51:47.000Z" itemprop="datePublished">2022-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/27/Sorting/">Sorting</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="General-Property-of-Sorting"><a href="#General-Property-of-Sorting" class="headerlink" title="General Property of Sorting"></a>General Property of Sorting</h2><p><strong>Sorting problem</strong> is defined </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input  : A sequence of n numbers</span><br><span class="line">Output : A permutation of input such that <span class="keyword">for</span> each i <span class="keyword">in</span> array, a[i] &lt;= a[i+1].</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Stable-x2F-unstable"><a href="#Stable-x2F-unstable" class="headerlink" title="Stable &#x2F; unstable"></a>Stable &#x2F; unstable</h4><p>In particular, many sorted data we met will be in form as record, which each record contains a key and satellite data. In practice, we wish to permute the satelliete data as well. </p>
+<p>We define stable, as if before sorting a[i] &#x3D;&#x3D; a[j], then</p>
+<ul>
+<li>Stable means after sorting, a[i]’s new position is before a[j].</li>
+<li>Vice versa</li>
+</ul>
+<h4 id="Adaptive"><a href="#Adaptive" class="headerlink" title="Adaptive"></a>Adaptive</h4><p>The bahaviour&#x2F;performace of algorithm affected by data values (distribution of sorted data). </p>
+<h4 id="In-place"><a href="#In-place" class="headerlink" title="In place"></a>In place</h4><p>If the algorithm uses constant amount of memory. (And we wish this amount to be relatively small compare with input size)<br><strong>External sorting</strong> is class of algorithm that handle, large amount of data that store in external device, when data does not fit into main memory of computing device. Result the data must reside slower external memory. The in-place property will be very valueable. </p>
+<h2 id="O-n-2-sort"><a href="#O-n-2-sort" class="headerlink" title="O(n^2) sort"></a>O(n^2) sort</h2><h4 id="Bubble-sort"><a href="#Bubble-sort" class="headerlink" title="Bubble sort"></a>Bubble sort</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int *bubbleSort(int *array, int size) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">        int swapCount = 0;</span><br><span class="line">        // Always start from 0</span><br><span class="line">        // Swap the element not <span class="keyword">in</span> correct order <span class="keyword">in</span> path</span><br><span class="line">        <span class="keyword">for</span> (int j = 1; j &lt; size; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &lt; array[j - 1]) &#123;</span><br><span class="line">                swap(array, j , j - 1);</span><br><span class="line">                swapCount++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // Adaptive</span><br><span class="line">        <span class="keyword">if</span> (swapCount == 0) <span class="built_in">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Selection-sort"><a href="#Selection-sort" class="headerlink" title="Selection sort"></a>Selection sort</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// scan through array from index i, start with 0</span><br><span class="line">// find min from index i+1, swap min to i</span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">    int min = i;</span><br><span class="line">    <span class="keyword">for</span> (int j = i + 1; j &lt; size; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (array[j] &lt; array[min]) min = j;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(array, i, min);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> array;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Insertion-sort"><a href="#Insertion-sort" class="headerlink" title="Insertion sort"></a>Insertion sort</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">int *bubbleSort(int *array, int size) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; size; i++) &#123;</span><br><span class="line">        // treat first i items as sorted</span><br><span class="line">        int val = array[i];</span><br><span class="line">        int j = i - 1;</span><br><span class="line">        // Insert A[j] into sorted sequence A[1..i-1]</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= 0 &amp;&amp; array[j] &gt; val) &#123;</span><br><span class="line">            array[j + 1] = array[j];            </span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        array[j + 1] = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#### Shell sort ####</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### Summary of Performance ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## O(nlog(n)) sort</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## Comparison sort</span></span><br><span class="line">From all above, these algorithm shares an intersting property, the sorted order they determined is basd only on comparison between input elements. We call above algorithm **comparison <span class="built_in">sort</span>**.</span><br><span class="line"></span><br><span class="line"><span class="comment">#### Decision Treee</span></span><br><span class="line">In comparison <span class="built_in">sort</span>, we use only comparison between two element to gain info about ordering. We may construct a model to analysis the general performance of comparison <span class="built_in">sort</span>. A decision tree is a full binary tree that represents the comparison between elements that are performed by a particular sorting algorithm. </span><br><span class="line"></span><br><span class="line">Since each sorting algorithm may result n! different outcome, so the leave node <span class="keyword">in</span> the full binary tree would be at least n!. The lower-bound <span class="keyword">then</span> would be height of tree, <span class="built_in">which</span> will be nlog(n).</span><br><span class="line"></span><br><span class="line">Quicksort and heapsort are asmptopically optimal, as both<span class="string">&#x27;s worst case match with this lower bound.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## non-comparative sorting algorithm</span></span><br><span class="line"><span class="string">There is algorithm that do not base on comparison, thus not bounded by the lower bound of decision tree. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### Counting sort</span></span><br><span class="line"><span class="string">Counting sort is a stable sort, and require extra memory use. It&#x27;</span>s stable property is important <span class="keyword">for</span> other reason, <span class="keyword">for</span> radix <span class="built_in">sort</span> may work using counting <span class="built_in">sort</span>. </span><br><span class="line"></span><br><span class="line">Algorithm describe</span><br><span class="line">``` bash</span><br><span class="line">// A is array, B is output sorted array, k is upperbound of <span class="built_in">integer</span> 0..k</span><br><span class="line">Counting-<span class="built_in">sort</span>(A, B, k) &#123;</span><br><span class="line">    Let C[0..k] be a new array, initial all as 0</span><br><span class="line"></span><br><span class="line">    // Using hashtable property to achieve O(1) <span class="keyword">for</span> each insert</span><br><span class="line">    <span class="keyword">for</span> j = 1 to A.length</span><br><span class="line">        C[A[j]] += 1</span><br><span class="line">    // Now C, contains info about element <span class="keyword">in</span> A and the num of duplicate</span><br><span class="line">    // By <span class="built_in">sum</span> up previous element, C[i] now contains info of ideal index of each element</span><br><span class="line">    <span class="keyword">for</span> i = i .. k</span><br><span class="line">        C[i] += C[i - 1]</span><br><span class="line">    </span><br><span class="line">    // By traversing from back, one can ensure stable property</span><br><span class="line">    <span class="keyword">for</span> j = A.length .. 1</span><br><span class="line">        B[C[A[j]]] = A[j]</span><br><span class="line">        C[A[j]] -= 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This algorithm have time complexity of O(n + k), consider k &lt;&#x3D; n for most used cases, which will be O(n). It seems out-performed to nlog(n) sort, however consider it usage cases, it only perfrom good with k is small. In most sorting scenoio, we use int, which have 2^32 possibility, but the size of input often do not meet this number. Hence it’s direct uses case is limited, tho it can perform well when combined with Radix sort. </p>
+<h4 id="Radix-sort"><a href="#Radix-sort" class="headerlink" title="Radix sort"></a>Radix sort</h4><p>Radix’s sort algorithm is very simple, it applys stable Counting-sort the index from end to front, it requires stable sort property as if not stable, the sequence determined in higher index might not be in sorted order. Such as 13, 14, one can’t tell the sequence by only inspect index ‘1’, and thus must be stable and ensure lower-index’s sequence determined before higher index.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Radix-<span class="built_in">sort</span>(A, d)</span><br><span class="line">    <span class="keyword">for</span> i = 1 .. d</span><br><span class="line">        use a stable <span class="built_in">sort</span> to <span class="built_in">sort</span> array A on digit i</span><br></pre></td></tr></table></figure>
+
+<p>The time complexity would be O(m*n), where n is number of index and m is the possibility in index. Radix sort perform better than comparison sort. </p>
+<p>There is few disadvantage of Radix sort</p>
+<ol>
+<li>Although it tooks less pass for n element, but each pass may be longer (such as int, either takes 4 sort on the byte or 1 sort in 32 bits, not ideal as one comparison)</li>
+<li>Quicksort ultilize hardware cashes more effectively than radix.</li>
+<li>The stable sort algorithm always take extra memory, which many O(n*log(n)) uses in place memory. </li>
+<li>Conclusion would be, which sorting algorithm we use depend on the chracteristic of data we sort, implementation of the machine and the memory.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/27/Sorting/" data-id="cl2goimqk0000hotr17k5axtv" data-title="Sorting" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Tree/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T09:10:14.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Tree/">Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Tree/" data-id="cl2goimqo0001hotr6hah35yr" data-title="Tree" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Stack-and-Queue" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Stack-and-Queue/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T08:30:54.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p><strong>Stack</strong> is the abstracted data structure that the element can only inserted or remove only from one end. While this makes stack less flexible, it also makes stack’s implementation more flexible. “LIFO”</p>
+<p>One implementation is using array. By using an array that will expand when the size if full, we can acheive O(1) for both push and pop. </p>
+<p>Another implementation is to use linked list, where linked list will be more flexible for the memory usage. As the memory used is directly corrlate with number of element, while array can have potentially wasted space. </p>
+<p>The most common usage for <strong>stack</strong> is implementing recursion, which can be used to reduce the coefficient greatly. </p>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p><strong>Queue</strong> is a data structure, that it’s element can only inserted at one end and retrive at the another. “FIFO”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Adds an item to the end of the queue</span><br><span class="line"> */</span><br><span class="line">void QueueEnqueue(Queue q, Item it);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Removes an item from the front of the queue and returns it</span><br><span class="line"> * Assumes that the queue is not empty</span><br><span class="line"> */</span><br><span class="line">Item QueueDequeue(Queue q);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Gets the item at the front of the queue without removing it</span><br><span class="line"> * Assumes that the queue is not empty</span><br><span class="line"> */</span><br><span class="line">Item QueueFront(Queue q);</span><br></pre></td></tr></table></figure>
+
+<p>One implementation would be using linked list, a wrapper struct store both start and end of the list. </p>
+<p>Another implementation would be using circular array, which index may be calculated by ultilize modular property. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Stack-and-Queue/" data-id="cl2fwlvav0000ywtrd67phzaz" data-title="Stack and Queue" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Function-Pointer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Function-Pointer/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:56:15.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Function-Pointer/">Function Pointer</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Function-Pointer"><a href="#Function-Pointer" class="headerlink" title="Function Pointer"></a>Function Pointer</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Function-Pointer/" data-id="cl2fwlvb00001ywtr4e1kd9d7" data-title="Function Pointer" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Makefile-0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Makefile-0/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:52:12.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Makefile-0/">Makefile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
+<p>In C, the compiler have following stages</p>
+<ul>
+<li>Pre-processing<ol>
+<li>In this stage, the compiler will do things such as, macro substitution, testing for condition, directives and file inclusion.</li>
+</ol>
+</li>
+<li>Compilation<ol>
+<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
+</ol>
+</li>
+<li>Linking<ol>
+<li>In this stage, the compiler will link multiple programs as one program.</li>
+</ol>
+</li>
+</ul>
+<p>Gcc compiler, for compilering</p>
+<ol>
+<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
+<li>-E : This command gives pro-processed file.</li>
+<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
+<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
+</ol>
+<p><img src="/.com//c-stages.png" alt="Alt Text"></p>
+<p>Gcc compiler, for advanced</p>
+<ol>
+<li>-Werror: Will compile the source and show warning.</li>
+<li>-Wall  : Will check error, but treat all warning as error.</li>
+</ol>
+<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
+<ul>
+<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
+<li>Minimal re-compilation <ul>
+<li>Based on dependencies, and also the time of latest change.</li>
+</ul>
+</li>
+</ul>
+<p>A <strong>dependency</strong> specify</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
+<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
+<p>Few more things to note: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A <strong>target</strong> is always on a new line,<ul>
+<li>Followed by a ‘:’</li>
+<li>Followed by files that it depend on</li>
+<li>Make can also compile the target speicify in makefile</li>
+</ul>
+</li>
+<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
+<li>and must indented by a <strong>TAB</strong></li>
+</ul>
+</li>
+</ul>
+<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
+<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
+<ul>
+<li>CC refers to the compiler (gcc in this case)</li>
+<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
+<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
+<li>One can also specifying own variable</li>
+</ul>
+<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Makefile-0/" data-id="cl2fqfcoy0001a0tr4juu4tzz" data-title="Makefile" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ADT" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/ADT/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:32:26.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/ADT/">ADT</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Abstract-data-Type"><a href="#Abstract-data-Type" class="headerlink" title="Abstract data Type"></a>Abstract data Type</h2><p>A <strong>data type</strong> is</p>
+<ul>
+<li>A set of values</li>
+<li>A collection of operations on thoes value</li>
+</ul>
+<p>An <strong>abstract data type</strong> is</p>
+<ul>
+<li>An approach to implementing data types, that seperate users and implementer, <ul>
+<li>Implementer will provide interface (how to use) and implementation</li>
+<li>User only need to know interface.</li>
+</ul>
+</li>
+</ul>
+<p>Many of ADT deals with </p>
+<ul>
+<li>Collection of items, that often contain a key(or themselve is a key)<ul>
+<li>Particular structure that provide great efficency, but user want to reduce complexity for them to use it more easiy. So we hide the detail.<ul>
+<li>linked list, tree, graph</li>
+</ul>
+</li>
+<li>Particular usage, that user only need the result.<ul>
+<li>matrix, set, dictionary, stack, queue</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>We want to distinguish</p>
+<ul>
+<li><strong>DT</strong> (Non-abstract data type)<ul>
+<li>Internal of da structure is visible. (character, C string)</li>
+</ul>
+</li>
+<li><strong>GADT</strong><ul>
+<li>C++ template like data type. Can have mutiple type. (C++ STL, vector<typename>)</typename></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/ADT/" data-id="cl2fqfcot0000a0trg0xb05j7" data-title="ADT" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Performance-Analysis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Performance-Analysis/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Performance-Analysis/">Performance Analysis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Analysis-of-Algorithm"><a href="#Analysis-of-Algorithm" class="headerlink" title="Analysis of Algorithm"></a>Analysis of Algorithm</h2><p><strong>Analyzing</strong> an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the most desirable one. </p>
+<p>There is a few terms need to be well defined here</p>
+<ol>
+<li><strong>Input size</strong>, the best notion for <strong>input size</strong> depend on the problem, such as for sorting number, the input size is number of integer as the input. </li>
+<li><strong>Running time</strong>, one should adopt the notion that our model of analysis assume CPU takes constant operation every seconds, thus <strong>running time</strong> can also be reconigized as the number of primititive operation that CPU supported. </li>
+<li><strong>Memory</strong>, one correlate of additional memory from input, that the algorithm required.</li>
+</ol>
+<h4 id="Order-of-growth"><a href="#Order-of-growth" class="headerlink" title="Order of growth"></a>Order of growth</h4><p>We shall make one more simplifying abstraction, which is the <strong>rate of growth</strong>, which is ignore all coefficent and smaller rate of growth term in estimating algorithm’s performance. When we look at input size large enough, it eventually will make only the order of growth of running time relevant. </p>
+<p>We now define big O notation, this will give us upper bound,<br>O(g(n)) &#x3D; {f(n) : there exist positive constant c and n0 such that f(n) &lt; c * g(n) for all n &gt; n0.}</p>
+<p>Suppose two function have same Big-Oh function, then two function have same order of growth. Furthemore, a bigger-order growth function can’t be Big-Oh function for a lower-order growth function. As there do not exist a positive constant n that can component the difference brought by the order-growth difference. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(n) is O(g(n)) <span class="keyword">if</span> f(n) is asymptotically less than or equal to g(n)</span><br><span class="line">f(n) is Ω(g(n)) <span class="keyword">if</span> f(n) is asymptotically greater than or equal to g(n)</span><br><span class="line">f(n) is Θ(g(n)) <span class="keyword">if</span> f(n) is asymptotically equal to g(n)</span><br></pre></td></tr></table></figure>
+<p>(<strong>Copied from Ashish’s lecture slide</strong>)</p>
+<h4 id="Empirical-Analysis"><a href="#Empirical-Analysis" class="headerlink" title="Empirical Analysis"></a>Empirical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Program the algorithm</li>
+<li>Generate different size of input</li>
+<li>Record time and plot</li>
+</ol>
+<p>Very inefficent. </p>
+<h4 id="Theoretical-Analysis"><a href="#Theoretical-Analysis" class="headerlink" title="Theoretical Analysis"></a>Theoretical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Using pseudocode to describe the algorithm, ignore detail and actual langauge syntx that is irrelevant to algorithm. </li>
+<li>Characterise the running time as a function of input size n.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Performance-Analysis/" data-id="cl2foonot0000vstre6o36y5t" data-title="Performance Analysis" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/makefile/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:03:14.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/makefile/">makefile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
+<p>In C, the compiler have following stages</p>
+<ul>
+<li>Pre-processing<ol>
+<li>In this stage, the compiler will do things such as, macro substitution, testing for condition, directives and file inclusion.</li>
+</ol>
+</li>
+<li>Compilation<ol>
+<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
+</ol>
+</li>
+<li>Linking<ol>
+<li>In this stage, the compiler will link multiple programs as one program.</li>
+</ol>
+</li>
+</ul>
+<p>Gcc compiler, for compilering</p>
+<ol>
+<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
+<li>-E : This command gives pro-processed file.</li>
+<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
+<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
+</ol>
+<p>Gcc compiler, for advanced</p>
+<ol>
+<li>-Werror: Will compile the source and show warning.</li>
+<li>-Wall  : Will check error, but treat all warning as error.</li>
+</ol>
+<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
+<ul>
+<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
+<li>Minimal re-compilation <ul>
+<li>Based on dependencies, and also the time of latest change.</li>
+</ul>
+</li>
+</ul>
+<p>A <strong>dependency</strong> specify</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
+<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
+<p>Few more things to note: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A <strong>target</strong> is always on a new line,<ul>
+<li>Followed by a ‘:’</li>
+<li>Followed by files that it depend on</li>
+<li>Make can also compile the target speicify in makefile</li>
+</ul>
+</li>
+<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
+<li>and must indented by a <strong>TAB</strong></li>
+</ul>
+</li>
+</ul>
+<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
+<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
+<ul>
+<li>CC refers to the compiler (gcc in this case)</li>
+<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
+<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
+<li>One can also specifying own variable</li>
+</ul>
+<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/makefile/" data-id="cl2foonp30002vstr039u630w" data-title="makefile" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Comp-2521-Revision-Plan" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/26/Comp-2521-Revision-Plan/" class="article-date">
@@ -271,10 +814,12 @@
 <li>HeapSort, <strong>will be discussed in heap</strong></li>
 </ol>
 </li>
-<li>Summary of sorting method<ol>
-<li>Lower bound</li>
-<li>Radix Sort<ol>
-<li>non-comparative sorting algorithm</li>
+<li>Comparison Sort<ol>
+<li>Decision Tree model</li>
+<li>Lower bound for comparison sort</li>
+<li>non-comparative sorting algorithm<ol>
+<li><strong>Counting sort</strong></li>
+<li>Radix Sort</li>
 </ol>
 </li>
 </ol>
@@ -316,7 +861,7 @@
 <li><p><strong>Tries (No idea right now)</strong></p>
 </li>
 </ul>
-<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h3 id="Commands-for-compile-file"><a href="#Commands-for-compile-file" class="headerlink" title="Commands for compile file"></a>Commands for compile file</h3><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
 <p>In C, the compiler have following stages</p>
 <ul>
 <li>Pre-processing<ol>
@@ -344,7 +889,7 @@
 <li>-Werror: Will compile the source and show warning.</li>
 <li>-Wall  : Will check error, but treat all warning as error.</li>
 </ol>
-<h4 id="Makefile-1"><a href="#Makefile-1" class="headerlink" title="Makefile"></a>Makefile</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
+<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
 <ul>
 <li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
 <li>Minimal re-compilation <ul>
@@ -385,7 +930,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
 
     </footer>
   </div>
@@ -463,96 +1008,12 @@
 
 
   
-    <article id="post-My-first-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/25/My-first-Post/" class="article-date">
-  <time class="dt-published" datetime="2022-04-25T04:22:15.000Z" itemprop="datePublished">2022-04-25</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/25/My-first-Post/">My first Post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/25/My-first-Post/" data-id="cl2fkriuz00026ktr9na14ih5" data-title="My first Post" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/25/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-04-25T04:17:09.230Z" itemprop="datePublished">2022-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/25/hello-world/" data-id="cl2fkriv100036ktr32qu4s49" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -565,7 +1026,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
     </div>
   </div>
 
@@ -575,7 +1036,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Coding/" style="font-size: 10px;">Coding</a>
+      <a href="/tags/COMP2521/" style="font-size: 10px;">COMP2521</a>
     </div>
   </div>
 
@@ -597,19 +1058,23 @@
       <ul>
         
           <li>
-            <a href="/2022/04/26/Comp-2521-Revision-Plan/">Comp 2521 Revision Plan</a>
+            <a href="/2022/04/27/Sorting/">Sorting</a>
           </li>
         
           <li>
-            <a href="/2022/04/25/My-blog/">My blog</a>
+            <a href="/2022/04/26/Tree/">Tree</a>
           </li>
         
           <li>
-            <a href="/2022/04/25/My-first-Post/">My first Post</a>
+            <a href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
           </li>
         
           <li>
-            <a href="/2022/04/25/hello-world/">Hello World</a>
+            <a href="/2022/04/26/Function-Pointer/">Function Pointer</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/26/Makefile-0/">Makefile</a>
           </li>
         
       </ul>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Performance Analysis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Analysis of AlgorithmAnalyzing an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Performance Analysis">
+<meta property="og:url" content="http://example.com/2022/04/26/Performance-Analysis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Analysis of AlgorithmAnalyzing an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the m">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-26T05:03:55.000Z">
+<meta property="article:modified_time" content="2022-04-26T05:32:06.804Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="COMP2521">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Performance-Analysis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Performance-Analysis/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Performance Analysis
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Analysis-of-Algorithm"><a href="#Analysis-of-Algorithm" class="headerlink" title="Analysis of Algorithm"></a>Analysis of Algorithm</h2><p><strong>Analyzing</strong> an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the most desirable one. </p>
+<p>There is a few terms need to be well defined here</p>
+<ol>
+<li><strong>Input size</strong>, the best notion for <strong>input size</strong> depend on the problem, such as for sorting number, the input size is number of integer as the input. </li>
+<li><strong>Running time</strong>, one should adopt the notion that our model of analysis assume CPU takes constant operation every seconds, thus <strong>running time</strong> can also be reconigized as the number of primititive operation that CPU supported. </li>
+<li><strong>Memory</strong>, one correlate of additional memory from input, that the algorithm required.</li>
+</ol>
+<h4 id="Order-of-growth"><a href="#Order-of-growth" class="headerlink" title="Order of growth"></a>Order of growth</h4><p>We shall make one more simplifying abstraction, which is the <strong>rate of growth</strong>, which is ignore all coefficent and smaller rate of growth term in estimating algorithm’s performance. When we look at input size large enough, it eventually will make only the order of growth of running time relevant. </p>
+<p>We now define big O notation, this will give us upper bound,<br>O(g(n)) &#x3D; {f(n) : there exist positive constant c and n0 such that f(n) &lt; c * g(n) for all n &gt; n0.}</p>
+<p>Suppose two function have same Big-Oh function, then two function have same order of growth. Furthemore, a bigger-order growth function can’t be Big-Oh function for a lower-order growth function. As there do not exist a positive constant n that can component the difference brought by the order-growth difference. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(n) is O(g(n)) <span class="keyword">if</span> f(n) is asymptotically less than or equal to g(n)</span><br><span class="line">f(n) is Ω(g(n)) <span class="keyword">if</span> f(n) is asymptotically greater than or equal to g(n)</span><br><span class="line">f(n) is Θ(g(n)) <span class="keyword">if</span> f(n) is asymptotically equal to g(n)</span><br></pre></td></tr></table></figure>
+<p>(<strong>Copied from Ashish’s lecture slide</strong>)</p>
+<h4 id="Empirical-Analysis"><a href="#Empirical-Analysis" class="headerlink" title="Empirical Analysis"></a>Empirical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Program the algorithm</li>
+<li>Generate different size of input</li>
+<li>Record time and plot</li>
+</ol>
+<p>Very inefficent. </p>
+<h4 id="Theoretical-Analysis"><a href="#Theoretical-Analysis" class="headerlink" title="Theoretical Analysis"></a>Theoretical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Using pseudocode to describe the algorithm, ignore detail and actual langauge syntx that is irrelevant to algorithm. </li>
+<li>Characterise the running time as a function of input size n.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Performance-Analysis/" data-id="cl2foonot0000vstre6o36y5t" data-title="Performance Analysis" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/04/26/ADT/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ADT
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/04/26/makefile/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">makefile</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/COMP2521/" style="font-size: 10px;">COMP2521</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/27/Sorting/">Sorting</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/26/Tree/">Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/26/Function-Pointer/">Function Pointer</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/26/Makefile-0/">Makefile</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

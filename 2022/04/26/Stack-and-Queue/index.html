@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>My first Post | Hexo</title>
+  <title>Stack and Queue | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="My first Post">
-<meta property="og:url" content="http://example.com/2022/04/25/My-first-Post/index.html">
+  <meta name="description" content="StackStack is the abstracted data structure that the element can only inserted or remove only from one end. While this makes stack less flexible, it also makes stack’s implementation more flexible. “L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stack and Queue">
+<meta property="og:url" content="http://example.com/2022/04/26/Stack-and-Queue/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="StackStack is the abstracted data structure that the element can only inserted or remove only from one end. While this makes stack less flexible, it also makes stack’s implementation more flexible. “L">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-25T04:22:15.000Z">
-<meta property="article:modified_time" content="2022-04-25T04:22:15.926Z">
+<meta property="article:published_time" content="2022-04-26T08:30:54.000Z">
+<meta property="article:modified_time" content="2022-04-26T08:46:01.827Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="COMP2521">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -71,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-My-first-Post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Stack-and-Queue" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/04/25/My-first-Post/" class="article-date">
-  <time class="dt-published" datetime="2022-04-25T04:22:15.000Z" itemprop="datePublished">2022-04-25</time>
+    <a href="/2022/04/26/Stack-and-Queue/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T08:30:54.000Z" itemprop="datePublished">2022-04-26</time>
 </a>
     
   </div>
@@ -85,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      My first Post
+      Stack and Queue
     </h1>
   
 
@@ -93,33 +96,44 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p><strong>Stack</strong> is the abstracted data structure that the element can only inserted or remove only from one end. While this makes stack less flexible, it also makes stack’s implementation more flexible. “LIFO”</p>
+<p>One implementation is using array. By using an array that will expand when the size if full, we can acheive O(1) for both push and pop. </p>
+<p>Another implementation is to use linked list, where linked list will be more flexible for the memory usage. As the memory used is directly corrlate with number of element, while array can have potentially wasted space. </p>
+<p>The most common usage for <strong>stack</strong> is implementing recursion, which can be used to reduce the coefficient greatly. </p>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p><strong>Queue</strong> is a data structure, that it’s element can only inserted at one end and retrive at the another. “FIFO”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Adds an item to the end of the queue</span><br><span class="line"> */</span><br><span class="line">void QueueEnqueue(Queue q, Item it);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Removes an item from the front of the queue and returns it</span><br><span class="line"> * Assumes that the queue is not empty</span><br><span class="line"> */</span><br><span class="line">Item QueueDequeue(Queue q);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Gets the item at the front of the queue without removing it</span><br><span class="line"> * Assumes that the queue is not empty</span><br><span class="line"> */</span><br><span class="line">Item QueueFront(Queue q);</span><br></pre></td></tr></table></figure>
+
+<p>One implementation would be using linked list, a wrapper struct store both start and end of the list. </p>
+<p>Another implementation would be using circular array, which index may be calculated by ultilize modular property. </p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/25/My-first-Post/" data-id="cl2fkriuz00026ktr9na14ih5" data-title="My first Post" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/04/26/Stack-and-Queue/" data-id="cl2fwlvav0000ywtrd67phzaz" data-title="Stack and Queue" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2022/04/25/My-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/04/26/Tree/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          My blog
+          Tree
         
       </div>
     </a>
   
   
-    <a href="/2022/04/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/04/26/Function-Pointer/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Function Pointer</div>
     </a>
   
 </nav>
