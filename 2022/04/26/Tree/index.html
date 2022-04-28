@@ -6,15 +6,18 @@
   
   <title>Tree | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="article">
+  <meta name="description" content="3. 2-3-4 Tree     1. Property         1. General B-tree terms     2. Implementation         1. Insertion to 2-3-4 Tree     3. Performance analysis  BSTProperty of BST  The right sub-tree of the root a">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Tree">
 <meta property="og:url" content="http://example.com/2022/04/26/Tree/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="3. 2-3-4 Tree     1. Property         1. General B-tree terms     2. Implementation         1. Insertion to 2-3-4 Tree     3. Performance analysis  BSTProperty of BST  The right sub-tree of the root a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-26T09:10:14.000Z">
-<meta property="article:modified_time" content="2022-04-26T09:10:27.702Z">
+<meta property="article:modified_time" content="2022-04-28T01:36:02.495Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="COMP2521">
+<meta property="article:tag" content="Data Structure">
+<meta property="article:tag" content="Tree">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -78,6 +81,10 @@
   <time class="dt-published" datetime="2022-04-26T09:10:14.000Z" itemprop="datePublished">2022-04-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -94,7 +101,54 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <pre><code>3. 2-3-4 Tree
+    1. Property
+        1. General B-tree terms
+    2. Implementation
+        1. Insertion to 2-3-4 Tree
+    3. Performance analysis
+</code></pre>
+<h2 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h2><p>Property of BST</p>
+<ol>
+<li>The right sub-tree of the root always have value greater than the root, left sub-tree always smaller than the root.</li>
+<li>Perfectly-balanced tree, abs(node on left subtree - node on right subtree) &lt;&#x3D; 1.</li>
+<li>Height-balanced tree, abs(height on left tree - height on right tree) &lt;&#x3D; 1.</li>
+</ol>
+<p>Time complexity for search, delete, insert is typically O(height)<br>One property observe for the tree is that for different permutation of record, the shape of BST would differ with extreme case that BST become a linked list. This is called <strong>object space decomposition</strong>, because it’s decompositiuon of key range is driven by the object.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// a Tree is represented by a pointer to its root node</span><br><span class="line">typedef struct Node *Tree;</span><br><span class="line"></span><br><span class="line">// a Node contains its data, plus left and right subtrees</span><br><span class="line">typedef struct Node &#123;</span><br><span class="line">   int  data;</span><br><span class="line">   Tree left, right;</span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line">// some macros that we will use frequently</span><br><span class="line"><span class="comment">#define data(node)  ((node)-&gt;data)</span></span><br><span class="line"><span class="comment">#define left(node)  ((node)-&gt;left)</span></span><br><span class="line"><span class="comment">#define right(node) ((node)-&gt;right)</span></span><br></pre></td></tr></table></figure>
+
+<p>Insertion and search is very primititive. Let’s look at deletion.</p>
+<p>For tree deletion, we consider following four cases</p>
+<ol>
+<li>If node deleted is leave. Then break the link, we are done.</li>
+<li>If node deleted have one subtree, replace link it’s children.</li>
+<li>If node deleted have two subtree, replace root by the smallest node on it’s right subtree.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">// Join two tree, <span class="built_in">return</span> new root node</span><br><span class="line">// Node root is garuanteed to be cleaned</span><br><span class="line">Node treeJoin(Node lhs, Node rhs, Node root) &#123;</span><br><span class="line">    // Case 1: Two child both NULL</span><br><span class="line">    <span class="keyword">if</span> (lhs == NULL &amp;&amp; rhs == NULL) &#123;</span><br><span class="line">        // Free root, as it is the only node and being deleted</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> NULL;</span><br><span class="line">    &#125; // Case 2: One of two children is NULL. Free root node, <span class="built_in">return</span> not NULL children</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (lhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> rhs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (rhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> lhs;</span><br><span class="line">    &#125; // Case 3: Both not NULL, replace smallest <span class="keyword">in</span> rhs tree with the root</span><br><span class="line">    <span class="keyword">else</span> &#123;    // Left rotation on rhs root to maintain balance</span><br><span class="line">        Node curr = rhs;</span><br><span class="line">        Node parent = NULL;</span><br><span class="line">        // Find the minimum node <span class="keyword">in</span> rhs tree</span><br><span class="line">        // Find the parent of minimum node <span class="keyword">in</span> rhs</span><br><span class="line">        <span class="keyword">while</span> (curr-&gt;left != NULL) &#123;</span><br><span class="line">            parent = curr;</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // <span class="keyword">case</span> 3.1: rhs is the lowest of rhs tree</span><br><span class="line">        <span class="keyword">if</span> (parent == NULL) &#123;</span><br><span class="line">            // replace root node with rhs node</span><br><span class="line">            root-&gt;element = rhs-&gt;element;</span><br><span class="line">            root-&gt;right = rhs-&gt;right;</span><br><span class="line">            // Delete rhs</span><br><span class="line">            rhs-&gt;element = NULL;</span><br><span class="line">            free(rhs);</span><br><span class="line">            // Right rotation on root(remove a node on right of root)</span><br><span class="line">            int lheight = height(root-&gt;left-&gt;left);</span><br><span class="line">            int rheight = height(root-&gt;left-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 0) &#123;</span><br><span class="line">                root-&gt;left = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            root = rightRotation(root);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125; // <span class="keyword">case</span> 3.2: Replace minimum <span class="keyword">in</span> rhs with the new root</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            //  Unlink the minimum node <span class="keyword">in</span> rhs, right rotation on parent (remove a node on left of parent)</span><br><span class="line">            parent-&gt;left = curr-&gt;right;</span><br><span class="line">            parent-&gt;right = rightRotation(parent);</span><br><span class="line">            int lheight = height(parent-&gt;left);</span><br><span class="line">            int rheight = height(parent-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 1) &#123;</span><br><span class="line">                parent = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // Replace minimum</span><br><span class="line">            root-&gt;element = curr-&gt;element;</span><br><span class="line">            free(curr);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Balancing-Search-Tree"><a href="#Balancing-Search-Tree" class="headerlink" title="Balancing Search Tree"></a>Balancing Search Tree</h4><p>For the general BST, there are two improvement one can make.</p>
+<ul>
+<li>Insertion at Root</li>
+<li>Tree partition</li>
+</ul>
+<p>For insertion at root, essentially after insertion, we make several rotation to make sure that this new node become the new root. It got two benifit, one is normally newly inserted data likely being inspected, second is it can make the tree more balance, but not garunteed. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">BSTree insertRoot(BSTree t, int value) &#123;</span><br><span class="line">	// Insert this new node</span><br><span class="line">	<span class="keyword">if</span> (t == NULL) &#123;</span><br><span class="line">		<span class="built_in">return</span> createNode(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int cmp = t-&gt;value;</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; value) &#123;</span><br><span class="line">		t-&gt;left = insertRoot(t-&gt;left, value);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = insertRoot(t-&gt;right, value);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>For tree partiton, it require each node store an additional attribute contain the node count from each subtree.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node treePartition(BSTree t, int val) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t == NULL || val == 0) <span class="built_in">return</span> t;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	int cmp = BSTreeNumNodes(t-&gt;left);</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; val) &#123;</span><br><span class="line">		t-&gt;left = treePartition(t-&gt;left, val);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = treePartition(t-&gt;right, val - cmp - 1);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>After my experiment, conclusion would be this two operation itself isn’t helping very much.<br>The partition will only ensure that it balance its root, which is not ideal because what really affetcing performance would be the height. Which perfect balance not help. A way to balance would be balance at every node using partition function.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rebalance(t):</span><br><span class="line">|  Input  tree t with n nodes</span><br><span class="line">|  Output t rebalanced</span><br><span class="line">|</span><br><span class="line">|  <span class="keyword">if</span> n≥3 <span class="keyword">then</span></span><br><span class="line">|  |  // put node with median key at root</span><br><span class="line">|  |  t=partition(t,n/2)</span><br><span class="line">|  |  // <span class="keyword">then</span> rebalance each subtree</span><br><span class="line">|  |  t-&gt;left = rebalance(t-&gt;left)</span><br><span class="line">|  |  t-&gt;right = rebalance(t-&gt;right)</span><br><span class="line">|  end <span class="keyword">if</span></span><br><span class="line">|  <span class="built_in">return</span> t</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Tree-traversal"><a href="#Tree-traversal" class="headerlink" title="Tree traversal"></a>Tree traversal</h4><p>There are four traversal</p>
+<ol>
+<li>Pre-order   </li>
+<li>In-order</li>
+<li>Post-order  </li>
+<li>Level-order (iterative or using queue)<br>A few variant would be travel right before left.</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
@@ -102,7 +156,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
 
     </footer>
   </div>
@@ -136,13 +190,20 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COMP2521/">COMP2521</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Language/" rel="tag">Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
     </div>
   </div>
 
@@ -152,7 +213,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/COMP2521/" style="font-size: 10px;">COMP2521</a>
+      <a href="/tags/ADT/" style="font-size: 13.33px;">ADT</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/COMP2521/" style="font-size: 13.33px;">COMP2521</a> <a href="/tags/Data-Structure/" style="font-size: 20px;">Data Structure</a> <a href="/tags/Language/" style="font-size: 10px;">Language</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Theory/" style="font-size: 13.33px;">Theory</a> <a href="/tags/Tree/" style="font-size: 16.67px;">Tree</a>
     </div>
   </div>
 
@@ -174,23 +235,23 @@
       <ul>
         
           <li>
+            <a href="/2022/04/28/Tries-Radix-tree/">Tries (Radix tree)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/28/2-3-4-Tree/">2-3-4 Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/28/AVL-tree/">AVL tree</a>
+          </li>
+        
+          <li>
             <a href="/2022/04/27/Sorting/">Sorting</a>
           </li>
         
           <li>
             <a href="/2022/04/26/Tree/">Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/26/Function-Pointer/">Function Pointer</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/26/Makefile-0/">Makefile</a>
           </li>
         
       </ul>

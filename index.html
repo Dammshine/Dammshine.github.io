@@ -71,12 +71,170 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Tries-Radix-tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/28/Tries-Radix-tree/" class="article-date">
+  <time class="dt-published" datetime="2022-04-28T01:33:07.000Z" itemprop="datePublished">2022-04-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/28/Tries-Radix-tree/">Tries (Radix tree)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Tries"><a href="#Tries" class="headerlink" title="Tries"></a>Tries</h2><p>One property observe for the tree is that for different permutation of record, the shape of BST would differ with extreme case that BST become a linked list. This is called <strong>object space decomposition</strong>, because it’s decompositiuon of key range is driven by the object.  </p>
+<p>An alternative to object space decomposition is to predefine the spliting position. So that the tree’s insertion patteren will be independent from the value, order of inserting item. This technique is called <strong>key space decomposition</strong>.</p>
+<ol>
+<li>This won’t garunteed the tree to be balanced.</li>
+<li>The depth of tree will be fixed. (If know the range of data)</li>
+<li>The value stored in the leave.</li>
+</ol>
+<p>A data structure based on key space decomposition is called <strong>tries</strong>. Huffman coding tree would an example of a <strong>binary tries</strong>. </p>
+<h2 id="Alphabet-tries"><a href="#Alphabet-tries" class="headerlink" title="Alphabet tries"></a>Alphabet tries</h2><p>The tries we refer normally refer to the alphabet tries. It split using character in string. One application would be dictionary,  once constructed it used to determine if a given work is in dictionary.</p>
+<p>Cost analysis</p>
+<ul>
+<li>O(n) space if linked list, O(k*m) if using array</li>
+<li>O(m) insertion and search<br>for n total size of text<br>for m length of key string<br>for d size of underling alphabet</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;string.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdbool.h&gt;</span></span><br><span class="line"> </span><br><span class="line">// Define the character size</span><br><span class="line"><span class="comment">#define CHAR_SIZE 26</span></span><br><span class="line"> </span><br><span class="line">// Data structure to store a Trie node</span><br><span class="line">struct Trie &#123;</span><br><span class="line">    char currChar;</span><br><span class="line">    bool finish;</span><br><span class="line">    struct Trie* character[CHAR_SIZE];</span><br><span class="line">    // And <span class="keyword">if</span> the tries is finish, you might want to store an additional attribute</span><br><span class="line">    // Such as <span class="keyword">if</span> the string is a name, this can be an ID</span><br><span class="line">    // If tries want to count the word, this can be used to store an int count</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">// Function that returns a new Trie node</span><br><span class="line">struct Trie* <span class="function"><span class="title">getNewTrieNode</span></span>() &#123;</span><br><span class="line">    struct Trie* newT = malloc(sizeof(*newT));</span><br><span class="line">    newT-&gt;currChar = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    newT-&gt;finish = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; CHAR_SIZE;i++) &#123;</span><br><span class="line">        newT-&gt;character[i] = NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> newT;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Using recursive approach</span><br><span class="line">struct Trie* insertHelper(struct Trie *<span class="built_in">head</span>, char* str, int index, int size) &#123;</span><br><span class="line">    // Create node <span class="keyword">if</span> <span class="built_in">head</span> <span class="built_in">id</span> empty</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">head</span> == NULL) &#123;</span><br><span class="line">        <span class="built_in">head</span> = getNewTrieNode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Insert character</span><br><span class="line">    <span class="built_in">head</span>-&gt;currChar = str[index];</span><br><span class="line">    index++;</span><br><span class="line"></span><br><span class="line">    // Check <span class="keyword">if</span> str ended</span><br><span class="line">    <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">        <span class="built_in">head</span>-&gt;finish = <span class="literal">true</span>;</span><br><span class="line">    &#125; // Going to next loop</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">head</span>-&gt;character[str[index] - <span class="string">&#x27;a&#x27;</span>] = insertHelper(<span class="built_in">head</span>-&gt;character[str[index] - <span class="string">&#x27;a&#x27;</span>], str, index, size);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">head</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">struct Trie *insert(struct Trie *<span class="built_in">head</span>, char* str) &#123;</span><br><span class="line">    <span class="built_in">head</span>-&gt;character[str[0] - <span class="string">&#x27;a&#x27;</span>] = insertHelper(<span class="built_in">head</span>-&gt;character[str[0] - <span class="string">&#x27;a&#x27;</span>], str, 0, strlen(str));</span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">head</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// Similar recursive approach</span><br><span class="line">bool searchHelper(struct Trie *<span class="built_in">head</span>, char* str, int index, int size) &#123;</span><br><span class="line">    // If current <span class="built_in">head</span> <span class="keyword">do</span> not exist</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">head</span> == NULL) &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Compare the word</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">head</span>-&gt;currChar != str[index]) &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    index++;</span><br><span class="line">    // Check <span class="keyword">if</span> letter finish</span><br><span class="line">    <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">head</span>-&gt;finish == <span class="literal">true</span>) <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; // Recursively search <span class="keyword">for</span> the next character</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">return</span> searchHelper(<span class="built_in">head</span>-&gt;character[str[index] - <span class="string">&#x27;a&#x27;</span>], str, index, size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">bool search(struct Trie* <span class="built_in">head</span>, char* str) &#123;</span><br><span class="line">    <span class="built_in">return</span> searchHelper(<span class="built_in">head</span>-&gt;character[str[0] - <span class="string">&#x27;a&#x27;</span>], str, 0, strlen(str));</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// Returns 1 <span class="keyword">if</span> a given Trie node has any children</span><br><span class="line">bool hasChildren(struct Trie* curr) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; CHAR_SIZE; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (curr-&gt;character[i] != NULL) <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// str need to have enough space</span><br><span class="line">void printTriesHelper(struct Trie *root, char *str) &#123;</span><br><span class="line">    // Base <span class="keyword">case</span></span><br><span class="line">    <span class="keyword">if</span> (root == NULL) <span class="built_in">return</span>;</span><br><span class="line"></span><br><span class="line">    // recursive <span class="keyword">case</span></span><br><span class="line">    // add current char to the root</span><br><span class="line">    int size = strlen(str);</span><br><span class="line">    str[size] = root-&gt;currChar;</span><br><span class="line">    str[size + 1] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    // If string finish here</span><br><span class="line">    <span class="keyword">if</span> (root-&gt;finish == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s \n&quot;</span>, str);</span><br><span class="line">    &#125;</span><br><span class="line">    // Then recursive visit children from this position</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; CHAR_SIZE; i++) &#123;</span><br><span class="line">        printTriesHelper(root-&gt;character[i], str);</span><br><span class="line">    &#125;</span><br><span class="line">    // After visit each node, one is responsible <span class="keyword">for</span> erase the char last accessed</span><br><span class="line">    str[size] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void printTries(struct Trie *root, char *str) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; CHAR_SIZE; i++) &#123;</span><br><span class="line">        printTriesHelper(root-&gt;character[i], str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// Recursive <span class="keyword">function</span> to delete a string from a Trie</span><br><span class="line">void deletionHelper(struct Trie *<span class="built_in">head</span>, char* str, int index, int size) &#123;</span><br><span class="line">    // Create node <span class="keyword">if</span> <span class="built_in">head</span> <span class="built_in">id</span> empty</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">head</span> == NULL) <span class="built_in">return</span>;</span><br><span class="line">    // <span class="keyword">if</span> the character <span class="keyword">if</span> not matching</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">head</span>-&gt;currChar != str[index]) <span class="built_in">return</span>;</span><br><span class="line">    index++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (index == size) &#123;</span><br><span class="line">        <span class="built_in">head</span>-&gt;finish = <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    deletionHelper(<span class="built_in">head</span>-&gt;character[str[index] - <span class="string">&#x27;a&#x27;</span>], str, index, size);</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">void deletion(struct Trie *curr, char* str) &#123;</span><br><span class="line">    deletionHelper(curr-&gt;character[str[0] - <span class="string">&#x27;a&#x27;</span>], str, 0, strlen(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">// Trie implementation <span class="keyword">in</span> C – Insertion, Searching, and Deletion</span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    struct Trie* <span class="built_in">head</span> = getNewTrieNode();</span><br><span class="line"> </span><br><span class="line">    insert(<span class="built_in">head</span>, <span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (search(<span class="built_in">head</span>, <span class="string">&quot;hello&quot;</span>) == <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;hello\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    insert(<span class="built_in">head</span>, <span class="string">&quot;hey&quot;</span>);</span><br><span class="line">    insert(<span class="built_in">head</span>, <span class="string">&quot;no&quot;</span>);</span><br><span class="line">    insert(<span class="built_in">head</span>, <span class="string">&quot;bro&quot;</span>);</span><br><span class="line">    insert(<span class="built_in">head</span>, <span class="string">&quot;hey&quot;</span>);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    char *inspect = malloc(1024);</span><br><span class="line">    inspect[0] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    printTries(<span class="built_in">head</span>, inspect);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/28/Tries-Radix-tree/" data-id="cl2if0zg70000q4trahvcgrsm" data-title="Tries (Radix tree)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2-3-4-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/28/2-3-4-Tree/" class="article-date">
+  <time class="dt-published" datetime="2022-04-28T01:10:34.000Z" itemprop="datePublished">2022-04-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/28/2-3-4-Tree/">2-3-4 Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/28/2-3-4-Tree/" data-id="cl2ib8q8v00008str7zunf48b" data-title="2-3-4 Tree" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-AVL-tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/28/AVL-tree/" class="article-date">
+  <time class="dt-published" datetime="2022-04-28T01:01:01.000Z" itemprop="datePublished">2022-04-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/28/AVL-tree/">AVL tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="AVL-tree"><a href="#AVL-tree" class="headerlink" title="AVL tree"></a>AVL tree</h2><p>Analysis of AVL trees:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. trees are height-balanced; subtree depths differ by +/-1</span><br><span class="line">2. average/worst-case search performance of O(<span class="built_in">log</span> n)</span><br><span class="line">3. require extra data to be stored <span class="keyword">in</span> each node (efficiency)</span><br><span class="line">4. require extra data to be maintained during insertion</span><br><span class="line">5. may not be weight-balanced; subtree sizes may differ</span><br></pre></td></tr></table></figure>
+
+<p>Insertion</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">BSTree insert(BSTree t, int value) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t == NULL) &#123;</span><br><span class="line">		<span class="built_in">return</span> createNode(value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (t-&gt;value == value)&#123;</span><br><span class="line">		<span class="built_in">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		int cmp = t-&gt;value - value;</span><br><span class="line">		<span class="keyword">if</span> (cmp &gt; 0) &#123;</span><br><span class="line">			t-&gt;left = insert(t-&gt;left, value);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			t-&gt;right = insert(t-&gt;right, value);</span><br><span class="line">		&#125;</span><br><span class="line">		int lheight = BSTreeHeight(t-&gt;left);</span><br><span class="line">        int rheight = BSTreeHeight(t-&gt;right);</span><br><span class="line">		<span class="keyword">if</span> ((lheight - rheight) &gt; 1) &#123;</span><br><span class="line">            // If element inserted at the right branch of left child of node</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;left-&gt;value - value &lt; 0) &#123;</span><br><span class="line">                t-&gt;left = leftRotation(t-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            t = rightRotation(t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((rheight - lheight) &gt; 1) &#123;</span><br><span class="line">            // If element inserted at the left branch of right child of node</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;right-&gt;value - value &gt; 0) &#123;</span><br><span class="line">                t-&gt;right = rightRotation(t-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            t = leftRotation(t);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="built_in">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/28/AVL-tree/" data-id="cl2iawkzt0000y4trhiepaeje" data-title="AVL tree" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Sorting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/27/Sorting/" class="article-date">
   <time class="dt-published" datetime="2022-04-26T19:51:47.000Z" itemprop="datePublished">2022-04-27</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -139,7 +297,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li></ul>
 
     </footer>
   </div>
@@ -155,6 +313,10 @@
   <time class="dt-published" datetime="2022-04-26T09:10:14.000Z" itemprop="datePublished">2022-04-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -171,7 +333,54 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <pre><code>3. 2-3-4 Tree
+    1. Property
+        1. General B-tree terms
+    2. Implementation
+        1. Insertion to 2-3-4 Tree
+    3. Performance analysis
+</code></pre>
+<h2 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h2><p>Property of BST</p>
+<ol>
+<li>The right sub-tree of the root always have value greater than the root, left sub-tree always smaller than the root.</li>
+<li>Perfectly-balanced tree, abs(node on left subtree - node on right subtree) &lt;&#x3D; 1.</li>
+<li>Height-balanced tree, abs(height on left tree - height on right tree) &lt;&#x3D; 1.</li>
+</ol>
+<p>Time complexity for search, delete, insert is typically O(height)<br>One property observe for the tree is that for different permutation of record, the shape of BST would differ with extreme case that BST become a linked list. This is called <strong>object space decomposition</strong>, because it’s decompositiuon of key range is driven by the object.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// a Tree is represented by a pointer to its root node</span><br><span class="line">typedef struct Node *Tree;</span><br><span class="line"></span><br><span class="line">// a Node contains its data, plus left and right subtrees</span><br><span class="line">typedef struct Node &#123;</span><br><span class="line">   int  data;</span><br><span class="line">   Tree left, right;</span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line">// some macros that we will use frequently</span><br><span class="line"><span class="comment">#define data(node)  ((node)-&gt;data)</span></span><br><span class="line"><span class="comment">#define left(node)  ((node)-&gt;left)</span></span><br><span class="line"><span class="comment">#define right(node) ((node)-&gt;right)</span></span><br></pre></td></tr></table></figure>
+
+<p>Insertion and search is very primititive. Let’s look at deletion.</p>
+<p>For tree deletion, we consider following four cases</p>
+<ol>
+<li>If node deleted is leave. Then break the link, we are done.</li>
+<li>If node deleted have one subtree, replace link it’s children.</li>
+<li>If node deleted have two subtree, replace root by the smallest node on it’s right subtree.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">// Join two tree, <span class="built_in">return</span> new root node</span><br><span class="line">// Node root is garuanteed to be cleaned</span><br><span class="line">Node treeJoin(Node lhs, Node rhs, Node root) &#123;</span><br><span class="line">    // Case 1: Two child both NULL</span><br><span class="line">    <span class="keyword">if</span> (lhs == NULL &amp;&amp; rhs == NULL) &#123;</span><br><span class="line">        // Free root, as it is the only node and being deleted</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> NULL;</span><br><span class="line">    &#125; // Case 2: One of two children is NULL. Free root node, <span class="built_in">return</span> not NULL children</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (lhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> rhs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (rhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> lhs;</span><br><span class="line">    &#125; // Case 3: Both not NULL, replace smallest <span class="keyword">in</span> rhs tree with the root</span><br><span class="line">    <span class="keyword">else</span> &#123;    // Left rotation on rhs root to maintain balance</span><br><span class="line">        Node curr = rhs;</span><br><span class="line">        Node parent = NULL;</span><br><span class="line">        // Find the minimum node <span class="keyword">in</span> rhs tree</span><br><span class="line">        // Find the parent of minimum node <span class="keyword">in</span> rhs</span><br><span class="line">        <span class="keyword">while</span> (curr-&gt;left != NULL) &#123;</span><br><span class="line">            parent = curr;</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // <span class="keyword">case</span> 3.1: rhs is the lowest of rhs tree</span><br><span class="line">        <span class="keyword">if</span> (parent == NULL) &#123;</span><br><span class="line">            // replace root node with rhs node</span><br><span class="line">            root-&gt;element = rhs-&gt;element;</span><br><span class="line">            root-&gt;right = rhs-&gt;right;</span><br><span class="line">            // Delete rhs</span><br><span class="line">            rhs-&gt;element = NULL;</span><br><span class="line">            free(rhs);</span><br><span class="line">            // Right rotation on root(remove a node on right of root)</span><br><span class="line">            int lheight = height(root-&gt;left-&gt;left);</span><br><span class="line">            int rheight = height(root-&gt;left-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 0) &#123;</span><br><span class="line">                root-&gt;left = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            root = rightRotation(root);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125; // <span class="keyword">case</span> 3.2: Replace minimum <span class="keyword">in</span> rhs with the new root</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            //  Unlink the minimum node <span class="keyword">in</span> rhs, right rotation on parent (remove a node on left of parent)</span><br><span class="line">            parent-&gt;left = curr-&gt;right;</span><br><span class="line">            parent-&gt;right = rightRotation(parent);</span><br><span class="line">            int lheight = height(parent-&gt;left);</span><br><span class="line">            int rheight = height(parent-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 1) &#123;</span><br><span class="line">                parent = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // Replace minimum</span><br><span class="line">            root-&gt;element = curr-&gt;element;</span><br><span class="line">            free(curr);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Balancing-Search-Tree"><a href="#Balancing-Search-Tree" class="headerlink" title="Balancing Search Tree"></a>Balancing Search Tree</h4><p>For the general BST, there are two improvement one can make.</p>
+<ul>
+<li>Insertion at Root</li>
+<li>Tree partition</li>
+</ul>
+<p>For insertion at root, essentially after insertion, we make several rotation to make sure that this new node become the new root. It got two benifit, one is normally newly inserted data likely being inspected, second is it can make the tree more balance, but not garunteed. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">BSTree insertRoot(BSTree t, int value) &#123;</span><br><span class="line">	// Insert this new node</span><br><span class="line">	<span class="keyword">if</span> (t == NULL) &#123;</span><br><span class="line">		<span class="built_in">return</span> createNode(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int cmp = t-&gt;value;</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; value) &#123;</span><br><span class="line">		t-&gt;left = insertRoot(t-&gt;left, value);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = insertRoot(t-&gt;right, value);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>For tree partiton, it require each node store an additional attribute contain the node count from each subtree.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node treePartition(BSTree t, int val) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t == NULL || val == 0) <span class="built_in">return</span> t;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	int cmp = BSTreeNumNodes(t-&gt;left);</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; val) &#123;</span><br><span class="line">		t-&gt;left = treePartition(t-&gt;left, val);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = treePartition(t-&gt;right, val - cmp - 1);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>After my experiment, conclusion would be this two operation itself isn’t helping very much.<br>The partition will only ensure that it balance its root, which is not ideal because what really affetcing performance would be the height. Which perfect balance not help. A way to balance would be balance at every node using partition function.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rebalance(t):</span><br><span class="line">|  Input  tree t with n nodes</span><br><span class="line">|  Output t rebalanced</span><br><span class="line">|</span><br><span class="line">|  <span class="keyword">if</span> n≥3 <span class="keyword">then</span></span><br><span class="line">|  |  // put node with median key at root</span><br><span class="line">|  |  t=partition(t,n/2)</span><br><span class="line">|  |  // <span class="keyword">then</span> rebalance each subtree</span><br><span class="line">|  |  t-&gt;left = rebalance(t-&gt;left)</span><br><span class="line">|  |  t-&gt;right = rebalance(t-&gt;right)</span><br><span class="line">|  end <span class="keyword">if</span></span><br><span class="line">|  <span class="built_in">return</span> t</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Tree-traversal"><a href="#Tree-traversal" class="headerlink" title="Tree traversal"></a>Tree traversal</h4><p>There are four traversal</p>
+<ol>
+<li>Pre-order   </li>
+<li>In-order</li>
+<li>Post-order  </li>
+<li>Level-order (iterative or using queue)<br>A few variant would be travel right before left.</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
@@ -179,7 +388,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
 
     </footer>
   </div>
@@ -195,6 +404,10 @@
   <time class="dt-published" datetime="2022-04-26T08:30:54.000Z" itemprop="datePublished">2022-04-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -228,7 +441,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li></ul>
 
     </footer>
   </div>
@@ -284,6 +497,10 @@
   <time class="dt-published" datetime="2022-04-26T05:52:12.000Z" itemprop="datePublished">2022-04-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -371,6 +588,8 @@
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language/" rel="tag">Language</a></li></ul>
+
     </footer>
   </div>
   
@@ -447,7 +666,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li></ul>
 
     </footer>
   </div>
@@ -463,6 +682,10 @@
   <time class="dt-published" datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished">2022-04-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -511,443 +734,8 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/26/makefile/" class="article-date">
-  <time class="dt-published" datetime="2022-04-26T05:03:14.000Z" itemprop="datePublished">2022-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/26/makefile/">makefile</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
-<p>In C, the compiler have following stages</p>
-<ul>
-<li>Pre-processing<ol>
-<li>In this stage, the compiler will do things such as, macro substitution, testing for condition, directives and file inclusion.</li>
-</ol>
-</li>
-<li>Compilation<ol>
-<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
-</ol>
-</li>
-<li>Linking<ol>
-<li>In this stage, the compiler will link multiple programs as one program.</li>
-</ol>
-</li>
-</ul>
-<p>Gcc compiler, for compilering</p>
-<ol>
-<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
-<li>-E : This command gives pro-processed file.</li>
-<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
-<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
-</ol>
-<p>Gcc compiler, for advanced</p>
-<ol>
-<li>-Werror: Will compile the source and show warning.</li>
-<li>-Wall  : Will check error, but treat all warning as error.</li>
-</ol>
-<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
-<ul>
-<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
-<li>Minimal re-compilation <ul>
-<li>Based on dependencies, and also the time of latest change.</li>
-</ul>
-</li>
-</ul>
-<p>A <strong>dependency</strong> specify</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
-<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
-<p>Few more things to note: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
-<ul>
-<li>A <strong>target</strong> is always on a new line,<ul>
-<li>Followed by a ‘:’</li>
-<li>Followed by files that it depend on</li>
-<li>Make can also compile the target speicify in makefile</li>
-</ul>
-</li>
-<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
-<li>and must indented by a <strong>TAB</strong></li>
-</ul>
-</li>
-</ul>
-<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
-<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
-<ul>
-<li>CC refers to the compiler (gcc in this case)</li>
-<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
-<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
-<li>One can also specifying own variable</li>
-</ul>
-<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/26/makefile/" data-id="cl2foonp30002vstr039u630w" data-title="makefile" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Comp-2521-Revision-Plan" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/26/Comp-2521-Revision-Plan/" class="article-date">
-  <time class="dt-published" datetime="2022-04-26T02:21:13.000Z" itemprop="datePublished">2022-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/26/Comp-2521-Revision-Plan/">Comp 2521 Revision Plan</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Plan-Outline"><a href="#Plan-Outline" class="headerlink" title="Plan Outline"></a>Plan Outline</h1><h2 id="Thoery-Part"><a href="#Thoery-Part" class="headerlink" title="Thoery Part"></a>Thoery Part</h2><ul>
-<li><strong>makefile</strong><ol>
-<li>Commands for compile fire</li>
-<li>Type of files</li>
-<li>Syntax for makefile</li>
-<li><strong>Core property for makefile</strong></li>
-</ol>
-</li>
-<li><strong>Analysis of algoritm</strong><ol>
-<li>Big O complexity</li>
-</ol>
-</li>
-<li><strong>ADT</strong></li>
-<li><strong>Function pointer</strong></li>
-</ul>
-<h2 id="Data-Structure-and-Algorithm-part"><a href="#Data-Structure-and-Algorithm-part" class="headerlink" title="Data Structure and Algorithm part"></a>Data Structure and Algorithm part</h2><ul>
-<li><p><strong>Stack and queue</strong></p>
-<ol>
-<li>Array implementation<ol>
-<li>Circular array</li>
-<li>Performance analysis</li>
-</ol>
-</li>
-<li>Linked list implementation</li>
-</ol>
-</li>
-<li><p><strong>Tree</strong></p>
-<ol>
-<li>Binary Search Tree<ol>
-<li>Property</li>
-<li>Implementation<ol>
-<li>Join two tree</li>
-<li>Deletion from BST</li>
-</ol>
-</li>
-<li>Performance analysis</li>
-<li>Possible improvement</li>
-<li>Tree Traversal</li>
-</ol>
-</li>
-<li>AVL Tree<ol>
-<li>Property</li>
-<li>Implementation<ol>
-<li>Tree rotation</li>
-<li>Insertion to BST</li>
-<li>Deletion from BST</li>
-</ol>
-</li>
-<li>Performance analysis</li>
-</ol>
-</li>
-<li>2-3-4 Tree<ol>
-<li>Property<ol>
-<li>General B-tree terms</li>
-</ol>
-</li>
-<li>Implementation<ol>
-<li>Insertion to 2-3-4 Tree</li>
-</ol>
-</li>
-<li>Performance analysis</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>Graph</strong></p>
-<ol>
-<li>Type of graph<ol>
-<li>Directed &#x2F; Undirected</li>
-<li>Weight &#x2F; Unweighted</li>
-<li>Terminology used in graph<ol>
-<li>Euler’s path</li>
-<li>Hamiliton’s path</li>
-<li>Connected &#x2F; Complete Graph</li>
-<li>Clique</li>
-<li>Tree and Spanning Tree</li>
-<li>Forest</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Graph representation<ol>
-<li>Adjaceny Matrix</li>
-<li>Adjaceny List</li>
-<li>Memory cost analysis</li>
-</ol>
-</li>
-<li>Graph traveral algorithm<ol>
-<li>DFS with recursion</li>
-<li>DFS with stack</li>
-<li>BFS with queue</li>
-<li>DFS property and performance<ol>
-<li>DFS forest</li>
-<li>Type of edge in directed &#x2F; undirected graph</li>
-</ol>
-</li>
-<li>BFS property and performance</li>
-</ol>
-</li>
-<li>MST problem<ol>
-<li>Property behind greedy algorithm<ol>
-<li>Relaxation</li>
-<li>Greedy algorithm</li>
-</ol>
-</li>
-<li>Prim’s algorithm with performance analysis<ol>
-<li>Array implementation</li>
-<li>Heap implementation</li>
-<li>Fibnocci heap implementation</li>
-</ol>
-</li>
-<li>Kruskal’s algorithm with performance analysis<ol>
-<li>Cycle detection</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Shortest Path Problem<ol>
-<li><strong>Negative cycle discussion</strong></li>
-<li><strong>Bellman Ford’s algorithm</strong></li>
-<li>Dijistra’s algorithmn</li>
-<li>Performance analysis <ol>
-<li>Unweighted (Equivalent as connected component)</li>
-<li>Weighted</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><strong>All Pair Shortest Path Problem</strong><ol>
-<li>Discussion about matrix multiplication<ol>
-<li>Ring in maths</li>
-</ol>
-</li>
-<li>Dijistra’s algorithm</li>
-<li>Floyd-warshall’s algorithm</li>
-</ol>
-</li>
-<li><strong>Topological Sort</strong><ol>
-<li>Property of DAG</li>
-<li>Cycle detection</li>
-<li>DFS</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>Sorting</strong></p>
-<ol>
-<li>General property of sorting<ol>
-<li>Stable&#x2F; unstable    </li>
-<li>Adaptive</li>
-</ol>
-</li>
-<li>O(n^2) sort<ol>
-<li>Insertion Sort<ol>
-<li>Shell Sort</li>
-</ol>
-</li>
-<li>Selection Sort</li>
-<li>Bubble Sort</li>
-<li>Summary of performance</li>
-</ol>
-</li>
-<li>O(n*log(n)) sort<ol>
-<li>Merge Sort<ol>
-<li>Recursive approach (Top  down)</li>
-<li>Iterative approach (Bottom up)</li>
-<li>Performance analysis</li>
-</ol>
-</li>
-<li>QuickSort<ol>
-<li>Naive quick sort</li>
-<li>Improved quick sort</li>
-<li>Performance analysis</li>
-</ol>
-</li>
-<li>HeapSort, <strong>will be discussed in heap</strong></li>
-</ol>
-</li>
-<li>Comparison Sort<ol>
-<li>Decision Tree model</li>
-<li>Lower bound for comparison sort</li>
-<li>non-comparative sorting algorithm<ol>
-<li><strong>Counting sort</strong></li>
-<li>Radix Sort</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>Heap</strong></p>
-<ol>
-<li>Property</li>
-<li>Implementation</li>
-<li>Application 1 : Priority queue</li>
-</ol>
-</li>
-<li><p><strong>Hashtable</strong></p>
-<ol>
-<li>Hash table<ol>
-<li>Chaining<ol>
-<li>Analysis for chaining</li>
-</ol>
-</li>
-<li>Open Addressing<ol>
-<li>Linear probing</li>
-<li><strong>Quadratic probing</strong></li>
-<li>Double Hashing</li>
-<li>Analysis for open addressing</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Hashing function<ol>
-<li>Division</li>
-<li><strong>Mutiplication</strong></li>
-<li><strong>Universal hashing</strong></li>
-<li><strong>Perfect Hashing</strong></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p><strong>Tries (No idea right now)</strong></p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/26/Comp-2521-Revision-Plan/" data-id="cl2fkrius00006ktr15gmguoy" data-title="Comp 2521 Revision Plan" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-My-blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/25/My-blog/" class="article-date">
-  <time class="dt-published" datetime="2022-04-25T04:28:30.000Z" itemprop="datePublished">2022-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/25/My-blog/">My blog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>The binary-heap structure is a complete binary-tree like array. By providing the index, one can find it’s parent, left child, right child.</p>
-<p>There are two kind of binary-heap, max-heap which is root greater than children, and vice versa for min-heap. </p>
-<p>We define height as same as BST. And heap have property</p>
-<ol>
-<li>Add element, remove element from Heap. O(log(n)).</li>
-<li>Build-heap, O(n)</li>
-<li>Heap-sort , O(nlog(n))</li>
-</ol>
-<p>In an array, the parent, child of index which denoting the node as the index, can be calculated. </p>
-<ol>
-<li>Parent(i) &#x3D; i &#x2F; 2</li>
-<li>left(i)   &#x3D; 2 * i</li>
-<li>right(i)  &#x3D; 2 * i + 1</li>
-</ol>
-<h2 id="Maintain-the-heap-property"><a href="#Maintain-the-heap-property" class="headerlink" title="Maintain the heap property"></a>Maintain the heap property</h2><p>Assume, the an array A satifsy heap property, with one index i added to the array. The left and right satisfy heap property, while index i do not. Then, heap will let this value float down</p>
-<p>Heapify(A, i)<br>l &#x3D; left(i)<br>r &#x3D; right(i)<br>choose largest among l, r and i.<br>If largest !&#x3D; i, exchange the value of i and largest<br>    Heapify(A, largest)</p>
-<p>The worst case is when the bottom level of tree is half full, in this case the running time will be T(n） &#x3D; T（3&#x2F;4 * n） + 1. </p>
-<h2 id="Building-a-heap"><a href="#Building-a-heap" class="headerlink" title="Building a heap"></a>Building a heap</h2><p>Prior heapify, we have an array. We can use heapify apply to every index that have child, and build up the heap. The sequence of visiting is from bottom and build up, as one can oberserve, the pre-condition fo MAX_HEAPIFY is it’s two children are already heap. By apply MAX-HEAPIFY from bottom, we can make sure this property will hold.</p>
-<p>BUILD_MAX_HEAP(A)<br>for (i &#x3D; A.size() &#x2F; 2 .. 1)<br>    MAX_HEAPIFY(A, i)</p>
-<p>Now, we shall start to analysis the correctness.</p>
-<ol>
-<li>Initialization. Prior the for loop, we can view the leave node in original array already being heapify as these nodes don’t have children, which makes it valid. Then we would have floor(A.size() &#x2F; 2) + 1 .. A.size(), are already heap. </li>
-<li>Maintenance. We can assume that before every MAX_HEAPIFY(A, i) executed, the index i + 1.. A.size() have already heapfiied. This will hold prior first iteration.  And then, the MAX-HEAPIFY(A, i) will make the array heapify from i .. A.size(). </li>
-<li>Termination. After last iteration, which would be i &#x3D; 1. We will have 1 .. A.size() being heapify. Thus, we conclude the heap being build.</li>
-</ol>
-<p>After analysis of correctness, we shall discuss the time complexity of BUILD_MAX_HEAP(A). </p>
-<p>Firstly, we can note that MAX_HEAPIFY(A, i) have timeplexity of at most O(log(n)), and it being called for abs(A.size() &#x2F; 2 .. 1) times, which is O(n) times. And it’s upper-bound would be O(n * log(n)). </p>
-<p>$\lfloor f \rfloor$</p>
-<p>Then, by oberving the time complexity of MAX_HEAPIFY(A, i) correlates to it’s position i (height of this position), we can further derive a tighter upperbound. By visualting a complete BST, one simple property we can ultilize is that there is at most floor(n &#x2F; 2 ^ h) nodes, in a given height. And, the running time of MAX_HEAPIFY(A, i) will be h.<br>Then, the running time would be sum of h [ max_height .. 1( h * (n &#x2F; 2 ^ h)) ]<br>                                         &#x3D; n * sum of h (h &#x2F; 2 ^ h )          (n is constant here )<br>                                         &#x3D; 2 * n                              (By sum of sequence)</p>
-<p>So that we have O(n). </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/25/My-blog/" data-id="cl2fkriux00016ktrbst6b14q" data-title="My blog" class="article-share-link">Share</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -968,13 +756,20 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/COMP2521/">COMP2521</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Language/" rel="tag">Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
     </div>
   </div>
 
@@ -984,7 +779,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/COMP2521/" style="font-size: 10px;">COMP2521</a>
+      <a href="/tags/ADT/" style="font-size: 13.33px;">ADT</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/COMP2521/" style="font-size: 13.33px;">COMP2521</a> <a href="/tags/Data-Structure/" style="font-size: 20px;">Data Structure</a> <a href="/tags/Language/" style="font-size: 10px;">Language</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Theory/" style="font-size: 13.33px;">Theory</a> <a href="/tags/Tree/" style="font-size: 16.67px;">Tree</a>
     </div>
   </div>
 
@@ -1006,23 +801,23 @@
       <ul>
         
           <li>
+            <a href="/2022/04/28/Tries-Radix-tree/">Tries (Radix tree)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/28/2-3-4-Tree/">2-3-4 Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/28/AVL-tree/">AVL tree</a>
+          </li>
+        
+          <li>
             <a href="/2022/04/27/Sorting/">Sorting</a>
           </li>
         
           <li>
             <a href="/2022/04/26/Tree/">Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/26/Function-Pointer/">Function Pointer</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/26/Makefile-0/">Makefile</a>
           </li>
         
       </ul>
