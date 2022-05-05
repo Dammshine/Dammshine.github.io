@@ -71,6 +71,436 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Tree" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Tree/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T09:10:14.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Tree/">Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h2><p>Property of BST</p>
+<ol>
+<li>The right sub-tree of the root always have value greater than the root, left sub-tree always smaller than the root.</li>
+<li>Perfectly-balanced tree, abs(node on left subtree - node on right subtree) &lt;&#x3D; 1.</li>
+<li>Height-balanced tree, abs(height on left tree - height on right tree) &lt;&#x3D; 1.</li>
+</ol>
+<p>Time complexity for search, delete, insert is typically O(height)<br>One property observe for the tree is that for different permutation of record, the shape of BST would differ with extreme case that BST become a linked list. This is called <strong>object space decomposition</strong>, because it’s decompositiuon of key range is driven by the object.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// a Tree is represented by a pointer to its root node</span><br><span class="line">typedef struct Node *Tree;</span><br><span class="line"></span><br><span class="line">// a Node contains its data, plus left and right subtrees</span><br><span class="line">typedef struct Node &#123;</span><br><span class="line">   int  data;</span><br><span class="line">   Tree left, right;</span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line">// some macros that we will use frequently</span><br><span class="line"><span class="comment">#define data(node)  ((node)-&gt;data)</span></span><br><span class="line"><span class="comment">#define left(node)  ((node)-&gt;left)</span></span><br><span class="line"><span class="comment">#define right(node) ((node)-&gt;right)</span></span><br></pre></td></tr></table></figure>
+
+<p>Insertion and search is very primititive. Let’s look at deletion.</p>
+<p>For tree deletion, we consider following four cases</p>
+<ol>
+<li>If node deleted is leave. Then break the link, we are done.</li>
+<li>If node deleted have one subtree, replace link it’s children.</li>
+<li>If node deleted have two subtree, replace root by the smallest node on it’s right subtree.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">// Join two tree, <span class="built_in">return</span> new root node</span><br><span class="line">// Node root is garuanteed to be cleaned</span><br><span class="line">Node treeJoin(Node lhs, Node rhs, Node root) &#123;</span><br><span class="line">    // Case 1: Two child both NULL</span><br><span class="line">    <span class="keyword">if</span> (lhs == NULL &amp;&amp; rhs == NULL) &#123;</span><br><span class="line">        // Free root, as it is the only node and being deleted</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> NULL;</span><br><span class="line">    &#125; // Case 2: One of two children is NULL. Free root node, <span class="built_in">return</span> not NULL children</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (lhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> rhs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (rhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> lhs;</span><br><span class="line">    &#125; // Case 3: Both not NULL, replace smallest <span class="keyword">in</span> rhs tree with the root</span><br><span class="line">    <span class="keyword">else</span> &#123;    // Left rotation on rhs root to maintain balance</span><br><span class="line">        Node curr = rhs;</span><br><span class="line">        Node parent = NULL;</span><br><span class="line">        // Find the minimum node <span class="keyword">in</span> rhs tree</span><br><span class="line">        // Find the parent of minimum node <span class="keyword">in</span> rhs</span><br><span class="line">        <span class="keyword">while</span> (curr-&gt;left != NULL) &#123;</span><br><span class="line">            parent = curr;</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // <span class="keyword">case</span> 3.1: rhs is the lowest of rhs tree</span><br><span class="line">        <span class="keyword">if</span> (parent == NULL) &#123;</span><br><span class="line">            // replace root node with rhs node</span><br><span class="line">            root-&gt;element = rhs-&gt;element;</span><br><span class="line">            root-&gt;right = rhs-&gt;right;</span><br><span class="line">            // Delete rhs</span><br><span class="line">            rhs-&gt;element = NULL;</span><br><span class="line">            free(rhs);</span><br><span class="line">            // Right rotation on root(remove a node on right of root)</span><br><span class="line">            int lheight = height(root-&gt;left-&gt;left);</span><br><span class="line">            int rheight = height(root-&gt;left-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 0) &#123;</span><br><span class="line">                root-&gt;left = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            root = rightRotation(root);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125; // <span class="keyword">case</span> 3.2: Replace minimum <span class="keyword">in</span> rhs with the new root</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            //  Unlink the minimum node <span class="keyword">in</span> rhs, right rotation on parent (remove a node on left of parent)</span><br><span class="line">            parent-&gt;left = curr-&gt;right;</span><br><span class="line">            parent-&gt;right = rightRotation(parent);</span><br><span class="line">            int lheight = height(parent-&gt;left);</span><br><span class="line">            int rheight = height(parent-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 1) &#123;</span><br><span class="line">                parent = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // Replace minimum</span><br><span class="line">            root-&gt;element = curr-&gt;element;</span><br><span class="line">            free(curr);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Balancing-Search-Tree"><a href="#Balancing-Search-Tree" class="headerlink" title="Balancing Search Tree"></a>Balancing Search Tree</h4><p>For the general BST, there are two improvement one can make.</p>
+<ul>
+<li>Insertion at Root</li>
+<li>Tree partition</li>
+</ul>
+<p>For insertion at root, essentially after insertion, we make several rotation to make sure that this new node become the new root. It got two benifit, one is normally newly inserted data likely being inspected, second is it can make the tree more balance, but not garunteed. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">BSTree insertRoot(BSTree t, int value) &#123;</span><br><span class="line">	// Insert this new node</span><br><span class="line">	<span class="keyword">if</span> (t == NULL) &#123;</span><br><span class="line">		<span class="built_in">return</span> createNode(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int cmp = t-&gt;value;</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; value) &#123;</span><br><span class="line">		t-&gt;left = insertRoot(t-&gt;left, value);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = insertRoot(t-&gt;right, value);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>For tree partiton, it require each node store an additional attribute contain the node count from each subtree.  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node treePartition(BSTree t, int val) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t == NULL || val == 0) <span class="built_in">return</span> t;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	int cmp = BSTreeNumNodes(t-&gt;left);</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; val) &#123;</span><br><span class="line">		t-&gt;left = treePartition(t-&gt;left, val);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = treePartition(t-&gt;right, val - cmp - 1);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>After my experiment, conclusion would be this two operation itself isn’t helping very much.<br>The partition will only ensure that it balance its root, which is not ideal because what really affetcing performance would be the height. Which perfect balance not help. A way to balance would be balance at every node using partition function.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rebalance(t):</span><br><span class="line">|  Input  tree t with n nodes</span><br><span class="line">|  Output t rebalanced</span><br><span class="line">|</span><br><span class="line">|  <span class="keyword">if</span> n≥3 <span class="keyword">then</span></span><br><span class="line">|  |  // put node with median key at root</span><br><span class="line">|  |  t=partition(t,n/2)</span><br><span class="line">|  |  // <span class="keyword">then</span> rebalance each subtree</span><br><span class="line">|  |  t-&gt;left = rebalance(t-&gt;left)</span><br><span class="line">|  |  t-&gt;right = rebalance(t-&gt;right)</span><br><span class="line">|  end <span class="keyword">if</span></span><br><span class="line">|  <span class="built_in">return</span> t</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Tree-traversal"><a href="#Tree-traversal" class="headerlink" title="Tree traversal"></a>Tree traversal</h4><p>There are four traversal</p>
+<ol>
+<li>Pre-order   </li>
+<li>In-order</li>
+<li>Post-order  </li>
+<li>Level-order (iterative or using queue)<br>A few variant would be travel right before left.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Tree/" data-id="cl2goimqo0001hotr6hah35yr" data-title="Tree" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Stack-and-Queue" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Stack-and-Queue/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T08:30:54.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p><strong>Stack</strong> is the abstracted data structure that the element can only inserted or remove only from one end. While this makes stack less flexible, it also makes stack’s implementation more flexible. “LIFO”</p>
+<p>One implementation is using array. By using an array that will expand when the size if full, we can acheive O(1) for both push and pop. </p>
+<p>Another implementation is to use linked list, where linked list will be more flexible for the memory usage. As the memory used is directly corrlate with number of element, while array can have potentially wasted space. </p>
+<p>The most common usage for <strong>stack</strong> is implementing recursion, which can be used to reduce the coefficient greatly. </p>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p><strong>Queue</strong> is a data structure, that it’s element can only inserted at one end and retrive at the another. “FIFO”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Adds an item to the end of the queue</span><br><span class="line"> */</span><br><span class="line">void QueueEnqueue(Queue q, Item it);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Removes an item from the front of the queue and returns it</span><br><span class="line"> * Assumes that the queue is not empty</span><br><span class="line"> */</span><br><span class="line">Item QueueDequeue(Queue q);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Gets the item at the front of the queue without removing it</span><br><span class="line"> * Assumes that the queue is not empty</span><br><span class="line"> */</span><br><span class="line">Item QueueFront(Queue q);</span><br></pre></td></tr></table></figure>
+
+<p>One implementation would be using linked list, a wrapper struct store both start and end of the list. </p>
+<p>Another implementation would be using circular array, which index may be calculated by ultilize modular property. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Stack-and-Queue/" data-id="cl2fwlvav0000ywtrd67phzaz" data-title="Stack and Queue" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Function-Pointer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Function-Pointer/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:56:15.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Function-Pointer/">Function Pointer</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Function-Pointer"><a href="#Function-Pointer" class="headerlink" title="Function Pointer"></a>Function Pointer</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Function-Pointer/" data-id="cl2fwlvb00001ywtr4e1kd9d7" data-title="Function Pointer" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Makefile-0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Makefile-0/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:52:12.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Makefile-0/">Makefile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
+<p>In C, the compiler have following stages</p>
+<ul>
+<li>Pre-processing<ol>
+<li>In this stage, the compiler will do things such as, macro substitution, testing for condition, directives and file inclusion.</li>
+</ol>
+</li>
+<li>Compilation<ol>
+<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
+</ol>
+</li>
+<li>Linking<ol>
+<li>In this stage, the compiler will link multiple programs as one program.</li>
+</ol>
+</li>
+</ul>
+<p>Gcc compiler, for compilering</p>
+<ol>
+<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
+<li>-E : This command gives pro-processed file.</li>
+<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
+<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
+</ol>
+<p><img src="/.com//c-stages.png" alt="Alt Text"></p>
+<p>Gcc compiler, for advanced</p>
+<ol>
+<li>-Werror: Will compile the source and show warning.</li>
+<li>-Wall  : Will check error, but treat all warning as error.</li>
+</ol>
+<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
+<ul>
+<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
+<li>Minimal re-compilation <ul>
+<li>Based on dependencies, and also the time of latest change.</li>
+</ul>
+</li>
+</ul>
+<p>A <strong>dependency</strong> specify</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
+<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
+<p>Few more things to note: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A <strong>target</strong> is always on a new line,<ul>
+<li>Followed by a ‘:’</li>
+<li>Followed by files that it depend on</li>
+<li>Make can also compile the target speicify in makefile</li>
+</ul>
+</li>
+<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
+<li>and must indented by a <strong>TAB</strong></li>
+</ul>
+</li>
+</ul>
+<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
+<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
+<ul>
+<li>CC refers to the compiler (gcc in this case)</li>
+<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
+<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
+<li>One can also specifying own variable</li>
+</ul>
+<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Makefile-0/" data-id="cl2fqfcoy0001a0tr4juu4tzz" data-title="Makefile" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Language/" rel="tag">Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ADT" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/ADT/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:32:26.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/ADT/">ADT</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Abstract-data-Type"><a href="#Abstract-data-Type" class="headerlink" title="Abstract data Type"></a>Abstract data Type</h2><p>A <strong>data type</strong> is</p>
+<ul>
+<li>A set of values</li>
+<li>A collection of operations on thoes value</li>
+</ul>
+<p>An <strong>abstract data type</strong> is</p>
+<ul>
+<li>An approach to implementing data types, that seperate users and implementer, <ul>
+<li>Implementer will provide interface (how to use) and implementation</li>
+<li>User only need to know interface.</li>
+</ul>
+</li>
+</ul>
+<p>Many of ADT deals with </p>
+<ul>
+<li>Collection of items, that often contain a key(or themselve is a key)<ul>
+<li>Particular structure that provide great efficency, but user want to reduce complexity for them to use it more easiy. So we hide the detail.<ul>
+<li>linked list, tree, graph</li>
+</ul>
+</li>
+<li>Particular usage, that user only need the result.<ul>
+<li>matrix, set, dictionary, stack, queue</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>We want to distinguish</p>
+<ul>
+<li><strong>DT</strong> (Non-abstract data type)<ul>
+<li>Internal of da structure is visible. (character, C string)</li>
+</ul>
+</li>
+<li><strong>GADT</strong><ul>
+<li>C++ template like data type. Can have mutiple type. (C++ STL, vector<typename>)</typename></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/ADT/" data-id="cl2fqfcot0000a0trg0xb05j7" data-title="ADT" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Performance-Analysis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/Performance-Analysis/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/COMP2521/">COMP2521</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/Performance-Analysis/">Performance Analysis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Analysis-of-Algorithm"><a href="#Analysis-of-Algorithm" class="headerlink" title="Analysis of Algorithm"></a>Analysis of Algorithm</h2><p><strong>Analyzing</strong> an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the most desirable one. </p>
+<p>There is a few terms need to be well defined here</p>
+<ol>
+<li><strong>Input size</strong>, the best notion for <strong>input size</strong> depend on the problem, such as for sorting number, the input size is number of integer as the input. </li>
+<li><strong>Running time</strong>, one should adopt the notion that our model of analysis assume CPU takes constant operation every seconds, thus <strong>running time</strong> can also be reconigized as the number of primititive operation that CPU supported. </li>
+<li><strong>Memory</strong>, one correlate of additional memory from input, that the algorithm required.</li>
+</ol>
+<h4 id="Order-of-growth"><a href="#Order-of-growth" class="headerlink" title="Order of growth"></a>Order of growth</h4><p>We shall make one more simplifying abstraction, which is the <strong>rate of growth</strong>, which is ignore all coefficent and smaller rate of growth term in estimating algorithm’s performance. When we look at input size large enough, it eventually will make only the order of growth of running time relevant. </p>
+<p>We now define big O notation, this will give us upper bound,<br>O(g(n)) &#x3D; {f(n) : there exist positive constant c and n0 such that f(n) &lt; c * g(n) for all n &gt; n0.}</p>
+<p>Suppose two function have same Big-Oh function, then two function have same order of growth. Furthemore, a bigger-order growth function can’t be Big-Oh function for a lower-order growth function. As there do not exist a positive constant n that can component the difference brought by the order-growth difference. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(n) is O(g(n)) <span class="keyword">if</span> f(n) is asymptotically less than or equal to g(n)</span><br><span class="line">f(n) is Ω(g(n)) <span class="keyword">if</span> f(n) is asymptotically greater than or equal to g(n)</span><br><span class="line">f(n) is Θ(g(n)) <span class="keyword">if</span> f(n) is asymptotically equal to g(n)</span><br></pre></td></tr></table></figure>
+<p>(<strong>Copied from Ashish’s lecture slide</strong>)</p>
+<h4 id="Empirical-Analysis"><a href="#Empirical-Analysis" class="headerlink" title="Empirical Analysis"></a>Empirical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Program the algorithm</li>
+<li>Generate different size of input</li>
+<li>Record time and plot</li>
+</ol>
+<p>Very inefficent. </p>
+<h4 id="Theoretical-Analysis"><a href="#Theoretical-Analysis" class="headerlink" title="Theoretical Analysis"></a>Theoretical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Using pseudocode to describe the algorithm, ignore detail and actual langauge syntx that is irrelevant to algorithm. </li>
+<li>Characterise the running time as a function of input size n.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/26/Performance-Analysis/" data-id="cl2foonot0000vstre6o36y5t" data-title="Performance Analysis" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Comp-2521-Revision-Plan" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/26/Comp-2521-Revision-Plan/" class="article-date">
@@ -129,19 +559,21 @@
 </ol>
 </li>
 <li>Performance analysis</li>
-<li>Possible improvement</li>
+<li>Possible improvement<ol>
+<li>Insert at root</li>
+<li>Partition</li>
+</ol>
+</li>
 <li>Tree Traversal</li>
 </ol>
 </li>
 <li>AVL Tree<ol>
 <li>Property</li>
-<li>Implementation<ol>
-<li>Tree rotation</li>
-<li>Insertion to BST</li>
-<li>Deletion from BST</li>
+<li>Implementation <ol>
+<li>Insert</li>
+<li>Delete</li>
 </ol>
 </li>
-<li>Performance analysis</li>
 </ol>
 </li>
 <li>2-3-4 Tree<ol>
@@ -180,16 +612,13 @@
 <li>Memory cost analysis</li>
 </ol>
 </li>
-<li>Graph traveral algorithm<ol>
-<li>DFS with recursion</li>
-<li>DFS with stack</li>
-<li>BFS with queue</li>
-<li>DFS property and performance<ol>
-<li>DFS forest</li>
-<li>Type of edge in directed &#x2F; undirected graph</li>
-</ol>
-</li>
-<li>BFS property and performance</li>
+<li>Graph algorithm<ol>
+<li>DFS</li>
+<li>BFS</li>
+<li>Cycle Detection</li>
+<li>Connected Component</li>
+<li>Hamiltonian path and circuit</li>
+<li>Euler path and circuit</li>
 </ol>
 </li>
 <li>MST problem<ol>
@@ -480,7 +909,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Language/" rel="tag">Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ADT/" rel="tag">ADT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COMP2521/" rel="tag">COMP2521</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph/" rel="tag">Graph</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Language/" rel="tag">Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Personal/" rel="tag">Personal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming-Paradigm/" rel="tag">Programming Paradigm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Report/" rel="tag">Report</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Theory/" rel="tag">Theory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/" rel="tag">Tree</a></li></ul>
     </div>
   </div>
 
@@ -490,7 +919,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ADT/" style="font-size: 13.33px;">ADT</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/COMP2521/" style="font-size: 13.33px;">COMP2521</a> <a href="/tags/Data-Structure/" style="font-size: 20px;">Data Structure</a> <a href="/tags/Language/" style="font-size: 10px;">Language</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Theory/" style="font-size: 13.33px;">Theory</a> <a href="/tags/Tree/" style="font-size: 16.67px;">Tree</a>
+      <a href="/tags/ADT/" style="font-size: 12.5px;">ADT</a> <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/COMP2521/" style="font-size: 12.5px;">COMP2521</a> <a href="/tags/Data-Structure/" style="font-size: 20px;">Data Structure</a> <a href="/tags/Graph/" style="font-size: 15px;">Graph</a> <a href="/tags/Language/" style="font-size: 10px;">Language</a> <a href="/tags/Personal/" style="font-size: 10px;">Personal</a> <a href="/tags/Programming-Paradigm/" style="font-size: 10px;">Programming Paradigm</a> <a href="/tags/Report/" style="font-size: 10px;">Report</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Theory/" style="font-size: 15px;">Theory</a> <a href="/tags/Tree/" style="font-size: 17.5px;">Tree</a>
     </div>
   </div>
 
@@ -499,7 +928,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
     </div>
   </div>
 
@@ -512,23 +941,23 @@
       <ul>
         
           <li>
-            <a href="/2022/04/28/Tries-Radix-tree/">Tries (Radix tree)</a>
+            <a href="/2022/05/04/Things-I-know-so-far/">Things I know so far</a>
           </li>
         
           <li>
-            <a href="/2022/04/28/2-3-4-Tree/">2-3-4 Tree</a>
+            <a href="/2022/05/03/Hash-Table/">Hash Table</a>
           </li>
         
           <li>
-            <a href="/2022/04/28/AVL-tree/">AVL tree</a>
+            <a href="/2022/05/03/Dynamic-Programming/">Dynamic Programming</a>
           </li>
         
           <li>
-            <a href="/2022/04/27/Sorting/">Sorting</a>
+            <a href="/2022/04/28/Graph-Algorithm/">Graph Algorithm</a>
           </li>
         
           <li>
-            <a href="/2022/04/26/Tree/">Tree</a>
+            <a href="/2022/04/28/DFS/">DFS</a>
           </li>
         
       </ul>
