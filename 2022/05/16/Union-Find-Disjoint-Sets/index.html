@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | David&#39;s Hexo Blog</title>
+  <title>Union-Find Disjoint Sets | David&#39;s Hexo Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="As said, david&#39;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="David&#39;s Hexo Blog">
-<meta property="og:url" content="http://example.com/archives/2022/page/3/index.html">
+  <meta name="description" content="Union-Find Disjoint SetsUnion-find Disjoint(UFDS) sets is an abstracted data structure that want to simulate a collection of disjoint sets, which will support the following two operations  Determine i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Union-Find Disjoint Sets">
+<meta property="og:url" content="http://example.com/2022/05/16/Union-Find-Disjoint-Sets/index.html">
 <meta property="og:site_name" content="David&#39;s Hexo Blog">
-<meta property="og:description" content="As said, david&#39;s blog">
+<meta property="og:description" content="Union-Find Disjoint SetsUnion-find Disjoint(UFDS) sets is an abstracted data structure that want to simulate a collection of disjoint sets, which will support the following two operations  Determine i">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/.com//05/16/Union-Find-Disjoint-Sets/LinkedListUFDS.jpg">
+<meta property="og:image" content="http://example.com/.com//assets">
+<meta property="article:published_time" content="2022-05-16T06:48:30.000Z">
+<meta property="article:modified_time" content="2022-05-16T07:28:41.543Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/.com//05/16/Union-Find-Disjoint-Sets/LinkedListUFDS.jpg">
   
     <link rel="alternative" href="/atom.xml" title="David&#39;s Hexo Blog" type="application/atom+xml">
   
@@ -163,79 +168,106 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Union-Find-Disjoint-Sets" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/25/My-blog/" class="archive-article-date">
-  	<time datetime="2022-04-25T04:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/25/My-blog/">My blog</a>
+    <h1 class="article-title" itemprop="name">
+      Union-Find Disjoint Sets
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/25/hello-world/" class="archive-article-date">
-  	<time datetime="2022-04-25T04:17:09.230Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
+        
+        <a href="/2022/05/16/Union-Find-Disjoint-Sets/" class="archive-article-date">
+  	<time datetime="2022-05-16T06:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/25/hello-world/">Hello World</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Union-Find-Disjoint-Sets"><a href="#Union-Find-Disjoint-Sets" class="headerlink" title="Union-Find Disjoint Sets"></a>Union-Find Disjoint Sets</h1><p>Union-find Disjoint(UFDS) sets is an abstracted data structure that want to simulate a collection of disjoint sets, which will support the following two operations</p>
+<ol>
+<li>Determine if two element belongs to same set,</li>
+<li>Combine two disjoint set.<br>Such data structure can be helpful in situation such as finding connected component of a diagram, krusal’s algorithm.</li>
+</ol>
+<h3 id="Linked-list-Implementation"><a href="#Linked-list-Implementation" class="headerlink" title="Linked list Implementation"></a>Linked list Implementation</h3><p>We would want to support the above operation with ability of efficiency. The main idea of supporting such data structure is to choose one unique element to represent the set, this idea simplify the process of verifying the two set are the same. </p>
+<p>Then, a naive approach would be using a linked list which contains a parent pointer. </p>
+<p><img src="/.com//05/16/Union-Find-Disjoint-Sets/LinkedListUFDS.jpg" alt="Linked list implementation"></p>
+<img src="/.com//assets" class="[LinkedListUFDS.jpg]" title="[900] [1200] " alt="Linked list implementation">
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UnionFind</span> &#123;</span><br><span class="line"><span class="keyword">private</span>: </span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; p, rank;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// Constructor</span></span><br><span class="line">    <span class="built_in">UnionFind</span>(<span class="type">int</span> N) &#123;</span><br><span class="line">        p.<span class="built_in">assign</span>(N, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            p[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Supported Operation</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findSet</span><span class="params">(<span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> p[i] == i ? i : <span class="built_in">findSet</span>(p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isSameSet</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">findSet</span>(i) == <span class="built_in">findSet</span>(j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">unionSet</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> x = <span class="built_in">finSet</span>(i), y = <span class="built_in">findSet</span>(j);</span><br><span class="line">        <span class="keyword">if</span> (rank[x] &gt; rank[y]) &#123;</span><br><span class="line">            p[y] = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            p[x] = y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rank[x] == rank[y]) rank[y]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CP3//" class="article-tag-list-link color4">CP3</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2022/05/13/git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2022/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2022/">1</a><a class="page-number" href="/archives/2022/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -259,8 +291,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

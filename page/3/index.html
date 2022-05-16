@@ -58,7 +58,13 @@
 			
 				<li><a href="/">Main-Page</a></li>
 	        
-				<li><a href="/">Leetcode</a></li>
+				<li><a href="/archives/index.html">Archives</a></li>
+	        
+				<li><a href="/categories/">Categories</a></li>
+	        
+				<li><a href="/categories/leetcode">Leetcode</a></li>
+	        
+				<li><a href="/categories/CP3">CP3</a></li>
 	        
 			</ul>
 		</nav>
@@ -110,6 +116,12 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -125,12 +137,18 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">Main-Page</a></li>
+					<li style="width: 20%"><a href="/">Main-Page</a></li>
 		        
-					<li style="width: 50%"><a href="/">Leetcode</a></li>
+					<li style="width: 20%"><a href="/archives/index.html">Archives</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/">Categories</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/leetcode">Leetcode</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/CP3">CP3</a></li>
 		        
 				</ul>
 			</nav>
@@ -146,6 +164,98 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-My-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/25/My-blog/">My blog</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/25/My-blog/" class="archive-article-date">
+  	<time datetime="2022-04-25T04:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>The binary-heap structure is a complete binary-tree like array. By providing the index, one can find it’s parent, left child, right child.</p>
+<p>There are two kind of binary-heap, max-heap which is root greater than children, and vice versa for min-heap. </p>
+<p>We define height as same as BST. And heap have property</p>
+<ol>
+<li>Add element, remove element from Heap. O(log(n)).</li>
+<li>Build-heap, O(n)</li>
+<li>Heap-sort , O(nlog(n))</li>
+</ol>
+<p>In an array, the parent, child of index which denoting the node as the index, can be calculated. </p>
+<ol>
+<li>Parent(i) &#x3D; i &#x2F; 2</li>
+<li>left(i)   &#x3D; 2 * i</li>
+<li>right(i)  &#x3D; 2 * i + 1</li>
+</ol>
+<h2 id="Maintain-the-heap-property"><a href="#Maintain-the-heap-property" class="headerlink" title="Maintain the heap property"></a>Maintain the heap property</h2><p>Assume, the an array A satifsy heap property, with one index i added to the array. The left and right satisfy heap property, while index i do not. Then, heap will let this value float down</p>
+<p>Heapify(A, i)<br>l &#x3D; left(i)<br>r &#x3D; right(i)<br>choose largest among l, r and i.<br>If largest !&#x3D; i, exchange the value of i and largest<br>    Heapify(A, largest)</p>
+<p>The worst case is when the bottom level of tree is half full, in this case the running time will be T(n） &#x3D; T（3&#x2F;4 * n） + 1. </p>
+<h2 id="Building-a-heap"><a href="#Building-a-heap" class="headerlink" title="Building a heap"></a>Building a heap</h2><p>Prior heapify, we have an array. We can use heapify apply to every index that have child, and build up the heap. The sequence of visiting is from bottom and build up, as one can oberserve, the pre-condition fo MAX_HEAPIFY is it’s two children are already heap. By apply MAX-HEAPIFY from bottom, we can make sure this property will hold.</p>
+<p>BUILD_MAX_HEAP(A)<br>for (i &#x3D; A.size() &#x2F; 2 .. 1)<br>    MAX_HEAPIFY(A, i)</p>
+<p>Now, we shall start to analysis the correctness.</p>
+<ol>
+<li>Initialization. Prior the for loop, we can view the leave node in original array already being heapify as these nodes don’t have children, which makes it valid. Then we would have floor(A.size() &#x2F; 2) + 1 .. A.size(), are already heap. </li>
+<li>Maintenance. We can assume that before every MAX_HEAPIFY(A, i) executed, the index i + 1.. A.size() have already heapfiied. This will hold prior first iteration.  And then, the MAX-HEAPIFY(A, i) will make the array heapify from i .. A.size(). </li>
+<li>Termination. After last iteration, which would be i &#x3D; 1. We will have 1 .. A.size() being heapify. Thus, we conclude the heap being build.</li>
+</ol>
+<p>After analysis of correctness, we shall discuss the time complexity of BUILD_MAX_HEAP(A). </p>
+<p>Firstly, we can note that MAX_HEAPIFY(A, i) have timeplexity of at most O(log(n)), and it being called for abs(A.size() &#x2F; 2 .. 1) times, which is O(n) times. And it’s upper-bound would be O(n * log(n)). </p>
+<p>$\lfloor f \rfloor$</p>
+<p>Then, by oberving the time complexity of MAX_HEAPIFY(A, i) correlates to it’s position i (height of this position), we can further derive a tighter upperbound. By visualting a complete BST, one simple property we can ultilize is that there is at most floor(n &#x2F; 2 ^ h) nodes, in a given height. And, the running time of MAX_HEAPIFY(A, i) will be h.<br>Then, the running time would be sum of h [ max_height .. 1( h * (n &#x2F; 2 ^ h)) ]<br>                                         &#x3D; n * sum of h (h &#x2F; 2 ^ h )          (n is constant here )<br>                                         &#x3D; 2 * n                              (By sum of sequence)</p>
+<p>So that we have O(n). </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/25/My-blog/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
