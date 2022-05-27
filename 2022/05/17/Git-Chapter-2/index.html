@@ -16,7 +16,7 @@
 <meta property="og:description" content="[] Clone an Existing RepositoryThe command for cloning github project is using clone. This command will give a full copy include all history of the project.  1git clone https:&#x2F;&#x2F;github.com&#x2F;project&#x2F;proj">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-17T06:25:33.000Z">
-<meta property="article:modified_time" content="2022-05-17T06:59:42.693Z">
+<meta property="article:modified_time" content="2022-05-17T07:22:11.799Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -208,10 +208,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br><span class="line">git diff --staged</span><br></pre></td></tr></table></figure>
 
 
-<h4 id="Committing-Your-Changes"><a href="#Committing-Your-Changes" class="headerlink" title="Committing Your Changes"></a>Committing Your Changes</h4><p>And commit will make a <strong>snapshot</strong> for staged file, toward the local git database.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br><span class="line">git commit -m &quot;Message for this commit&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="Committing-Your-Changes"><a href="#Committing-Your-Changes" class="headerlink" title="Committing Your Changes"></a>Committing Your Changes</h4><p>And commit will make a <strong>snapshot</strong> for staged file, toward the local git database. Git provide an alternative commit command (with -a flag) which you can skipping the stagging process, it will stage every file that is already tracked.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br><span class="line">git commit -m &quot;Message for this commit&quot;</span><br><span class="line">git commit -a -m &quot;Message&quot;</span><br></pre></td></tr></table></figure>
 
+<h4 id="Remove-and-moving-file"><a href="#Remove-and-moving-file" class="headerlink" title="Remove and moving file"></a>Remove and moving file</h4><p>To remove a file from Git, we need to use first remove it from <strong>tracked file</strong> then commit one uses <strong>rm</strong> and this will remove the file from directory and git. If the file is modifed, one also need add <strong>-f</strong> for force removal. Another case is you want to remove a file from Git’s staging area, but want to keep in hard drive, use <strong>–cashed</strong> option. Furthermore, the rm also support glob, ‘&#39; and ‘*’.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rm file</span><br><span class="line">git rm -f file</span><br><span class="line">git rm --cached file</span><br><span class="line">git rm \*~</span><br></pre></td></tr></table></figure>
 
+<p>In git, no metadata is stored in Git that telles it you renamed the file, to rename a file, one uses <strong>mv</strong> command.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv file fileName</span><br></pre></td></tr></table></figure>
       
 
       
@@ -231,6 +235,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2022/05/17/COMP2041-Lecture-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          COMP2041 Lecture 1
+        
+      </div>
+    </a>
   
   
     <a href="/2022/05/16/Union-Find-Disjoint-Sets/" id="article-nav-older" class="article-nav-link-wrap">
