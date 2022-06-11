@@ -165,6 +165,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript-The-Definitive-Guide-Chapter-7-Note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/">JavaScript The Definitive Guide Chapter 7 Note</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" class="archive-article-date">
+  	<time datetime="2022-06-11T04:37:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="7-0-Introduction-to-Array"><a href="#7-0-Introduction-to-Array" class="headerlink" title="7.0 Introduction to Array"></a>7.0 Introduction to Array</h3><p>Array is an ordered collection of elements, and each elements have an numeric index. In JS, the elements is untyped which means two element in array can be different type. And JS handle dynamic memory allocation. JS array can be sparse which means it does not garunteed a continguous block of memory. </p>
+<p>JS array is a specialize form of JS object, it similar to views array is object with property happens to integer, however it normally gives a better performance. </p>
+<p>JS array inherits from Array.prototype which defines a rich set build-in method. </p>
+<h3 id="7-1-Creating-Array"><a href="#7-1-Creating-Array" class="headerlink" title="7.1 Creating Array"></a>7.1 Creating Array</h3><p>There are several ways to create array, which include here</p>
+<h5 id="Array-Literal"><a href="#Array-Literal" class="headerlink" title="Array Literal"></a>Array Literal</h5><p>The syntax is simply a comma-separted array element within bracket, and one can omit element by just fill nothing between two comma, that creates a sparse array, </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [];</span><br><span class="line">let arr2 = [1, 2, 3, true, &#x27;false&#x27;,];</span><br><span class="line"></span><br><span class="line">// And element can be expression, other project, array</span><br><span class="line">let x = &#x27;x&#x27;;</span><br><span class="line">let arr3 = [x, 1, x + &#x27;3&#x27;];</span><br><span class="line">let arr4 = [arr3, arr1];</span><br><span class="line"></span><br><span class="line">let sparse = [1 , ,3 ,];</span><br><span class="line">// Length 2 between syntax allows a trailing comma, so basically only one comma seperte two elemnet that is empty</span><br><span class="line">let notEmptyButSparse = [,,];</span><br></pre></td></tr></table></figure>
+
+<h5 id="Spread-Operator"><a href="#Spread-Operator" class="headerlink" title="Spread Operator"></a>Spread Operator</h5><p>The spread operator of the array works similar as object, <strong>…a</strong> basically replaced with a’s object. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = [1 ,2 ,3];</span><br><span class="line">let b = [0, ...a, 4];       // b = [0,1,2,3,4]    </span><br></pre></td></tr></table></figure>
+
+<p>The spread operator can be used to create a deep copy of an array, and it works for all iterable object (are which for&#x2F;of loops over).</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let original = [1, 2, 3];</span><br><span class="line">// Copy is differ from original</span><br><span class="line">let copy     = [...original]; </span><br><span class="line"></span><br><span class="line">// string is iterable object of char, so using spread will break string into elements of char</span><br><span class="line">let digits = &#x27;123&#x27;;</span><br><span class="line">let charArray = [...digits];    // charArray = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br><span class="line"></span><br><span class="line">// set object are itertable (behind it will be a tree)</span><br><span class="line">let digits = &#x27;1123&#x27;;</span><br><span class="line">let removeDup = [...new Set(digits)];    // charArray = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h5 id="Array-construcctor"><a href="#Array-construcctor" class="headerlink" title="Array() construcctor"></a>Array() construcctor</h5><p>One can invoke <strong>Array()</strong> in three distinct ways</p>
+<ul>
+<li>No argument. <strong>Array()</strong> create an empty array.</li>
+<li>Single numeric argument. <strong>Array(10)</strong> create a sparse array with length 10.</li>
+<li>More than one argument, equivalent as put argument as elements in literall array initilization. Avoid.</li>
+</ul>
+<h5 id="Array-of-and-Array-from"><a href="#Array-of-and-Array-from" class="headerlink" title="Array.of() and Array.from()"></a>Array.of() and Array.from()</h5><p><strong>Array.of()</strong> is same as Array Literal, all argument treat as number.</p>
+<p><strong>Array.from()</strong> expect a iterable object, which is same as Spread Operator. It can convert array like object to <strong>true array</strong>. <strong>Array.from()</strong> can have a second argument, each element copied will pass through that function. </p>
+<h3 id="Reading-and-Writing-Array-Elements"><a href="#Reading-and-Writing-Array-Elements" class="headerlink" title="Reading and Writing Array Elements"></a>Reading and Writing Array Elements</h3><p>The rules is basically identical to how to access Object, using <strong>[]</strong>. All index are property name with integer between 0 and 2^32 - 2. This also allows you to create property that is anything, such as negative number, this is also the reason that outbound access will return undefined because the array don’t have property stored.  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = [];</span><br><span class="line">a[-1.23] = true;        // Create property name -1.23</span><br><span class="line">a[-2] = true;</span><br><span class="line">console.log(a[-2]);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-COMP1531-team" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,13 +258,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/11/COMP1531-team/">COMP1531 team</a>
+      <a class="article-title" href="/2022/06/08/COMP1531-team/">COMP1531 team</a>
     </h1>
   
 
         
-        <a href="/2022/06/11/COMP1531-team/" class="archive-article-date">
-  	<time datetime="2022-06-11T09:35:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
+        <a href="/2022/06/08/COMP1531-team/" class="archive-article-date">
+  	<time datetime="2022-06-08T07:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
 </a>
         
       </header>
@@ -286,93 +372,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/11/COMP1531-team/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript-The-Definitive-Guide-Chapter-7-Note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/">JavaScript The Definitive Guide Chapter 7 Note</a>
-    </h1>
-  
-
-        
-        <a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" class="archive-article-date">
-  	<time datetime="2022-06-11T04:37:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="7-0-Introduction-to-Array"><a href="#7-0-Introduction-to-Array" class="headerlink" title="7.0 Introduction to Array"></a>7.0 Introduction to Array</h3><p>Array is an ordered collection of elements, and each elements have an numeric index. In JS, the elements is untyped which means two element in array can be different type. And JS handle dynamic memory allocation. JS array can be sparse which means it does not garunteed a continguous block of memory. </p>
-<p>JS array is a specialize form of JS object, it similar to views array is object with property happens to integer, however it normally gives a better performance. </p>
-<p>JS array inherits from Array.prototype which defines a rich set build-in method. </p>
-<h3 id="7-1-Creating-Array"><a href="#7-1-Creating-Array" class="headerlink" title="7.1 Creating Array"></a>7.1 Creating Array</h3><p>There are several ways to create array, which include here</p>
-<h5 id="Array-Literal"><a href="#Array-Literal" class="headerlink" title="Array Literal"></a>Array Literal</h5><p>The syntax is simply a comma-separted array element within bracket, and one can omit element by just fill nothing between two comma, that creates a sparse array, </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [];</span><br><span class="line">let arr2 = [1, 2, 3, true, &#x27;false&#x27;,];</span><br><span class="line"></span><br><span class="line">// And element can be expression, other project, array</span><br><span class="line">let x = &#x27;x&#x27;;</span><br><span class="line">let arr3 = [x, 1, x + &#x27;3&#x27;];</span><br><span class="line">let arr4 = [arr3, arr1];</span><br><span class="line"></span><br><span class="line">let sparse = [1 , ,3 ,];</span><br><span class="line">// Length 2 between syntax allows a trailing comma, so basically only one comma seperte two elemnet that is empty</span><br><span class="line">let notEmptyButSparse = [,,];</span><br></pre></td></tr></table></figure>
-
-<h5 id="Spread-Operator"><a href="#Spread-Operator" class="headerlink" title="Spread Operator"></a>Spread Operator</h5><p>The spread operator of the array works similar as object, <strong>…a</strong> basically replaced with a’s object. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = [1 ,2 ,3];</span><br><span class="line">let b = [0, ...a, 4];       // b = [0,1,2,3,4]    </span><br></pre></td></tr></table></figure>
-
-<p>The spread operator can be used to create a deep copy of an array, and it works for all iterable object (are which for&#x2F;of loops over).</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let original = [1, 2, 3];</span><br><span class="line">// Copy is differ from original</span><br><span class="line">let copy     = [...original]; </span><br><span class="line"></span><br><span class="line">// string is iterable object of char, so using spread will break string into elements of char</span><br><span class="line">let digits = &#x27;123&#x27;;</span><br><span class="line">let charArray = [...digits];    // charArray = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br><span class="line"></span><br><span class="line">// set object are itertable (behind it will be a tree)</span><br><span class="line">let digits = &#x27;1123&#x27;;</span><br><span class="line">let removeDup = [...new Set(digits)];    // charArray = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h5 id="Array-construcctor"><a href="#Array-construcctor" class="headerlink" title="Array() construcctor"></a>Array() construcctor</h5><p>One can invoke <strong>Array()</strong> in three distinct ways</p>
-<ul>
-<li>No argument. <strong>Array()</strong> create an empty array.</li>
-<li>Single numeric argument. <strong>Array(10)</strong> create a sparse array with length 10.</li>
-<li>More than one argument, equivalent as put argument as elements in literall array initilization. Avoid.</li>
-</ul>
-<h5 id="Array-of-and-Array-from"><a href="#Array-of-and-Array-from" class="headerlink" title="Array.of() and Array.from()"></a>Array.of() and Array.from()</h5><p><strong>Array.of()</strong> is same as Array Literal, all argument treat as number.</p>
-<p><strong>Array.from()</strong> expect a iterable object, which is same as Spread Operator. It can convert array like object to <strong>true array</strong>. <strong>Array.from()</strong> can have a second argument, each element copied will pass through that function. </p>
-<h3 id="Reading-and-Writing-Array-Elements"><a href="#Reading-and-Writing-Array-Elements" class="headerlink" title="Reading and Writing Array Elements"></a>Reading and Writing Array Elements</h3><p>The rules is basically identical to how to access Object, using <strong>[]</strong>. All index are property name with integer between 0 and 2^32 - 2. This also allows you to create property that is anything, such as negative number, this is also the reason that outbound access will return undefined because the array don’t have property stored.  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = [];</span><br><span class="line">a[-1.23] = true;        // Create property name -1.23</span><br><span class="line">a[-2] = true;</span><br><span class="line">console.log(a[-2]);</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/">Show all >></a>
+          <a class="article-more-a" href="/2022/06/08/COMP1531-team/">Show all >></a>
         </p>
       
 
