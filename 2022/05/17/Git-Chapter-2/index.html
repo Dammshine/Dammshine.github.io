@@ -16,7 +16,7 @@
 <meta property="og:description" content="[] Clone an Existing RepositoryThe command for cloning github project is using clone. This command will give a full copy include all history of the project.  1git clone https:&#x2F;&#x2F;github.com&#x2F;project&#x2F;proj">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-17T06:25:33.000Z">
-<meta property="article:modified_time" content="2022-05-17T07:22:11.799Z">
+<meta property="article:modified_time" content="2022-06-09T09:51:59.824Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -216,6 +216,20 @@
 
 <p>In git, no metadata is stored in Git that telles it you renamed the file, to rename a file, one uses <strong>mv</strong> command.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv file fileName</span><br></pre></td></tr></table></figure>
+
+<h4 id="Viewing-Commit-Histroy-Skipped"><a href="#Viewing-Commit-Histroy-Skipped" class="headerlink" title="Viewing Commit Histroy [Skipped]"></a>Viewing Commit Histroy [Skipped]</h4><h4 id="Undoing-Things"><a href="#Undoing-Things" class="headerlink" title="Undoing Things"></a>Undoing Things</h4><h5 id="Save-Commit"><a href="#Save-Commit" class="headerlink" title="Save Commit"></a>Save Commit</h5><p>Sometimes you want to add something to your previous commit, then one can use <strong>–amend</strong> option to overwrite your last commit, and it won’t result a second commit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;initial commit&#x27;</span><br><span class="line">git add forgotten_file</span><br><span class="line">git commit --ament</span><br></pre></td></tr></table></figure>
+
+<h5 id="Unstaging-a-Staged-File"><a href="#Unstaging-a-Staged-File" class="headerlink" title="Unstaging a Staged File"></a>Unstaging a Staged File</h5><p>As title suggest, sometimes we want to unstage the staged file, then one can use <strong>git reset HEAD <filename></filename></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git reset HEAD &lt;filename&gt;</span><br><span class="line">git reset HEAD random.txt</span><br></pre></td></tr></table></figure>
+
+<h5 id="Unmodifing-a-Modified-File"><a href="#Unmodifing-a-Modified-File" class="headerlink" title="Unmodifing a Modified File"></a>Unmodifing a Modified File</h5><p>Sometimes we want to revert change of some particular file to last commits. The command would be <strong>git checkout – <file></file></strong>, it will overwrite this file from copies of last commit, so the contents will be absolutely gone. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;filename&gt;</span><br><span class="line">git checkout -- random.txt</span><br></pre></td></tr></table></figure>
+
+<p>Anything through commit is always certainly can be recovered, but anything never through commit will be lost. </p>
+<h2 id="Working-with-remote"><a href="#Working-with-remote" class="headerlink" title="Working with remote"></a>Working with remote</h2><p>This section present command that one can use to interact with remote directory, <strong>git remote</strong> shows shortname for remote</p>
+<h4 id="Showing-Your-Remotes"><a href="#Showing-Your-Remotes" class="headerlink" title="Showing Your Remotes"></a>Showing Your Remotes</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
       
 
       
