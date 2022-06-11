@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>NodesNotInCycle | David&#39;s Hexo Blog</title>
+  <title>JavaScript The Definitive Guide Chapter 7 Note | David&#39;s Hexo Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NodesNotInCycleThe problem requires ones to implement an algorithm to determine all node that are not in cycle, or oppososite, all nodes that are in cycle. My apparoach to the questionThe naive appapr">
+  <meta name="description" content="7.0 Introduction to ArrayArray is an ordered collection of elements, and each elements have an numeric index. In JS, the elements is untyped which means two element in array can be different type. And">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NodesNotInCycle">
-<meta property="og:url" content="http://example.com/2022/05/06/NodesNotInCycle/index.html">
+<meta property="og:title" content="JavaScript The Definitive Guide Chapter 7 Note">
+<meta property="og:url" content="http://example.com/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/index.html">
 <meta property="og:site_name" content="David&#39;s Hexo Blog">
-<meta property="og:description" content="NodesNotInCycleThe problem requires ones to implement an algorithm to determine all node that are not in cycle, or oppososite, all nodes that are in cycle. My apparoach to the questionThe naive appapr">
+<meta property="og:description" content="7.0 Introduction to ArrayArray is an ordered collection of elements, and each elements have an numeric index. In JS, the elements is untyped which means two element in array can be different type. And">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-06T03:07:41.000Z">
-<meta property="article:modified_time" content="2022-05-06T03:45:41.649Z">
+<meta property="article:published_time" content="2022-06-11T04:37:03.000Z">
+<meta property="article:modified_time" content="2022-06-11T05:42:00.798Z">
 <meta property="article:author" content="David Zhou">
-<meta property="article:tag" content="COMP2521">
+<meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="David&#39;s Hexo Blog" type="application/atom+xml">
@@ -165,36 +165,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-NodesNotInCycle" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript-The-Definitive-Guide-Chapter-7-Note" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      NodesNotInCycle
+      JavaScript The Definitive Guide Chapter 7 Note
     </h1>
   
 
         
-        <a href="/2022/05/06/NodesNotInCycle/" class="archive-article-date">
-  	<time datetime="2022-05-06T03:07:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-06</time>
+        <a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" class="archive-article-date">
+  	<time datetime="2022-06-11T04:37:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="NodesNotInCycle"><a href="#NodesNotInCycle" class="headerlink" title="NodesNotInCycle"></a>NodesNotInCycle</h2><p>The problem requires ones to implement an algorithm to determine all node that are not in cycle, or oppososite, all nodes that are in cycle.</p>
-<h4 id="My-apparoach-to-the-question"><a href="#My-apparoach-to-the-question" class="headerlink" title="My apparoach to the question"></a>My apparoach to the question</h4><p>The naive appaproch would be implementating a cycle-detect algorithm and runs on every node. Known the general approach would be <strong>DFS</strong> and time complexity would be O(V^2) in directed diagram implemeneted by adjency matrix, this apparoch will have time complexity of O(V^3).</p>
-<p>My approach would be, I will aim to run only one DFS for each conencted component, so that in worst case, I will have time complexity of O(V^2). So that my idea is to keep two array,</p>
-<ol>
-<li>Color array (Color the path when approching, so that one can easiy spot a <strong>back edge</strong>, uncolor the path when rewinding, so program won’t fail because <strong>forward edge</strong>)</li>
-<li>Root array  (Store the path info, so my program can fill the node that are in a cycle when it detects one using color array).</li>
-</ol>
-<p>And my blunder mades here, I mistakenly thought <strong>color array</strong> would allow me to visit an arbitary node for multiple times, but not in <strong>same path,</strong> while if I only color the vertex, it will only allow me to acheive not visit same <strong>combination of paths</strong> in my program.  This results my program’s worst case become O(n!). (Unfortunately, I mistakenly thought this would give O(n^2) since I only run one DFS per connected component)</p>
-<p>To fix this, my idea would be instead of only using a colored array(It’s still handy for deteching cycle), I would use a <strong>2-D matrix</strong> to store the paths that being visited. So even I will decolor the <strong>color array</strong> when rewinding to ensure my DFS is able to visit same node for mutiple time, each path will only be visited once. So the qesuodo code would be follow</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">DFS(Graph g, int notInCycle[], int color[], int root[], int edgecolor[][], int vertex, int parent) &#123;</span><br><span class="line">    // Fill path info, and the color the vertex</span><br><span class="line">    <span class="built_in">let</span> root[v] = parent</span><br><span class="line">    <span class="built_in">let</span> color[v] = VISIT</span><br><span class="line"></span><br><span class="line">    // Inspect all edges</span><br><span class="line">    <span class="keyword">for</span> i = 0..V</span><br><span class="line">        <span class="keyword">if</span> i == vertex </span><br><span class="line">            skip</span><br><span class="line">        end <span class="keyword">if</span></span><br><span class="line">        // Inspect edge from v to i, and the node i not being visit</span><br><span class="line">        <span class="keyword">if</span> vertex, i belong g.edges and color[i] != VISIT</span><br><span class="line">            // Fill color to this edge, or skip <span class="keyword">if</span> this edge being vsited</span><br><span class="line">            <span class="keyword">if</span> edgecolor[vertex][i] != VISIT</span><br><span class="line">                edgecolor[vertex][i] = VISIT</span><br><span class="line">            end <span class="keyword">if</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> <span class="literal">true</span></span><br><span class="line">                skip</span><br><span class="line">            end <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line">            DFS(g, notInCycle, color, root, edgecolor, i, vertex);</span><br><span class="line">        end <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> vertex, i belong g.edges and color[i] == VISIT</span><br><span class="line">            // This will fill the cycle status of vetrex <span class="keyword">in</span> the cycle that detected</span><br><span class="line">            traceBackAndFill(notInCycle, root, v, i, GraphNumVertices(g));</span><br><span class="line">    end <span class="keyword">for</span></span><br><span class="line"></span><br><span class="line">    // After the search, I will decolor the vertex, allow other paths can visit the vertex</span><br><span class="line">    color[v] = NOT_VISIT</span><br><span class="line"></span><br><span class="line">    // I will also update the status of notInCycle</span><br><span class="line">    <span class="keyword">if</span> notInCycle != TRUE</span><br><span class="line">        notInCycle = FALSE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="7-0-Introduction-to-Array"><a href="#7-0-Introduction-to-Array" class="headerlink" title="7.0 Introduction to Array"></a>7.0 Introduction to Array</h3><p>Array is an ordered collection of elements, and each elements have an numeric index. In JS, the elements is untyped which means two element in array can be different type. And JS handle dynamic memory allocation. JS array can be sparse which means it does not garunteed a continguous block of memory. </p>
+<p>JS array is a specialize form of JS object, it similar to views array is object with property happens to integer, however it normally gives a better performance. </p>
+<p>JS array inherits from Array.prototype which defines a rich set build-in method. </p>
+<h3 id="7-1-Creating-Array"><a href="#7-1-Creating-Array" class="headerlink" title="7.1 Creating Array"></a>7.1 Creating Array</h3><p>There are several ways to create array, which include here</p>
+<h5 id="Array-Literal"><a href="#Array-Literal" class="headerlink" title="Array Literal"></a>Array Literal</h5><p>The syntax is simply a comma-separted array element within bracket, and one can omit element by just fill nothing between two comma, that creates a sparse array, </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [];</span><br><span class="line">let arr2 = [1, 2, 3, true, &#x27;false&#x27;,];</span><br><span class="line"></span><br><span class="line">// And element can be expression, other project, array</span><br><span class="line">let x = &#x27;x&#x27;;</span><br><span class="line">let arr3 = [x, 1, x + &#x27;3&#x27;];</span><br><span class="line">let arr4 = [arr3, arr1];</span><br><span class="line"></span><br><span class="line">let sparse = [1 , ,3 ,];</span><br><span class="line">// Length 2 between syntax allows a trailing comma, so basically only one comma seperte two elemnet that is empty</span><br><span class="line">let notEmptyButSparse = [,,];</span><br></pre></td></tr></table></figure>
+
+<h5 id="Spread-Operator"><a href="#Spread-Operator" class="headerlink" title="Spread Operator"></a>Spread Operator</h5><p>The spread operator of the array works similar as object, <strong>…a</strong> basically replaced with a’s object. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = [1 ,2 ,3];</span><br><span class="line">let b = [0, ...a, 4];       // b = [0,1,2,3,4]    </span><br></pre></td></tr></table></figure>
+
+<p>The spread operator can be used to create a deep copy of an array, and it works for all iterable object (are which for&#x2F;of loops over).</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let original = [1, 2, 3];</span><br><span class="line">// Copy is differ from original</span><br><span class="line">let copy     = [...original]; </span><br><span class="line"></span><br><span class="line">// string is iterable object of char, so using spread will break string into elements of char</span><br><span class="line">let digits = &#x27;123&#x27;;</span><br><span class="line">let charArray = [...digits];    // charArray = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br><span class="line"></span><br><span class="line">// set object are itertable (behind it will be a tree)</span><br><span class="line">let digits = &#x27;1123&#x27;;</span><br><span class="line">let removeDup = [...new Set(digits)];    // charArray = [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h5 id="Array-construcctor"><a href="#Array-construcctor" class="headerlink" title="Array() construcctor"></a>Array() construcctor</h5><p>One can invoke <strong>Array()</strong> in three distinct ways</p>
+<ul>
+<li>No argument. <strong>Array()</strong> create an empty array.</li>
+<li>Single numeric argument. <strong>Array(10)</strong> create a sparse array with length 10.</li>
+<li>More than one argument, equivalent as put argument as elements in literall array initilization. Avoid.</li>
+</ul>
+<h5 id="Array-of-and-Array-from"><a href="#Array-of-and-Array-from" class="headerlink" title="Array.of() and Array.from()"></a>Array.of() and Array.from()</h5><p><strong>Array.of()</strong> is same as Array Literal, all argument treat as number.</p>
+<p><strong>Array.from()</strong> expect a iterable object, which is same as Spread Operator. It can convert array like object to <strong>true array</strong>. <strong>Array.from()</strong> can have a second argument, each element copied will pass through that function. </p>
+<h3 id="Reading-and-Writing-Array-Elements"><a href="#Reading-and-Writing-Array-Elements" class="headerlink" title="Reading and Writing Array Elements"></a>Reading and Writing Array Elements</h3><p>The rules is basically identical to how to access Object, using <strong>[]</strong>. All index are property name with integer between 0 and 2^32 - 2. This also allows you to create property that is anything, such as negative number, this is also the reason that outbound access will return undefined because the array don’t have property stored.  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = [];</span><br><span class="line">a[-1.23] = true;        // Create property name -1.23</span><br><span class="line">a[-2] = true;</span><br><span class="line">console.log(a[-2]);</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -203,17 +217,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -227,18 +230,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/05/13/git/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/06/11/COMP1531-team/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Git Chapter 1
+          COMP1531 team
         
       </div>
     </a>
   
   
-    <a href="/2022/05/04/Things-I-know-so-far/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Things I know so far</div>
+    <a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-6-Note/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript The Definitive Guide Chapter 6 Note</div>
       <i class="icon-circle-right"></i>
     </a>
   

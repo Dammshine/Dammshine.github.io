@@ -62,7 +62,7 @@
 	        
 				<li><a href="/categories/">Categories</a></li>
 	        
-				<li><a href="/categories/leetcode">Leetcode</a></li>
+				<li><a href="/categories/JSDG">JSDG</a></li>
 	        
 				<li><a href="/categories/CP3">CP3</a></li>
 	        
@@ -146,7 +146,7 @@
 		        
 					<li style="width: 20%"><a href="/categories/">Categories</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/leetcode">Leetcode</a></li>
+					<li style="width: 20%"><a href="/categories/JSDG">JSDG</a></li>
 		        
 					<li style="width: 20%"><a href="/categories/CP3">CP3</a></li>
 		        
@@ -164,6 +164,211 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-NodesNotInCycle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/06/NodesNotInCycle/">NodesNotInCycle</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/06/NodesNotInCycle/" class="archive-article-date">
+  	<time datetime="2022-05-06T03:07:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="NodesNotInCycle"><a href="#NodesNotInCycle" class="headerlink" title="NodesNotInCycle"></a>NodesNotInCycle</h2><p>The problem requires ones to implement an algorithm to determine all node that are not in cycle, or oppososite, all nodes that are in cycle.</p>
+<h4 id="My-apparoach-to-the-question"><a href="#My-apparoach-to-the-question" class="headerlink" title="My apparoach to the question"></a>My apparoach to the question</h4><p>The naive appaproch would be implementating a cycle-detect algorithm and runs on every node. Known the general approach would be <strong>DFS</strong> and time complexity would be O(V^2) in directed diagram implemeneted by adjency matrix, this apparoch will have time complexity of O(V^3).</p>
+<p>My approach would be, I will aim to run only one DFS for each conencted component, so that in worst case, I will have time complexity of O(V^2). So that my idea is to keep two array,</p>
+<ol>
+<li>Color array (Color the path when approching, so that one can easiy spot a <strong>back edge</strong>, uncolor the path when rewinding, so program won’t fail because <strong>forward edge</strong>)</li>
+<li>Root array  (Store the path info, so my program can fill the node that are in a cycle when it detects one using color array).</li>
+</ol>
+<p>And my blunder mades here, I mistakenly thought <strong>color array</strong> would allow me to visit an arbitary node for multiple times, but not in <strong>same path,</strong> while if I only color the vertex, it will only allow me to acheive not visit same <strong>combination of paths</strong> in my program.  This results my program’s worst case become O(n!). (Unfortunately, I mistakenly thought this would give O(n^2) since I only run one DFS per connected component)</p>
+<p>To fix this, my idea would be instead of only using a colored array(It’s still handy for deteching cycle), I would use a <strong>2-D matrix</strong> to store the paths that being visited. So even I will decolor the <strong>color array</strong> when rewinding to ensure my DFS is able to visit same node for mutiple time, each path will only be visited once. So the qesuodo code would be follow</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">DFS(Graph g, int notInCycle[], int color[], int root[], int edgecolor[][], int vertex, int parent) &#123;</span><br><span class="line">    // Fill path info, and the color the vertex</span><br><span class="line">    <span class="built_in">let</span> root[v] = parent</span><br><span class="line">    <span class="built_in">let</span> color[v] = VISIT</span><br><span class="line"></span><br><span class="line">    // Inspect all edges</span><br><span class="line">    <span class="keyword">for</span> i = 0..V</span><br><span class="line">        <span class="keyword">if</span> i == vertex </span><br><span class="line">            skip</span><br><span class="line">        end <span class="keyword">if</span></span><br><span class="line">        // Inspect edge from v to i, and the node i not being visit</span><br><span class="line">        <span class="keyword">if</span> vertex, i belong g.edges and color[i] != VISIT</span><br><span class="line">            // Fill color to this edge, or skip <span class="keyword">if</span> this edge being vsited</span><br><span class="line">            <span class="keyword">if</span> edgecolor[vertex][i] != VISIT</span><br><span class="line">                edgecolor[vertex][i] = VISIT</span><br><span class="line">            end <span class="keyword">if</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> <span class="literal">true</span></span><br><span class="line">                skip</span><br><span class="line">            end <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line">            DFS(g, notInCycle, color, root, edgecolor, i, vertex);</span><br><span class="line">        end <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> vertex, i belong g.edges and color[i] == VISIT</span><br><span class="line">            // This will fill the cycle status of vetrex <span class="keyword">in</span> the cycle that detected</span><br><span class="line">            traceBackAndFill(notInCycle, root, v, i, GraphNumVertices(g));</span><br><span class="line">    end <span class="keyword">for</span></span><br><span class="line"></span><br><span class="line">    // After the search, I will decolor the vertex, allow other paths can visit the vertex</span><br><span class="line">    color[v] = NOT_VISIT</span><br><span class="line"></span><br><span class="line">    // I will also update the status of notInCycle</span><br><span class="line">    <span class="keyword">if</span> notInCycle != TRUE</span><br><span class="line">        notInCycle = FALSE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/06/NodesNotInCycle/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Things-I-know-so-far" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/04/Things-I-know-so-far/">Things I know so far</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/04/Things-I-know-so-far/" class="archive-article-date">
+  	<time datetime="2022-05-04T03:15:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h2><p>The data structure that I’ve met so far is pretty primitive, include a few advanced ones. It can be category as array and list, tree, graph. </p>
+<h4 id="Array-and-list"><a href="#Array-and-list" class="headerlink" title="Array and list"></a>Array and list</h4><ol>
+<li>Array<br> a. Array with circular implementation. It gives a one dimensional space felling.<br> b. 2-D array, used in many situation, for example will be the graph. Also used to implement matrix.<br> c. Heap, use an array. It can be also included in tree.<br> d. <strong>Rooted tree</strong>, using an array to represent a tree structure.</li>
+<li>Linked list<br> a. Singly linked list, double linked list. List store head and tail.<br>The list is ideal to implement queue like structure. As itself looks like a queue.<br>The graph can also use linked list, for scarse diagram for ideal.<br> b. <strong>Skipped list</strong><br> c. <strong>Sqrt list</strong><br> d. Linked list contains parent pointer can be used to implement <strong>disjoint set</strong></li>
+</ol>
+<p>I should take time to visit chapter 12, data structure and algorithm in c++.</p>
+<h4 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h4><ol>
+<li>Binary Tree<br> a. Binary search tree. Ideal for store element, search element.<br> b. Self balanced tree. Build upon binary tree, can garunteed the maximum search cost within boundary,<br>by the cost of coefficient and extra memory<br>1. <strong>Red Black tree</strong><br>2. AVL tree</li>
+<li>Non-binary tree<br> a. 2-3-4 Tree. B tree.<br> b. <strong>rooted tree</strong></li>
+<li>Tries<br> All above tree like structure uses, object space decomposition, tries uses key space decomposition.<br> a. Alaphabet tries. To find duplicate words, or count words.<br> b. Huffman coding tree. To compress info.</li>
+<li><strong>Spatial Data structure</strong><br> a. K-D tree<br> b. PR quadtree</li>
+</ol>
+<h4 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h4><ol>
+<li>Implementation would just be adjency list, adjency matrix and array of edges.<br>But the more important things would be<ol>
+<li>SSSP problem <ul>
+<li>Dijistra’s algorithm</li>
+</ul>
+</li>
+<li>ASSP problem<ul>
+<li>Floyd-warshall</li>
+<li>Johnson</li>
+</ul>
+</li>
+<li>MST<ul>
+<li>Prim</li>
+<li>Kruskal</li>
+</ul>
+</li>
+<li>Max-flow</li>
+</ol>
+</li>
+</ol>
+<h4 id="Hash-Table"><a href="#Hash-Table" class="headerlink" title="Hash Table"></a>Hash Table</h4><p>Three different resolution</p>
+<ol>
+<li>Chaining</li>
+<li>Linear probing</li>
+<li>Double hashing<br>The last two can also be classify as category Open Addressing.</li>
+</ol>
+<p>Hash function</p>
+<h4 id="Ideology"><a href="#Ideology" class="headerlink" title="Ideology"></a>Ideology</h4><ol>
+<li>Divide and conquer</li>
+<li>Randomise algorithm</li>
+<li>DP</li>
+<li>Greedy</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Personal</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Report</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/04/Things-I-know-so-far/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Hash-Table" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -880,260 +1085,6 @@ Now consider 2 cases
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/04/28/AVL-tree/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Sorting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/27/Sorting/">Sorting</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/27/Sorting/" class="archive-article-date">
-  	<time datetime="2022-04-26T19:51:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="General-Property-of-Sorting"><a href="#General-Property-of-Sorting" class="headerlink" title="General Property of Sorting"></a>General Property of Sorting</h2><p><strong>Sorting problem</strong> is defined </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input  : A sequence of n numbers</span><br><span class="line">Output : A permutation of input such that <span class="keyword">for</span> each i <span class="keyword">in</span> array, a[i] &lt;= a[i+1].</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="Stable-x2F-unstable"><a href="#Stable-x2F-unstable" class="headerlink" title="Stable &#x2F; unstable"></a>Stable &#x2F; unstable</h4><p>In particular, many sorted data we met will be in form as record, which each record contains a key and satellite data. In practice, we wish to permute the satelliete data as well. </p>
-<p>We define stable, as if before sorting a[i] &#x3D;&#x3D; a[j], then</p>
-<ul>
-<li>Stable means after sorting, a[i]’s new position is before a[j].</li>
-<li>Vice versa</li>
-</ul>
-<h4 id="Adaptive"><a href="#Adaptive" class="headerlink" title="Adaptive"></a>Adaptive</h4><p>The bahaviour&#x2F;performace of algorithm affected by data values (distribution of sorted data). </p>
-<h4 id="In-place"><a href="#In-place" class="headerlink" title="In place"></a>In place</h4><p>If the algorithm uses constant amount of memory. (And we wish this amount to be relatively small compare with input size)<br><strong>External sorting</strong> is class of algorithm that handle, large amount of data that store in external device, when data does not fit into main memory of computing device. Result the data must reside slower external memory. The in-place property will be very valueable. </p>
-<h2 id="O-n-2-sort"><a href="#O-n-2-sort" class="headerlink" title="O(n^2) sort"></a>O(n^2) sort</h2><h4 id="Bubble-sort"><a href="#Bubble-sort" class="headerlink" title="Bubble sort"></a>Bubble sort</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int *bubbleSort(int *array, int size) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">        int swapCount = 0;</span><br><span class="line">        // Always start from 0</span><br><span class="line">        // Swap the element not <span class="keyword">in</span> correct order <span class="keyword">in</span> path</span><br><span class="line">        <span class="keyword">for</span> (int j = 1; j &lt; size; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &lt; array[j - 1]) &#123;</span><br><span class="line">                swap(array, j , j - 1);</span><br><span class="line">                swapCount++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // Adaptive</span><br><span class="line">        <span class="keyword">if</span> (swapCount == 0) <span class="built_in">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Selection-sort"><a href="#Selection-sort" class="headerlink" title="Selection sort"></a>Selection sort</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int *selectionSort(int *array, int size) &#123;</span><br><span class="line">    // scan through array from index i, start with 0</span><br><span class="line">    // find min from index i+1, swap min to i</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">        int min = i;</span><br><span class="line">        <span class="keyword">for</span> (int j = i + 1; j &lt; size; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &lt; array[min]) min = j;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(array, i, min);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Insertion-sort"><a href="#Insertion-sort" class="headerlink" title="Insertion sort"></a>Insertion sort</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int *bubbleSort(int *array, int size) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; size; i++) &#123;</span><br><span class="line">        // treat first i items as sorted</span><br><span class="line">        int val = array[i];</span><br><span class="line">        int j = i - 1;</span><br><span class="line">        // Insert A[j] into sorted sequence A[1..i-1]</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= 0 &amp;&amp; array[j] &gt; val) &#123;</span><br><span class="line">            array[j + 1] = array[j];            </span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">        array[j + 1] = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Shell-sort"><a href="#Shell-sort" class="headerlink" title="Shell sort"></a>Shell sort</h4><h4 id="Summary-of-Performance"><a href="#Summary-of-Performance" class="headerlink" title="Summary of Performance"></a>Summary of Performance</h4><h2 id="O-nlog-n-sort"><a href="#O-nlog-n-sort" class="headerlink" title="O(nlog(n)) sort"></a>O(nlog(n)) sort</h2><h2 id="Comparison-sort"><a href="#Comparison-sort" class="headerlink" title="Comparison sort"></a>Comparison sort</h2><p>From all above, these algorithm shares an intersting property, the sorted order they determined is basd only on comparison between input elements. We call above algorithm <strong>comparison sort</strong>.</p>
-<h4 id="Decision-Treee"><a href="#Decision-Treee" class="headerlink" title="Decision Treee"></a>Decision Treee</h4><p>In comparison sort, we use only comparison between two element to gain info about ordering. We may construct a model to analysis the general performance of comparison sort. A decision tree is a full binary tree that represents the comparison between elements that are performed by a particular sorting algorithm. </p>
-<p>Since each sorting algorithm may result n! different outcome, so the leave node in the full binary tree would be at least n!. The lower-bound then would be height of tree, which will be nlog(n).</p>
-<p>Quicksort and heapsort are asmptopically optimal, as both’s worst case match with this lower bound.</p>
-<h2 id="non-comparative-sorting-algorithm"><a href="#non-comparative-sorting-algorithm" class="headerlink" title="non-comparative sorting algorithm"></a>non-comparative sorting algorithm</h2><p>There is algorithm that do not base on comparison, thus not bounded by the lower bound of decision tree. </p>
-<h4 id="Counting-sort"><a href="#Counting-sort" class="headerlink" title="Counting sort"></a>Counting sort</h4><p>Counting sort is a stable sort, and require extra memory use. It’s stable property is important for other reason, for radix sort may work using counting sort. </p>
-<p>Algorithm describe</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// A is array, B is output sorted array, k is upperbound of <span class="built_in">integer</span> 0..k</span><br><span class="line">Counting-<span class="built_in">sort</span>(A, B, k) &#123;</span><br><span class="line">    Let C[0..k] be a new array, initial all as 0</span><br><span class="line"></span><br><span class="line">    // Using hashtable property to achieve O(1) <span class="keyword">for</span> each insert</span><br><span class="line">    <span class="keyword">for</span> j = 1 to A.length</span><br><span class="line">        C[A[j]] += 1</span><br><span class="line">    // Now C, contains info about element <span class="keyword">in</span> A and the num of duplicate</span><br><span class="line">    // By <span class="built_in">sum</span> up previous element, C[i] now contains info of ideal index of each element</span><br><span class="line">    <span class="keyword">for</span> i = i .. k</span><br><span class="line">        C[i] += C[i - 1]</span><br><span class="line">    </span><br><span class="line">    // By traversing from back, one can ensure stable property</span><br><span class="line">    <span class="keyword">for</span> j = A.length .. 1</span><br><span class="line">        B[C[A[j]]] = A[j]</span><br><span class="line">        C[A[j]] -= 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This algorithm have time complexity of O(n + k), consider k &lt;&#x3D; n for most used cases, which will be O(n). It seems out-performed to nlog(n) sort, however consider it usage cases, it only perfrom good with k is small. In most sorting scenoio, we use int, which have 2^32 possibility, but the size of input often do not meet this number. Hence it’s direct uses case is limited, tho it can perform well when combined with Radix sort. </p>
-<h4 id="Radix-sort"><a href="#Radix-sort" class="headerlink" title="Radix sort"></a>Radix sort</h4><p>Radix’s sort algorithm is very simple, it applys stable Counting-sort the index from end to front, it requires stable sort property as if not stable, the sequence determined in higher index might not be in sorted order. Such as 13, 14, one can’t tell the sequence by only inspect index ‘1’, and thus must be stable and ensure lower-index’s sequence determined before higher index.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Radix-<span class="built_in">sort</span>(A, d)</span><br><span class="line">    <span class="keyword">for</span> i = 1 .. d</span><br><span class="line">        use a stable <span class="built_in">sort</span> to <span class="built_in">sort</span> array A on digit i</span><br></pre></td></tr></table></figure>
-
-<p>The time complexity would be O(m*n), where n is number of index and m is the possibility in index. Radix sort perform better than comparison sort. </p>
-<p>There is few disadvantage of Radix sort</p>
-<ol>
-<li>Although it tooks less pass for n element, but each pass may be longer (such as int, either takes 4 sort on the byte or 1 sort in 32 bits, not ideal as one comparison)</li>
-<li>Quicksort ultilize hardware cashes more effectively than radix.</li>
-<li>The stable sort algorithm always take extra memory, which many O(n*log(n)) uses in place memory. </li>
-<li>Conclusion would be, which sorting algorithm we use depend on the chracteristic of data we sort, implementation of the machine and the memory.</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Sorting</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/27/Sorting/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/Tree/">Tree</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/26/Tree/" class="archive-article-date">
-  	<time datetime="2022-04-26T09:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h2><p>Property of BST</p>
-<ol>
-<li>The right sub-tree of the root always have value greater than the root, left sub-tree always smaller than the root.</li>
-<li>Perfectly-balanced tree, abs(node on left subtree - node on right subtree) &lt;&#x3D; 1.</li>
-<li>Height-balanced tree, abs(height on left tree - height on right tree) &lt;&#x3D; 1.</li>
-</ol>
-<p>Time complexity for search, delete, insert is typically O(height)<br>One property observe for the tree is that for different permutation of record, the shape of BST would differ with extreme case that BST become a linked list. This is called <strong>object space decomposition</strong>, because it’s decompositiuon of key range is driven by the object.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// a Tree is represented by a pointer to its root node</span><br><span class="line">typedef struct Node *Tree;</span><br><span class="line"></span><br><span class="line">// a Node contains its data, plus left and right subtrees</span><br><span class="line">typedef struct Node &#123;</span><br><span class="line">   int  data;</span><br><span class="line">   Tree left, right;</span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line">// some macros that we will use frequently</span><br><span class="line"><span class="comment">#define data(node)  ((node)-&gt;data)</span></span><br><span class="line"><span class="comment">#define left(node)  ((node)-&gt;left)</span></span><br><span class="line"><span class="comment">#define right(node) ((node)-&gt;right)</span></span><br></pre></td></tr></table></figure>
-
-<p>Insertion and search is very primititive. Let’s look at deletion.</p>
-<p>For tree deletion, we consider following four cases</p>
-<ol>
-<li>If node deleted is leave. Then break the link, we are done.</li>
-<li>If node deleted have one subtree, replace link it’s children.</li>
-<li>If node deleted have two subtree, replace root by the smallest node on it’s right subtree.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">// Join two tree, <span class="built_in">return</span> new root node</span><br><span class="line">// Node root is garuanteed to be cleaned</span><br><span class="line">Node treeJoin(Node lhs, Node rhs, Node root) &#123;</span><br><span class="line">    // Case 1: Two child both NULL</span><br><span class="line">    <span class="keyword">if</span> (lhs == NULL &amp;&amp; rhs == NULL) &#123;</span><br><span class="line">        // Free root, as it is the only node and being deleted</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> NULL;</span><br><span class="line">    &#125; // Case 2: One of two children is NULL. Free root node, <span class="built_in">return</span> not NULL children</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (lhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> rhs;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (rhs == NULL) &#123;</span><br><span class="line">        free(root);</span><br><span class="line">        <span class="built_in">return</span> lhs;</span><br><span class="line">    &#125; // Case 3: Both not NULL, replace smallest <span class="keyword">in</span> rhs tree with the root</span><br><span class="line">    <span class="keyword">else</span> &#123;    // Left rotation on rhs root to maintain balance</span><br><span class="line">        Node curr = rhs;</span><br><span class="line">        Node parent = NULL;</span><br><span class="line">        // Find the minimum node <span class="keyword">in</span> rhs tree</span><br><span class="line">        // Find the parent of minimum node <span class="keyword">in</span> rhs</span><br><span class="line">        <span class="keyword">while</span> (curr-&gt;left != NULL) &#123;</span><br><span class="line">            parent = curr;</span><br><span class="line">            curr = curr-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // <span class="keyword">case</span> 3.1: rhs is the lowest of rhs tree</span><br><span class="line">        <span class="keyword">if</span> (parent == NULL) &#123;</span><br><span class="line">            // replace root node with rhs node</span><br><span class="line">            root-&gt;element = rhs-&gt;element;</span><br><span class="line">            root-&gt;right = rhs-&gt;right;</span><br><span class="line">            // Delete rhs</span><br><span class="line">            rhs-&gt;element = NULL;</span><br><span class="line">            free(rhs);</span><br><span class="line">            // Right rotation on root(remove a node on right of root)</span><br><span class="line">            int lheight = height(root-&gt;left-&gt;left);</span><br><span class="line">            int rheight = height(root-&gt;left-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 0) &#123;</span><br><span class="line">                root-&gt;left = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            root = rightRotation(root);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125; // <span class="keyword">case</span> 3.2: Replace minimum <span class="keyword">in</span> rhs with the new root</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            //  Unlink the minimum node <span class="keyword">in</span> rhs, right rotation on parent (remove a node on left of parent)</span><br><span class="line">            parent-&gt;left = curr-&gt;right;</span><br><span class="line">            parent-&gt;right = rightRotation(parent);</span><br><span class="line">            int lheight = height(parent-&gt;left);</span><br><span class="line">            int rheight = height(parent-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (rheight - lheight &gt; 1) &#123;</span><br><span class="line">                parent = leftRotation(root-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // Replace minimum</span><br><span class="line">            root-&gt;element = curr-&gt;element;</span><br><span class="line">            free(curr);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Balancing-Search-Tree"><a href="#Balancing-Search-Tree" class="headerlink" title="Balancing Search Tree"></a>Balancing Search Tree</h4><p>For the general BST, there are two improvement one can make.</p>
-<ul>
-<li>Insertion at Root</li>
-<li>Tree partition</li>
-</ul>
-<p>For insertion at root, essentially after insertion, we make several rotation to make sure that this new node become the new root. It got two benifit, one is normally newly inserted data likely being inspected, second is it can make the tree more balance, but not garunteed. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">BSTree insertRoot(BSTree t, int value) &#123;</span><br><span class="line">	// Insert this new node</span><br><span class="line">	<span class="keyword">if</span> (t == NULL) &#123;</span><br><span class="line">		<span class="built_in">return</span> createNode(value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int cmp = t-&gt;value;</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; value) &#123;</span><br><span class="line">		t-&gt;left = insertRoot(t-&gt;left, value);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = insertRoot(t-&gt;right, value);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>For tree partiton, it require each node store an additional attribute contain the node count from each subtree.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node treePartition(BSTree t, int val) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t == NULL || val == 0) <span class="built_in">return</span> t;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	int cmp = BSTreeNumNodes(t-&gt;left);</span><br><span class="line">	<span class="keyword">if</span> (cmp &gt; val) &#123;</span><br><span class="line">		t-&gt;left = treePartition(t-&gt;left, val);</span><br><span class="line">		// after insert at left, <span class="keyword">do</span> a right rotation to lift up new node </span><br><span class="line">		t = rightRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		t-&gt;right = treePartition(t-&gt;right, val - cmp - 1);</span><br><span class="line">		t = leftRotation(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>After my experiment, conclusion would be this two operation itself isn’t helping very much.<br>The partition will only ensure that it balance its root, which is not ideal because what really affetcing performance would be the height. Which perfect balance not help. A way to balance would be balance at every node using partition function.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rebalance(t):</span><br><span class="line">|  Input  tree t with n nodes</span><br><span class="line">|  Output t rebalanced</span><br><span class="line">|</span><br><span class="line">|  <span class="keyword">if</span> n≥3 <span class="keyword">then</span></span><br><span class="line">|  |  // put node with median key at root</span><br><span class="line">|  |  t=partition(t,n/2)</span><br><span class="line">|  |  // <span class="keyword">then</span> rebalance each subtree</span><br><span class="line">|  |  t-&gt;left = rebalance(t-&gt;left)</span><br><span class="line">|  |  t-&gt;right = rebalance(t-&gt;right)</span><br><span class="line">|  end <span class="keyword">if</span></span><br><span class="line">|  <span class="built_in">return</span> t</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="Tree-traversal"><a href="#Tree-traversal" class="headerlink" title="Tree traversal"></a>Tree traversal</h4><p>There are four traversal</p>
-<ol>
-<li>Pre-order   </li>
-<li>In-order</li>
-<li>Post-order  </li>
-<li>Level-order (iterative or using queue)<br>A few variant would be travel right before left.</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/Tree/">Show all >></a>
         </p>
       
 
