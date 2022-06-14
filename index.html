@@ -165,6 +165,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript-The-Definitive-Guide-Chapter-8-Note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/">JavaScript The Definitive Guide Chapter 8 Note</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/" class="archive-article-date">
+  	<time datetime="2022-06-13T00:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="8-0-Introduction-to-Function"><a href="#8-0-Introduction-to-Function" class="headerlink" title="8.0 Introduction to Function"></a>8.0 Introduction to Function</h3><ul>
+<li>A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as <strong>parameter</strong>. Function accept values, known as <strong>argument</strong>. (Not understanding by now)</li>
+<li>Function in object is <strong>method</strong>.</li>
+<li>In JS, function is object, so it can be manipuated.</li>
+<li>JS function defintion can be nested within other function, and they have access to any variables that are in scope where they are defined.</li>
+</ul>
+<h3 id="8-1-Definition-of-Function"><a href="#8-1-Definition-of-Function" class="headerlink" title="8.1 Definition of Function"></a>8.1 Definition of Function</h3><p>There are several ways to define function, using <strong>functon</strong> and <strong>arrow-function</strong> is encounted in previous section. Inside the class, <strong>6.10.5 and 6.10.6</strong> covers the method, and getter, setter function. </p>
+<p>Special kind of function, <strong>generator function</strong> and <strong>async function</strong> will be covered in later section&#x2F;</p>
+<h5 id="Function-Declarations"><a href="#Function-Declarations" class="headerlink" title="Function Declarations"></a>Function Declarations</h5><p>Function declaration consist of keyword <strong>function</strong> followed by these component,</p>
+<ul>
+<li>An identifier that names a function. </li>
+<li>A pair of parentheses around comma-seperated list of identifer as the <strong>parameter</strong> name.</li>
+<li>A pair of curly braces, with statements. The coding block of function, also known as <strong>body</strong>.</li>
+</ul>
+<p>JS function become a variable, that will be <strong>hoisted</strong> to the top of enclosing script. It have behavior similar to variable declared using <strong>var</strong> keyword. </p>
+<p>JS return will stop the function and return the expression. If expression is empty, or no return statement, it would then return undefined.</p>
+<p>Prior to ES6, function are only allowed to define at the top. For ES6, it’s allowed but only visible within the block</p>
+<h5 id="Function-Expression"><a href="#Function-Expression" class="headerlink" title="Function Expression"></a>Function Expression</h5><p>Function expression are thoes function definition without the identifier, a using case have seen is when we define <strong>inline</strong> function. A function varibale actually declared a function object and assign to that varibale, but it is up to you to assign a newly defined function object to a const, variable if you are gonna refer it many times.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// This function expression defines a function square the parameter,</span><br><span class="line">// abd we assign it to const, const is better practice than variable</span><br><span class="line">const square = function(x) &#123; return x * x; &#125;;</span><br><span class="line"></span><br><span class="line">// This function expression included a name, the local scope of function will binding of that name to the function object</span><br><span class="line">// Which is used for recursion</span><br><span class="line">const f = function fact(x) &#123;if (x &lt;= 1) return 1; else return x * fact(x-1);&#125;;</span><br><span class="line"></span><br><span class="line">// function can be used as argument to other function</span><br><span class="line">// known as inline function</span><br><span class="line"></span><br><span class="line">// functions can be defined and immediately invoked</span><br><span class="line">const square = (function(x) &#123; return x * x; &#125;)(10);</span><br></pre></td></tr></table></figure>
+
+<p>There is important difference between create <strong>function f()</strong> and assign function expression to variable <strong>f</strong>. The function will be “hoisted” so that it can be used before it is defined, it actually get created before code will run. On the other hand, it can’t for the variable case, because it doesn’t make sense to call, refer it before define it(or initialize it). </p>
+<h5 id="Arrow-Function"><a href="#Arrow-Function" class="headerlink" title="Arrow Function"></a>Arrow Function</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// arrow function have form</span><br><span class="line">//          paramter     function body</span><br><span class="line">const sum = (x, y)    =&gt; &#123;return x + y; &#125;;</span><br><span class="line"></span><br><span class="line">// And if the function body only have single return, one can omit the return and curly brace</span><br><span class="line">const sum = (x, y)    =&gt; x + y;</span><br><span class="line"></span><br><span class="line">// further more, if function only have one parameter, one can omit parantheis</span><br><span class="line">const double = x =&gt; 2 * x;</span><br><span class="line"></span><br><span class="line">// If no argument, one have to include an empty paranthesis</span><br><span class="line"></span><br><span class="line">// if the returned is an object, and only one line of return statement, </span><br><span class="line">// you need either put object literal into parenthesis, or give a explicit return</span><br><span class="line">const f = x =&gt; &#123; return &#123;value : x&#125;; &#125;;</span><br><span class="line">const g = x =&gt; (&#123;value : x&#125;);</span><br><span class="line"></span><br><span class="line">const invalid = x =&gt; &#123;value : x&#125;;       // returns nothing, it treat &#123;&#125; as body and value : x as the label statement</span><br></pre></td></tr></table></figure>
+
+<p>There are two key difference between arrow function and normal function</p>
+<ol>
+<li>Arrow inherits the value of <strong>this</strong> keyword from the emvironment they are defined</li>
+<li>Arrow don’t have <strong>prototype</strong> property, they can’t be used as constructor function for new classes.</li>
+</ol>
+<h5 id="Nested-functions"><a href="#Nested-functions" class="headerlink" title="Nested functions"></a>Nested functions</h5><p>Basically nested function can access the parameter, variable of function nested in. </p>
+<p>Will be looked back again in 8.6.</p>
+<h3 id="8-2-Invoking-Function"><a href="#8-2-Invoking-Function" class="headerlink" title="8.2 Invoking Function"></a>8.2 Invoking Function</h3><p>JS function will be invoked in following ways:</p>
+<ul>
+<li>As functions</li>
+<li>As methods</li>
+<li>As constructor (not yet encountered)</li>
+<li>Indirectly through their <strong>call()</strong> and <strong>apply()</strong> methods</li>
+<li>Implicitly, via JS language fewture that do not appear like normal function invocaton</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JavaScript-The-Definitive-Guide-Chapter-7-Note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1238,128 +1338,9 @@
 
 
   
-    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/git/">Git Chapter 1</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/13/git/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:42:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This chapter introduce concept of VCS and an overview of git.</p>
-<h2 id="About-version-control"><a href="#About-version-control" class="headerlink" title="About version control"></a>About version control</h2><p>Version control is a system that record changes of a file or a set of file, so that one can revert back, compare difference over time, who last modify which file with what… with very little workload.</p>
-<h4 id="Local-Version-Control-System"><a href="#Local-Version-Control-System" class="headerlink" title="Local Version Control System"></a>Local Version Control System</h4><p>One of popular VCS tools was a system called <strong>RCS</strong>(Revision Control System).nRCS works by keeping patch(change) set in a special format, so it can then recreate any file looked like at any point by adding up all patches. </p>
-<h4 id="Centralized-Version-Control-System"><a href="#Centralized-Version-Control-System" class="headerlink" title="Centralized Version Control System"></a>Centralized Version Control System</h4><p>The next major development would be Centralized Version Control System(CSCSs), which is a single server that contains all the versioned file, and multiple clients that check out files from the central server. </p>
-<ul>
-<li>Pro<ol>
-<li>Everyone have a shared project. Easy to work as a team compare with LVCS.</li>
-<li>Admin have fine-grained control.</li>
-</ol>
-</li>
-<li>Con (This also occurs for LVCS)<ol>
-<li>Safety. Centralized means risk of losing everything.</li>
-<li>Single point of failure of Centralized server represent whole failure. Such as if the server updates, everyone can’t do anything.</li>
-</ol>
-</li>
-</ul>
-<h4 id="Distributed-Version-Control-System"><a href="#Distributed-Version-Control-System" class="headerlink" title="Distributed Version Control System"></a>Distributed Version Control System</h4><p>Distributed Version Control System(DVCS) solves above issue by letting every user contains a fully mirror of repository that include all previous histroy. So that if above safety issue happens, if there is one client have the repository then everything will be fine. And secondly, it offers more flexibity, by deal preety with with working simutaneously on the same project. </p>
-<h2 id="Git-Basic"><a href="#Git-Basic" class="headerlink" title="Git Basic"></a>Git Basic</h2><p>Git have the following important property</p>
-<h4 id="Snapshot-not-difference"><a href="#Snapshot-not-difference" class="headerlink" title="Snapshot not difference"></a>Snapshot not difference</h4><p>The most other VCS uses snapshots, they maintain the information of changes of file, over the time. Git’s doesn’t think of the data in this way, it basically took a “snapshot” of every file at the time, and whole version of histroy will more like a <strong>stream of snapshots</strong>.</p>
-<p><img src="https://i.stack.imgur.com/AQ5TG.png" alt="Storing data as stream of snapshots"></p>
-<p>By the above property, it allows most operation in git only require local files.</p>
-<h4 id="Git-Has-Integrity"><a href="#Git-Has-Integrity" class="headerlink" title="Git Has Integrity"></a>Git Has Integrity</h4><p>To avoid corruption of file, lose of information, git uses SHA-1 hash. This hash also prevent changes of contents of file without Git know about it.</p>
-<p>Another characteristic is git generally only add data to its database. As it uses snapshot. By this, one can experiment many thing with git without worry about screw things up.</p>
-<h2 id="The-Tree-States"><a href="#The-Tree-States" class="headerlink" title="The Tree States"></a>The Tree States</h2><p>Git has three main states that your files can reside in</p>
-<ol>
-<li>Committed means file stored in local database (Git directory)</li>
-<li>Modified means you have changed the file but have not commited and not staged to your database. </li>
-<li>Staged means you have marked a modified file in its current version to go to next commited shot.</li>
-</ol>
-<p>Git have three main section</p>
-<ol>
-<li>Git directory is where git store metadata and object database for the project.</li>
-<li>Working directory is single checkout of version of the project. Like a snapshot. (When using clone)</li>
-<li>Staging area, is a file that track information of your next commit, which is from working directory to Git directory.</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/git/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

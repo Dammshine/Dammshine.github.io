@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | David&#39;s Hexo Blog</title>
+  <title>JavaScript The Definitive Guide Chapter 8 Note | David&#39;s Hexo Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="As said, david&#39;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="David&#39;s Hexo Blog">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+  <meta name="description" content="8.0 Introduction to Function A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as parameter. Function accept values, known as ar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript The Definitive Guide Chapter 8 Note">
+<meta property="og:url" content="http://example.com/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/index.html">
 <meta property="og:site_name" content="David&#39;s Hexo Blog">
-<meta property="og:description" content="As said, david&#39;s blog">
+<meta property="og:description" content="8.0 Introduction to Function A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as parameter. Function accept values, known as ar">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-13T00:24:55.000Z">
+<meta property="article:modified_time" content="2022-06-13T06:45:55.714Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -163,343 +165,120 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-JavaScript-The-Definitive-Guide-Chapter-8-Note" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      JavaScript The Definitive Guide Chapter 8 Note
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/" class="archive-article-date">
+
+        
+        <a href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/" class="archive-article-date">
   	<time datetime="2022-06-13T00:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-13</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/">JavaScript The Definitive Guide Chapter 8 Note</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="8-0-Introduction-to-Function"><a href="#8-0-Introduction-to-Function" class="headerlink" title="8.0 Introduction to Function"></a>8.0 Introduction to Function</h3><ul>
+<li>A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as <strong>parameter</strong>. Function accept values, known as <strong>argument</strong>. (Not understanding by now)</li>
+<li>Function in object is <strong>method</strong>.</li>
+<li>In JS, function is object, so it can be manipuated.</li>
+<li>JS function defintion can be nested within other function, and they have access to any variables that are in scope where they are defined.</li>
+</ul>
+<h3 id="8-1-Definition-of-Function"><a href="#8-1-Definition-of-Function" class="headerlink" title="8.1 Definition of Function"></a>8.1 Definition of Function</h3><p>There are several ways to define function, using <strong>functon</strong> and <strong>arrow-function</strong> is encounted in previous section. Inside the class, <strong>6.10.5 and 6.10.6</strong> covers the method, and getter, setter function. </p>
+<p>Special kind of function, <strong>generator function</strong> and <strong>async function</strong> will be covered in later section&#x2F;</p>
+<h5 id="Function-Declarations"><a href="#Function-Declarations" class="headerlink" title="Function Declarations"></a>Function Declarations</h5><p>Function declaration consist of keyword <strong>function</strong> followed by these component,</p>
+<ul>
+<li>An identifier that names a function. </li>
+<li>A pair of parentheses around comma-seperated list of identifer as the <strong>parameter</strong> name.</li>
+<li>A pair of curly braces, with statements. The coding block of function, also known as <strong>body</strong>.</li>
+</ul>
+<p>JS function become a variable, that will be <strong>hoisted</strong> to the top of enclosing script. It have behavior similar to variable declared using <strong>var</strong> keyword. </p>
+<p>JS return will stop the function and return the expression. If expression is empty, or no return statement, it would then return undefined.</p>
+<p>Prior to ES6, function are only allowed to define at the top. For ES6, it’s allowed but only visible within the block</p>
+<h5 id="Function-Expression"><a href="#Function-Expression" class="headerlink" title="Function Expression"></a>Function Expression</h5><p>Function expression are thoes function definition without the identifier, a using case have seen is when we define <strong>inline</strong> function. A function varibale actually declared a function object and assign to that varibale, but it is up to you to assign a newly defined function object to a const, variable if you are gonna refer it many times.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// This function expression defines a function square the parameter,</span><br><span class="line">// abd we assign it to const, const is better practice than variable</span><br><span class="line">const square = function(x) &#123; return x * x; &#125;;</span><br><span class="line"></span><br><span class="line">// This function expression included a name, the local scope of function will binding of that name to the function object</span><br><span class="line">// Which is used for recursion</span><br><span class="line">const f = function fact(x) &#123;if (x &lt;= 1) return 1; else return x * fact(x-1);&#125;;</span><br><span class="line"></span><br><span class="line">// function can be used as argument to other function</span><br><span class="line">// known as inline function</span><br><span class="line"></span><br><span class="line">// functions can be defined and immediately invoked</span><br><span class="line">const square = (function(x) &#123; return x * x; &#125;)(10);</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>There is important difference between create <strong>function f()</strong> and assign function expression to variable <strong>f</strong>. The function will be “hoisted” so that it can be used before it is defined, it actually get created before code will run. On the other hand, it can’t for the variable case, because it doesn’t make sense to call, refer it before define it(or initialize it). </p>
+<h5 id="Arrow-Function"><a href="#Arrow-Function" class="headerlink" title="Arrow Function"></a>Arrow Function</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// arrow function have form</span><br><span class="line">//          paramter     function body</span><br><span class="line">const sum = (x, y)    =&gt; &#123;return x + y; &#125;;</span><br><span class="line"></span><br><span class="line">// And if the function body only have single return, one can omit the return and curly brace</span><br><span class="line">const sum = (x, y)    =&gt; x + y;</span><br><span class="line"></span><br><span class="line">// further more, if function only have one parameter, one can omit parantheis</span><br><span class="line">const double = x =&gt; 2 * x;</span><br><span class="line"></span><br><span class="line">// If no argument, one have to include an empty paranthesis</span><br><span class="line"></span><br><span class="line">// if the returned is an object, and only one line of return statement, </span><br><span class="line">// you need either put object literal into parenthesis, or give a explicit return</span><br><span class="line">const f = x =&gt; &#123; return &#123;value : x&#125;; &#125;;</span><br><span class="line">const g = x =&gt; (&#123;value : x&#125;);</span><br><span class="line"></span><br><span class="line">const invalid = x =&gt; &#123;value : x&#125;;       // returns nothing, it treat &#123;&#125; as body and value : x as the label statement</span><br></pre></td></tr></table></figure>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<p>There are two key difference between arrow function and normal function</p>
+<ol>
+<li>Arrow inherits the value of <strong>this</strong> keyword from the emvironment they are defined</li>
+<li>Arrow don’t have <strong>prototype</strong> property, they can’t be used as constructor function for new classes.</li>
+</ol>
+<h5 id="Nested-functions"><a href="#Nested-functions" class="headerlink" title="Nested functions"></a>Nested functions</h5><p>Basically nested function can access the parameter, variable of function nested in. </p>
+<p>Will be looked back again in 8.6.</p>
+<h3 id="8-2-Invoking-Function"><a href="#8-2-Invoking-Function" class="headerlink" title="8.2 Invoking Function"></a>8.2 Invoking Function</h3><p>JS function will be invoked in following ways:</p>
+<ul>
+<li>As functions</li>
+<li>As methods</li>
+<li>As constructor (not yet encountered)</li>
+<li>Indirectly through their <strong>call()</strong> and <strong>apply()</strong> methods</li>
+<li>Implicitly, via JS language fewture that do not appear like normal function invocaton</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" class="archive-article-date">
-  	<time datetime="2022-06-11T04:37:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript The Definitive Guide Chapter 7 Note</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/">JavaScript The Definitive Guide Chapter 7 Note</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/08/COMP1531-team/" class="archive-article-date">
-  	<time datetime="2022-06-08T07:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/08/COMP1531-team/">COMP1531 team</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-6-Note/" class="archive-article-date">
-  	<time datetime="2022-06-04T06:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-6-Note/">JavaScript The Definitive Guide Chapter 6 Note</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-5-Note/" class="archive-article-date">
-  	<time datetime="2022-06-04T06:07:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-5-Note/">JavaScript The Definitive Guide Chapter 5 Note</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/27/JavaScript-The-Definitive-Guide-Chapter-1-Note/" class="archive-article-date">
-  	<time datetime="2022-05-27T04:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/27/JavaScript-The-Definitive-Guide-Chapter-1-Note/">JavaScript The Definitive Guide Chapter 2 Note</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/27/JavaScript-The-Definitive-Guide/" class="archive-article-date">
-  	<time datetime="2022-05-27T04:17:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/27/JavaScript-The-Definitive-Guide/">JavaScript The Definitive Guide</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JSDG//" class="article-tag-list-link color5">JSDG</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/17/COMP2041-Lecture-1/" class="archive-article-date">
-  	<time datetime="2022-05-17T10:44:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-17</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/17/COMP2041-Lecture-1/">COMP2041 Lecture</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">UNSW Course</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Comp2041</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2041//" class="article-tag-list-link color4">COMP2041</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/17/Git-Chapter-2/" class="archive-article-date">
-  	<time datetime="2022-05-17T06:25:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/17/Git-Chapter-2/">Git Chapter 2</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/16/Union-Find-Disjoint-Sets/" class="archive-article-date">
-  	<time datetime="2022-05-16T06:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/16/Union-Find-Disjoint-Sets/">Union-Find Disjoint Sets</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CP3//" class="article-tag-list-link color4">CP3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="page-number" href="/archives/2022/page/3/">3</a><a class="page-number" href="/archives/2022/page/4/">4</a><a class="extend next" rel="next" href="/archives/2022/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -523,8 +302,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

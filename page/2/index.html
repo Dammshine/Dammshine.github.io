@@ -165,6 +165,125 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/13/git/">Git Chapter 1</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/git/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:42:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This chapter introduce concept of VCS and an overview of git.</p>
+<h2 id="About-version-control"><a href="#About-version-control" class="headerlink" title="About version control"></a>About version control</h2><p>Version control is a system that record changes of a file or a set of file, so that one can revert back, compare difference over time, who last modify which file with what… with very little workload.</p>
+<h4 id="Local-Version-Control-System"><a href="#Local-Version-Control-System" class="headerlink" title="Local Version Control System"></a>Local Version Control System</h4><p>One of popular VCS tools was a system called <strong>RCS</strong>(Revision Control System).nRCS works by keeping patch(change) set in a special format, so it can then recreate any file looked like at any point by adding up all patches. </p>
+<h4 id="Centralized-Version-Control-System"><a href="#Centralized-Version-Control-System" class="headerlink" title="Centralized Version Control System"></a>Centralized Version Control System</h4><p>The next major development would be Centralized Version Control System(CSCSs), which is a single server that contains all the versioned file, and multiple clients that check out files from the central server. </p>
+<ul>
+<li>Pro<ol>
+<li>Everyone have a shared project. Easy to work as a team compare with LVCS.</li>
+<li>Admin have fine-grained control.</li>
+</ol>
+</li>
+<li>Con (This also occurs for LVCS)<ol>
+<li>Safety. Centralized means risk of losing everything.</li>
+<li>Single point of failure of Centralized server represent whole failure. Such as if the server updates, everyone can’t do anything.</li>
+</ol>
+</li>
+</ul>
+<h4 id="Distributed-Version-Control-System"><a href="#Distributed-Version-Control-System" class="headerlink" title="Distributed Version Control System"></a>Distributed Version Control System</h4><p>Distributed Version Control System(DVCS) solves above issue by letting every user contains a fully mirror of repository that include all previous histroy. So that if above safety issue happens, if there is one client have the repository then everything will be fine. And secondly, it offers more flexibity, by deal preety with with working simutaneously on the same project. </p>
+<h2 id="Git-Basic"><a href="#Git-Basic" class="headerlink" title="Git Basic"></a>Git Basic</h2><p>Git have the following important property</p>
+<h4 id="Snapshot-not-difference"><a href="#Snapshot-not-difference" class="headerlink" title="Snapshot not difference"></a>Snapshot not difference</h4><p>The most other VCS uses snapshots, they maintain the information of changes of file, over the time. Git’s doesn’t think of the data in this way, it basically took a “snapshot” of every file at the time, and whole version of histroy will more like a <strong>stream of snapshots</strong>.</p>
+<p><img src="https://i.stack.imgur.com/AQ5TG.png" alt="Storing data as stream of snapshots"></p>
+<p>By the above property, it allows most operation in git only require local files.</p>
+<h4 id="Git-Has-Integrity"><a href="#Git-Has-Integrity" class="headerlink" title="Git Has Integrity"></a>Git Has Integrity</h4><p>To avoid corruption of file, lose of information, git uses SHA-1 hash. This hash also prevent changes of contents of file without Git know about it.</p>
+<p>Another characteristic is git generally only add data to its database. As it uses snapshot. By this, one can experiment many thing with git without worry about screw things up.</p>
+<h2 id="The-Tree-States"><a href="#The-Tree-States" class="headerlink" title="The Tree States"></a>The Tree States</h2><p>Git has three main states that your files can reside in</p>
+<ol>
+<li>Committed means file stored in local database (Git directory)</li>
+<li>Modified means you have changed the file but have not commited and not staged to your database. </li>
+<li>Staged means you have marked a modified file in its current version to go to next commited shot.</li>
+</ol>
+<p>Git have three main section</p>
+<ol>
+<li>Git directory is where git store metadata and object database for the project.</li>
+<li>Working directory is single checkout of version of the project. Like a snapshot. (When using clone)</li>
+<li>Staging area, is a file that track information of your next commit, which is from working directory to Git directory.</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/13/git/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-NodesNotInCycle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1018,105 +1137,9 @@ Now consider 2 cases
 
 
   
-    <article id="post-AVL-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/28/AVL-tree/">AVL tree</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/28/AVL-tree/" class="archive-article-date">
-  	<time datetime="2022-04-28T01:01:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="AVL-tree"><a href="#AVL-tree" class="headerlink" title="AVL tree"></a>AVL tree</h2><p>Analysis of AVL trees:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. trees are height-balanced; subtree depths differ by +/-1</span><br><span class="line">2. average/worst-case search performance of O(<span class="built_in">log</span> n)</span><br><span class="line">3. require extra data to be stored <span class="keyword">in</span> each node (efficiency)</span><br><span class="line">4. require extra data to be maintained during insertion</span><br><span class="line">5. may not be weight-balanced; subtree sizes may differ</span><br></pre></td></tr></table></figure>
-
-<p>Insertion</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">BSTree insert(BSTree t, int value) &#123;</span><br><span class="line">	<span class="keyword">if</span> (t == NULL) &#123;</span><br><span class="line">		<span class="built_in">return</span> createNode(value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (t-&gt;value == value)&#123;</span><br><span class="line">		<span class="built_in">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		int cmp = t-&gt;value - value;</span><br><span class="line">		<span class="keyword">if</span> (cmp &gt; 0) &#123;</span><br><span class="line">			t-&gt;left = insert(t-&gt;left, value);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			t-&gt;right = insert(t-&gt;right, value);</span><br><span class="line">		&#125;</span><br><span class="line">		int lheight = BSTreeHeight(t-&gt;left);</span><br><span class="line">        int rheight = BSTreeHeight(t-&gt;right);</span><br><span class="line">		<span class="keyword">if</span> ((lheight - rheight) &gt; 1) &#123;</span><br><span class="line">            // If element inserted at the right branch of left child of node</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;left-&gt;value - value &lt; 0) &#123;</span><br><span class="line">                t-&gt;left = leftRotation(t-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            t = rightRotation(t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((rheight - lheight) &gt; 1) &#123;</span><br><span class="line">            // If element inserted at the left branch of right child of node</span><br><span class="line">            <span class="keyword">if</span> (t-&gt;right-&gt;value - value &gt; 0) &#123;</span><br><span class="line">                t-&gt;right = rightRotation(t-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            t = leftRotation(t);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="built_in">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/28/AVL-tree/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
