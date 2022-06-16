@@ -223,7 +223,14 @@
 <li>Indirectly through their <strong>call()</strong> and <strong>apply()</strong> methods</li>
 <li>Implicitly, via JS language fewture that do not appear like normal function invocaton</li>
 </ul>
+<h5 id="Function-invocation-and-Method-invocation"><a href="#Function-invocation-and-Method-invocation" class="headerlink" title="Function invocation and Method invocation"></a>Function invocation and Method invocation</h5><p>The one important difference between two is <strong>this</strong> object refers. In non-strict mode, function invocation have <strong>this</strong> refers to <strong>global</strong> and it probably meant <strong>this</strong> have access to all variable definded in scope of <strong>global</strong>. Then, for strict mode, function invocation have <strong>this</strong> refers to <strong>undefined</strong>. </p>
+<p>For method invocation, <strong>this</strong> will refers to <strong>object</strong>.</p>
+<p>Another important thing, is <strong>this</strong> can be returned, however it can’t be assigned a value becasue it’s a keyword. </p>
+<h5 id="Syntax-highlight"><a href="#Syntax-highlight" class="headerlink" title="Syntax highlight"></a>Syntax highlight</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// Conditional invocation, </span><br><span class="line">// instead of</span><br><span class="line">(f != null &amp;&amp; f !== undefined) ? f(x) : undefined;</span><br><span class="line"></span><br><span class="line">// use</span><br><span class="line">f?.(x);</span><br><span class="line"></span><br><span class="line">// Always return this in ur function</span><br><span class="line">// and one can use function chaining</span><br><span class="line">new Square().x().y().size(211).draw();</span><br></pre></td></tr></table></figure>
 
+
+<h5 id="Nested-function"><a href="#Nested-function" class="headerlink" title="Nested function"></a>Nested function</h5><p><strong>This</strong> keyword is not scoped the way variable are, nested function won’t inherit <strong>this</strong> value of the containing function, if function invoked as a nested function, it’s this would be either global or undefined. There are few ways to around this</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;</span><br><span class="line">    m = function() &#123;</span><br><span class="line">        let self = this;</span><br><span class="line">        </span><br><span class="line">        function f() &#123;</span><br><span class="line">            // this is not defined,</span><br><span class="line">            // but can access self</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // if want to use self</span><br><span class="line">        // use arrow function</span><br><span class="line">        const f = () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // and function expression won&#x27;t be hoisted</span><br><span class="line">        // or use bind</span><br><span class="line">        const f  (function() &#123;</span><br><span class="line">            this === o;</span><br><span class="line">        &#125;).bind(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1039,7 +1046,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Fliter"><a href="#Fliter" class="headerlink" title="Fliter"></a>Fliter</h3><ul>
+        <h1 id="Fliter"><a href="#Fliter" class="headerlink" title="Fliter"></a>Fliter</h1><ul>
 <li>A fliter is a program that transform a byte stream.</li>
 </ul>
 <p>On Unix-like system, filters are commands that:</p>
@@ -1057,9 +1064,123 @@
 <h5 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h5><p>The pipeline can be used to combine multiple filters.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter1 | filter2 |...|filterN   # Compose above filter</span><br></pre></td></tr></table></figure>
 
-<h5 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h5><p><strong>cat</strong>. Windows equivalent operation is <strong>type</strong>. cat got lot’s flag. </p>
-<h5 id="getopt"><a href="#getopt" class="headerlink" title="getopt"></a>getopt</h5><p>Implement for the flag<br>ELF means assembly code. Extensive link format. </p>
-<h5 id="Common-task-filter-by-the-line"><a href="#Common-task-filter-by-the-line" class="headerlink" title="Common task, filter by the line"></a>Common task, filter by the line</h5><h3 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h3><p>- </p>
+
+
+<h3 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h3><h5 id="Regular-Expression-Basic"><a href="#Regular-Expression-Basic" class="headerlink" title="Regular Expression Basic"></a>Regular Expression Basic</h5><ul>
+<li><strong>b*</strong> , denote zero or more repetition of b.</li>
+<li><strong>(patteren1|pattern2)</strong>, denote the union.</li>
+<li><strong>(ab)*</strong>, parenthesis used for grouping, eg above meant ab , abab, ababab…</li>
+<li>*<em>\*</em>, backslash remove special meaning for the following character</li>
+<li><strong>.</strong>, dot denote any single character</li>
+<li><strong>[list of character]</strong>, match any single character with brakket</li>
+<li><strong>[^list of charatcer]</strong>, match any single character not within brakket</li>
+</ul>
+<h5 id="Anchoring-Match"><a href="#Anchoring-Match" class="headerlink" title="Anchoring Match"></a>Anchoring Match</h5><p>Sometimes we want to compare string anchored by a particular position</p>
+<ul>
+<li><strong>flag -x</strong>, string match whole line</li>
+<li><strong>flag -w</strong>, string match whole word</li>
+<li><strong>^pattern</strong>, string start with a pattern</li>
+<li><strong>pattern$</strong>, string ends with a pattern</li>
+</ul>
+<h5 id="Repetition"><a href="#Repetition" class="headerlink" title="Repetition"></a>Repetition</h5><ul>
+<li><strong>p*</strong> denote zero or more repretition</li>
+<li><strong>p+</strong> denote one or more repretition</li>
+<li><strong>p?</strong> denote zero or one repetition</li>
+<li><strong>p{n}</strong> denote n repetition</li>
+<li><strong>p{n, m}</strong>, denote n-m repetition</li>
+<li><strong>p{n, }</strong> denote n or more repetition</li>
+<li><strong>p{, m}</strong>, denote m or less repetition</li>
+</ul>
+<h5 id="grep-flag"><a href="#grep-flag" class="headerlink" title="grep flag"></a>grep flag</h5><ul>
+<li><p><strong>flag -i</strong>, ignore case</p>
+</li>
+<li><p><strong>flag -v</strong>, invert </p>
+</li>
+<li><p><strong>flag -c</strong>, print a count</p>
+</li>
+<li><p><strong>flag -f</strong>, no reg</p>
+</li>
+<li><p><strong>flag -G</strong>, basic reg</p>
+</li>
+<li><p><strong>flag -E</strong>, extended reg</p>
+</li>
+<li><p><strong>flag -P</strong>, Perl</p>
+</li>
+</ul>
+<h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h3><ul>
+<li><strong>flag -b</strong>, byte</li>
+<li><strong>flag -c</strong>, char</li>
+<li><strong>flag -w</strong>, word</li>
+<li><strong>flag -l</strong>, line</li>
+</ul>
+<h3 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h3><p>Translate, map a char to another char, </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// example</span><br><span class="line">tr &#x27;abc&#x27; &#x27;123&#x27; =&gt; replace a to 1, b to 2 etc. </span><br><span class="line"></span><br><span class="line">// If destination char is shorter, the last char will be used</span><br><span class="line">// Can use short hane [a-z] =&gt; a to z length 26</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>flag -c</strong>, map all byte not occuring in sourceChars</li>
+<li><strong>flag -s</strong>, squeeze adjacent repeated characters</li>
+<li><strong>flag -d</strong>, delete all source (“No dest”)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Map all special character into line break</span><br><span class="line">tr -c &#x27;[a-zA-Z0-9]&#x27; &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// Map all special character into line break, then squeeze so there will be only one line break</span><br><span class="line">tr -sc &#x27;[a-zA-Z0-9]&#x27; &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// delete all number</span><br><span class="line">tr -d &#x27;[0-9]&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="head-x2F-tail"><a href="#head-x2F-tail" class="headerlink" title="head&#x2F;tail"></a>head&#x2F;tail</h3><p>Print first&#x2F;last n (10 line default) lines. </p>
+<ul>
+<li><strong>flag -n</strong>, change number of line<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// print 81-100</span><br><span class="line">head -n 100 | tail -n 20</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><p>Break line into different field, default use <strong>tab</strong></p>
+<ul>
+<li><strong>flag -f’list of cols’</strong>, specific field.</li>
+<li><strong>flag -c’list of pos’</strong>, specific positions.</li>
+<li><strong>flag -d’c’</strong>, using c as delimited character.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// first field seperate by &#x27;|&#x27;</span><br><span class="line">cut -d&#x27;|&#x27; -f1 data</span><br><span class="line"></span><br><span class="line">// first 5 char of string</span><br><span class="line">cut -c1-5 data</span><br></pre></td></tr></table></figure>
+
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><ul>
+<li><strong>flag -r</strong>, reverse</li>
+<li><strong>flag -n</strong>, numericallt (default is lexicographically)</li>
+<li><strong>flag -d</strong>, ignore non-letters and non-digits</li>
+<li><strong>flag -t’c’</strong>, use character c to seperate columns</li>
+<li><strong>flag -k’n’</strong>, sort by column n.</li>
+</ul>
+<h3 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h3><p>Will remove duplicate adjacent line</p>
+<ul>
+<li><strong>flag -c</strong>, also print number of duplicate</li>
+<li><strong>flag -d</strong>, only print duplicate line</li>
+<li><strong>flag -d</strong>, only print lines occur uniquely (once only)</li>
+</ul>
+<h2 id="Sed"><a href="#Sed" class="headerlink" title="Sed"></a>Sed</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>Search for file. </p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><h3 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h3><h3 id="tee"><a href="#tee" class="headerlink" title="tee"></a>tee</h3><p>Send another copy of pipeline. </p>
+<h3 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h3><h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><ul>
+<li>Shell means a “shell surround the OS”.</li>
+<li>Shell are command interpreter<ul>
+<li>Allow interactive, use when runing. Dynamic.</li>
+<li>Will map key word to some program to run</li>
+</ul>
+</li>
+<li>Command-line shell are programmable. (Don’t know what this means)</li>
+<li>There are different flavor of shell, <strong>bash</strong> is the popular one.</li>
+</ul>
+<h3 id="Shell’s-logic"><a href="#Shell’s-logic" class="headerlink" title="Shell’s logic"></a>Shell’s logic</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">loop. </span><br><span class="line">    if (user) print a promptr</span><br><span class="line">    1. read a line of user input</span><br><span class="line">    2. apply transformation</span><br><span class="line">    3. split lineinto words using whitespace</span><br><span class="line">    4. use first word in line as command name</span><br><span class="line">    5. execute commands</span><br><span class="line">end loop. And wait for next prompt</span><br></pre></td></tr></table></figure>
+
+<h3 id="Processing-Shell-input-lin"><a href="#Processing-Shell-input-lin" class="headerlink" title="Processing Shell input lin"></a>Processing Shell input lin</h3><ul>
+<li>Transformation could be<ul>
+<li>variable expansion</li>
+<li>command expansion</li>
+<li>arithmetic</li>
+<li>words spliting</li>
+<li>pathname globbing</li>
+<li>I&#x2F;O redirection</li>
+<li>first word use as program name, other name as argument</li>
+</ul>
+</li>
+</ul>
+<h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>Print it’s argument to stdout</p>
+<ul>
+<li><strong>flag -n</strong>, do not output a trailing new line</li>
+<li><strong>flag -e</strong>, enable interpretation of backslash escape</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// print \n and a new line after</span><br><span class="line">echo &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// print new line and a new line after</span><br><span class="line">echo -e &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// print new line</span><br><span class="line">echo -e -n &#x27;\n&#x27;</span><br></pre></td></tr></table></figure>
+
 
       
 
