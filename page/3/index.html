@@ -165,6 +165,215 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-DFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/28/DFS/">DFS</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/28/DFS/" class="archive-article-date">
+  	<time datetime="2022-04-28T03:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>I am pretty good at DFS, so i will keep this part empty.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Graph</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/28/DFS/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-BFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/28/BFS/">BFS</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/28/BFS/" class="archive-article-date">
+  	<time datetime="2022-04-28T03:40:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Algorithm-of-BFS-search"><a href="#Algorithm-of-BFS-search" class="headerlink" title="Algorithm of BFS search"></a>Algorithm of BFS search</h2><p>Given a graph G(V, E), the edges of given vertice v, is adj[v].</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// This algorithm construct a BFS tree</span><br><span class="line">// Color represented</span><br><span class="line">//  1. Wite, undiscovered</span><br><span class="line">//  2. Gret, discovered but uninspected</span><br><span class="line">//  3. Black, discovered and inspected</span><br><span class="line">// u.d store the distance from s to u</span><br><span class="line">// u.pi store the parent of u : defined as the node discovered u</span><br><span class="line">BFS(G, s)</span><br><span class="line">    // Initialize all node to white (undiscovered)</span><br><span class="line">    <span class="keyword">for</span> each vertex u belong G.V - &#123; s &#125;</span><br><span class="line">        u.color = white</span><br><span class="line">        u.d = infinity</span><br><span class="line">        u.pi = NIL</span><br><span class="line">    </span><br><span class="line">    // Discovered s</span><br><span class="line">    s.color = gret</span><br><span class="line">    s.d = 0</span><br><span class="line">    s.pi = NIL</span><br><span class="line"></span><br><span class="line">    // Create queue (include as discover process)</span><br><span class="line">    Q = empty</span><br><span class="line">    enqueue(Q, s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> Q != empty </span><br><span class="line">        // Inspect front element</span><br><span class="line">        u = dequeue(Q)</span><br><span class="line">        <span class="keyword">for</span> each v belong to G.Adj[u]</span><br><span class="line">            // Disover the undiscovered vertice that are adjacent to u</span><br><span class="line">            <span class="keyword">if</span> v.color == white</span><br><span class="line">                v.color = grey</span><br><span class="line">                v.d = u.d + 1</span><br><span class="line">                v.pi = u </span><br><span class="line">                enqueue(v)</span><br><span class="line">        // Finish inspect u</span><br><span class="line">        u.color = black</span><br></pre></td></tr></table></figure>
+
+<h4 id="Discussion-of-shortest-path"><a href="#Discussion-of-shortest-path" class="headerlink" title="Discussion of shortest path"></a>Discussion of shortest path</h4><p>Define shortest path as shortest path &lt;&#x3D; all exist path.</p>
+<p>Lemma 22.1 Let G &#x3D; (V,E) be a directed or undirrected graph, let s belong to v be an arbitary vertex. Then for any edge(u,v) belong to E<br>            Shortest distance(s, v) &lt;&#x3D; Shortest distance(s, u) + 1.   (1)</p>
+<p>Proof:<br>    Suppose v is reachtable from S, then there are total two cases<br>        1. There exist shorter path from s to u, else than through v. Then choose this path. (1) hold.<br>        2. There do not exist shorter path, or path else than through v. Choose path to v, and edge(v,u). (1) hold</p>
+<p>Lemma 22.2 Let G &#x3D; (V,E) be a directed or undirrected graph, and suppose BFS is run on G from a given source vertex s belong V. Then upon termination,<br>            each vertice, v.d &gt;&#x3D; shortest path(s, v)</p>
+<p>At first, v.d do not necessarly represent distance, so one can not chaim it have to be smaller than path, at least require explaniation.<br>From the algorithm, each vertice must have a parent node, denote u, and v.d &#x3D; u.d + 1. Then, by trace parent vertice of each vertice, we can<br>draw a path from v to s, by property that each vertice must have a parent vertice. </p>
+<p>This path is greater or equal to the shortest path.</p>
+<p>Lemma 22.3 Suppose during the execution of BFS, the queue Q contain following vertex<br>            {v1, v2,…vr}, where v1 is the head of Q and vr is the tail<br>            Then, vr.d &lt;&#x3D; v1.d + 1 and vi.d &lt; vi+1.d.</p>
+<pre><code>Proof by induction.
+At begining of BFS, there is only s in queue. Hence statement is true.
+Assuming the above holds, by dequeue v1, v2 become head. 
+vi.d &lt; vi+1.d unaffected for now.
+vr.d &lt;= v1.d + 1 &lt; = v2.d + 1. Hence it also hold.
+
+Now consider 2 cases
+    1. No adjacent vertex added, then the above obviously hold.
+    2. Adjacent vertex u, added to the list.
+        u.d = v1.d + 1. And vr.d &lt;= v1.d + 1 &lt;= u.d. Thus vi.d &lt; vi+1.d hold.
+        u.d = v1.d + 1 &lt;= v2.d + 1. Thus vr.d &lt; vi+1.d hold
+</code></pre>
+<p>Collorary 22.4<br>If vi enqueue early than vj, the v1.d &lt;&#x3D; vj.d.</p>
+<p>Theorem 22.5<br>BFS search always produce shortest path.<br>During the BFS search, from s, for every other node blong G(V, E) have property<br>    v.d &#x3D; shortest path(s, v)</p>
+<p>Prove by contradiction. Suppose there exist a node v such that<br>    v.d !&#x3D; shortest path(s, v).</p>
+<p>By lemma 22.1, we know v.d &gt;&#x3D; shortest path(s, v), then we can deduce v.d &gt; shortrest path(s,v).<br>Vertex v have to be reachtable, else both infinity.<br>Because it is reachtable, consider the parent node of v, denote u that have preceding shortest path, discussed in lemma 22.2<br>we have shortest path(s,v) &#x3D; shortest path(s, u) + 1,<br>Then we have<br>v.d &gt; sd(s,v) &#x3D; sd(s, u) + 1 &#x3D; u.d + 1. </p>
+<p>Then, consider the v’s color when u have being dequeue.<br>It either be white (undiscovered)<br>    then we know v.d &#x3D; u.d + 1. Contradiction.<br>If v is black,<br>    then it enqueue before u, v.d &lt;&#x3D; u.d. Contradiction, discussed above, in order to contradict the theorem, v.d &gt; sd(s, d), thus also greater than u.d + 1.<br>If v is gray,<br>    then it painted before dequeue u, painted by the vertex  denoted by w. And w is enqueue before u, so w.d &lt;&#x3D; u.d, and v.d &#x3D; w.d + 1 &lt;&#x3D; u.d + 1.<br>    Again by analysis, it have to be greater than u.d + 1. Hence contradiction&#x2F;</p>
+<p>Thus, we conclude for all vertice v, after BFS(s, v), v.d is the sd(s, v). And we can obatin a shortest path from s to v.parent, and by repeat this process.</p>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>Enqueue, dequeue takes O(1), so the time devoted for dequeueing and enququeing takes O(V). Because BFS require scan each vertex at most one time, then for adjency list it would be O(E) and adjency matrix would be O(V^2). So the total running time would be O(V + E) or O(V + V^2) depend on the implementation. For dense graph, it’s O(E) for both implementation, for dense graph adjency list will be slightly better. </p>
+<h2 id="BFS-tree"><a href="#BFS-tree" class="headerlink" title="BFS tree"></a>BFS tree</h2><p>Assume original graph G(V, E)<br>then by BFS search, we will get<br>    G(Gpi, Epi).<br>    where Vp &#x3D; {v : v.pi !&#x3D; Nil} &amp;&amp; {s} &#x2F;&#x2F; This will eliminate node not reachtable<br>    Epi {v.pi, v: v belong vp}          &#x2F;&#x2F; Include all edges that are linked</p>
+<p>Gpi is a BFT, the shortest path in this curve from s to any v will also be shortest path from s to v.<br>And abs(E) &#x3D; abs(V) - 1, this is preserved from tree property. </p>
+<p>Lemma BFS result a BFT. (No comments needed for this one)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Graph</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/28/BFS/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Tries-Radix-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -993,229 +1202,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/04/26/Makefile-0/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ADT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/ADT/">ADT</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/26/ADT/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Abstract-data-Type"><a href="#Abstract-data-Type" class="headerlink" title="Abstract data Type"></a>Abstract data Type</h2><p>A <strong>data type</strong> is</p>
-<ul>
-<li>A set of values</li>
-<li>A collection of operations on thoes value</li>
-</ul>
-<p>An <strong>abstract data type</strong> is</p>
-<ul>
-<li>An approach to implementing data types, that seperate users and implementer, <ul>
-<li>Implementer will provide interface (how to use) and implementation</li>
-<li>User only need to know interface.</li>
-</ul>
-</li>
-</ul>
-<p>Many of ADT deals with </p>
-<ul>
-<li>Collection of items, that often contain a key(or themselve is a key)<ul>
-<li>Particular structure that provide great efficency, but user want to reduce complexity for them to use it more easiy. So we hide the detail.<ul>
-<li>linked list, tree, graph</li>
-</ul>
-</li>
-<li>Particular usage, that user only need the result.<ul>
-<li>matrix, set, dictionary, stack, queue</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>We want to distinguish</p>
-<ul>
-<li><strong>DT</strong> (Non-abstract data type)<ul>
-<li>Internal of da structure is visible. (character, C string)</li>
-</ul>
-</li>
-<li><strong>GADT</strong><ul>
-<li>C++ template like data type. Can have mutiple type. (C++ STL, vector<typename>)</typename></li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ADT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Theory</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/ADT/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Performance-Analysis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/Performance-Analysis/">Performance Analysis</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/26/Performance-Analysis/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Analysis-of-Algorithm"><a href="#Analysis-of-Algorithm" class="headerlink" title="Analysis of Algorithm"></a>Analysis of Algorithm</h2><p><strong>Analyzing</strong> an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the most desirable one. </p>
-<p>There is a few terms need to be well defined here</p>
-<ol>
-<li><strong>Input size</strong>, the best notion for <strong>input size</strong> depend on the problem, such as for sorting number, the input size is number of integer as the input. </li>
-<li><strong>Running time</strong>, one should adopt the notion that our model of analysis assume CPU takes constant operation every seconds, thus <strong>running time</strong> can also be reconigized as the number of primititive operation that CPU supported. </li>
-<li><strong>Memory</strong>, one correlate of additional memory from input, that the algorithm required.</li>
-</ol>
-<h4 id="Order-of-growth"><a href="#Order-of-growth" class="headerlink" title="Order of growth"></a>Order of growth</h4><p>We shall make one more simplifying abstraction, which is the <strong>rate of growth</strong>, which is ignore all coefficent and smaller rate of growth term in estimating algorithm’s performance. When we look at input size large enough, it eventually will make only the order of growth of running time relevant. </p>
-<p>We now define big O notation, this will give us upper bound,<br>O(g(n)) &#x3D; {f(n) : there exist positive constant c and n0 such that f(n) &lt; c * g(n) for all n &gt; n0.}</p>
-<p>Suppose two function have same Big-Oh function, then two function have same order of growth. Furthemore, a bigger-order growth function can’t be Big-Oh function for a lower-order growth function. As there do not exist a positive constant n that can component the difference brought by the order-growth difference. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(n) is O(g(n)) <span class="keyword">if</span> f(n) is asymptotically less than or equal to g(n)</span><br><span class="line">f(n) is Ω(g(n)) <span class="keyword">if</span> f(n) is asymptotically greater than or equal to g(n)</span><br><span class="line">f(n) is Θ(g(n)) <span class="keyword">if</span> f(n) is asymptotically equal to g(n)</span><br></pre></td></tr></table></figure>
-<p>(<strong>Copied from Ashish’s lecture slide</strong>)</p>
-<h4 id="Empirical-Analysis"><a href="#Empirical-Analysis" class="headerlink" title="Empirical Analysis"></a>Empirical Analysis</h4><p>Consist of step</p>
-<ol>
-<li>Program the algorithm</li>
-<li>Generate different size of input</li>
-<li>Record time and plot</li>
-</ol>
-<p>Very inefficent. </p>
-<h4 id="Theoretical-Analysis"><a href="#Theoretical-Analysis" class="headerlink" title="Theoretical Analysis"></a>Theoretical Analysis</h4><p>Consist of step</p>
-<ol>
-<li>Using pseudocode to describe the algorithm, ignore detail and actual langauge syntx that is irrelevant to algorithm. </li>
-<li>Characterise the running time as a function of input size n.</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Theory</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/Performance-Analysis/">Show all >></a>
         </p>
       
 

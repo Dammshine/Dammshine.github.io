@@ -165,6 +165,314 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript-The-Definitive-Guide" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/27/JavaScript-The-Definitive-Guide/">JavaScript The Definitive Guide</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/27/JavaScript-The-Definitive-Guide/" class="archive-article-date">
+  	<time datetime="2022-05-27T04:17:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I think i will do something different here. Instead of provide contents, I will use this as a directory to the contents</p>
+<h2 id="Basic-Syntx-Chapter-2-5"><a href="#Basic-Syntx-Chapter-2-5" class="headerlink" title="Basic Syntx [Chapter 2 - 5]"></a>Basic Syntx [Chapter 2 - 5]</h2><ul>
+<li><a href="/2022/05/27/JavaScript-The-Definitive-Guide-Chapter-1-Note/" title="Chapter 2">Chapter 2</a></li>
+<li><a href="#">Post not found: JavaScript-The-Definitive-Guide-Chapter-3-Note Chapter 3 false</a></li>
+<li><a href="#">Post not found: JavaScript-The-Definitive-Guide-Chapter-4-Note Chapter 4 false</a></li>
+<li><a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-5-Note/" title="Chapter 5">Chapter 5</a></li>
+</ul>
+<h2 id="Object-Array-and-function-Chapter-6-8"><a href="#Object-Array-and-function-Chapter-6-8" class="headerlink" title="Object, Array and function [Chapter 6 - 8]"></a>Object, Array and function [Chapter 6 - 8]</h2><ul>
+<li><a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-6-Note/" title="Chapter 6">Chapter 6</a></li>
+<li><a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" title="Chapter 7">Chapter 7</a></li>
+<li><a href="#">Post not found: JavaScript-The-Definitive-Guide-Chapter-8-Note Chapter 8 false</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JSDG//" class="article-tag-list-link color5">JSDG</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/27/JavaScript-The-Definitive-Guide/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-COMP2041-Lecture-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/17/COMP2041-Lecture-1/">COMP2041 Lecture</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/17/COMP2041-Lecture-1/" class="archive-article-date">
+  	<time datetime="2022-05-17T10:44:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Fliter"><a href="#Fliter" class="headerlink" title="Fliter"></a>Fliter</h1><ul>
+<li>A fliter is a program that transform a byte stream.</li>
+</ul>
+<p>On Unix-like system, filters are commands that:</p>
+<ul>
+<li>Read byte from stdin or specified file</li>
+<li>Perform useful transformations on the stream</li>
+<li>write the transformed bytes to their standard output</li>
+<li>Most filters work on text, UTF-8 or ASCII</li>
+<li>Most filter are line based, a few are byte based or character-based.</li>
+</ul>
+<p>Shell. Filters relys shell’s ability to redirect IO, such as (from keyboard, from file). </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filter &lt; abc &gt; xyz          # input abc to filter, output to xyz</span><br><span class="line">filter abd def ghi &gt; xyz    # filter allow input files to be specified as arguments(command line argument)</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h5><p>The pipeline can be used to combine multiple filters.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter1 | filter2 |...|filterN   # Compose above filter</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h3><h5 id="Regular-Expression-Basic"><a href="#Regular-Expression-Basic" class="headerlink" title="Regular Expression Basic"></a>Regular Expression Basic</h5><ul>
+<li><strong>b*</strong> , denote zero or more repetition of b.</li>
+<li><strong>(patteren1|pattern2)</strong>, denote the union.</li>
+<li><strong>(ab)*</strong>, parenthesis used for grouping, eg above meant ab , abab, ababab…</li>
+<li>*<em>\*</em>, backslash remove special meaning for the following character</li>
+<li><strong>.</strong>, dot denote any single character</li>
+<li><strong>[list of character]</strong>, match any single character with brakket</li>
+<li><strong>[^list of charatcer]</strong>, match any single character not within brakket</li>
+</ul>
+<h5 id="Anchoring-Match"><a href="#Anchoring-Match" class="headerlink" title="Anchoring Match"></a>Anchoring Match</h5><p>Sometimes we want to compare string anchored by a particular position</p>
+<ul>
+<li><strong>flag -x</strong>, string match whole line</li>
+<li><strong>flag -w</strong>, string match whole word</li>
+<li><strong>^pattern</strong>, string start with a pattern</li>
+<li><strong>pattern$</strong>, string ends with a pattern</li>
+</ul>
+<h5 id="Repetition"><a href="#Repetition" class="headerlink" title="Repetition"></a>Repetition</h5><ul>
+<li><strong>p*</strong> denote zero or more repretition</li>
+<li><strong>p+</strong> denote one or more repretition</li>
+<li><strong>p?</strong> denote zero or one repetition</li>
+<li><strong>p{n}</strong> denote n repetition</li>
+<li><strong>p{n, m}</strong>, denote n-m repetition</li>
+<li><strong>p{n, }</strong> denote n or more repetition</li>
+<li><strong>p{, m}</strong>, denote m or less repetition</li>
+</ul>
+<h5 id="grep-flag"><a href="#grep-flag" class="headerlink" title="grep flag"></a>grep flag</h5><ul>
+<li><p><strong>flag -i</strong>, ignore case</p>
+</li>
+<li><p><strong>flag -v</strong>, invert </p>
+</li>
+<li><p><strong>flag -c</strong>, print a count</p>
+</li>
+<li><p><strong>flag -f</strong>, no reg</p>
+</li>
+<li><p><strong>flag -G</strong>, basic reg</p>
+</li>
+<li><p><strong>flag -E</strong>, extended reg</p>
+</li>
+<li><p><strong>flag -P</strong>, Perl</p>
+</li>
+</ul>
+<h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h3><ul>
+<li><strong>flag -b</strong>, byte</li>
+<li><strong>flag -c</strong>, char</li>
+<li><strong>flag -w</strong>, word</li>
+<li><strong>flag -l</strong>, line</li>
+</ul>
+<h3 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h3><p>Translate, map a char to another char, </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// example</span><br><span class="line">tr &#x27;abc&#x27; &#x27;123&#x27; =&gt; replace a to 1, b to 2 etc. </span><br><span class="line"></span><br><span class="line">// If destination char is shorter, the last char will be used</span><br><span class="line">// Can use short hane [a-z] =&gt; a to z length 26</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>flag -c</strong>, map all byte not occuring in sourceChars</li>
+<li><strong>flag -s</strong>, squeeze adjacent repeated characters</li>
+<li><strong>flag -d</strong>, delete all source (“No dest”)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Map all special character into line break</span><br><span class="line">tr -c &#x27;[a-zA-Z0-9]&#x27; &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// Map all special character into line break, then squeeze so there will be only one line break</span><br><span class="line">tr -sc &#x27;[a-zA-Z0-9]&#x27; &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// delete all number</span><br><span class="line">tr -d &#x27;[0-9]&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="head-x2F-tail"><a href="#head-x2F-tail" class="headerlink" title="head&#x2F;tail"></a>head&#x2F;tail</h3><p>Print first&#x2F;last n (10 line default) lines. </p>
+<ul>
+<li><strong>flag -n</strong>, change number of line<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// print 81-100</span><br><span class="line">head -n 100 | tail -n 20</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><p>Break line into different field, default use <strong>tab</strong></p>
+<ul>
+<li><strong>flag -f’list of cols’</strong>, specific field.</li>
+<li><strong>flag -c’list of pos’</strong>, specific positions.</li>
+<li><strong>flag -d’c’</strong>, using c as delimited character.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// first field seperate by &#x27;|&#x27;</span><br><span class="line">cut -d&#x27;|&#x27; -f1 data</span><br><span class="line"></span><br><span class="line">// first 5 char of string</span><br><span class="line">cut -c1-5 data</span><br></pre></td></tr></table></figure>
+
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><ul>
+<li><strong>flag -r</strong>, reverse</li>
+<li><strong>flag -n</strong>, numericallt (default is lexicographically)</li>
+<li><strong>flag -d</strong>, ignore non-letters and non-digits</li>
+<li><strong>flag -t’c’</strong>, use character c to seperate columns</li>
+<li><strong>flag -k’n’</strong>, sort by column n.</li>
+</ul>
+<h3 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h3><p>Will remove duplicate adjacent line</p>
+<ul>
+<li><strong>flag -c</strong>, also print number of duplicate</li>
+<li><strong>flag -d</strong>, only print duplicate line</li>
+<li><strong>flag -d</strong>, only print lines occur uniquely (once only)</li>
+</ul>
+<h2 id="Sed"><a href="#Sed" class="headerlink" title="Sed"></a>Sed</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>Search for file. </p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><h3 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h3><h3 id="tee"><a href="#tee" class="headerlink" title="tee"></a>tee</h3><p>Send another copy of pipeline. </p>
+<h3 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h3><h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><ul>
+<li>Shell means a “shell surround the OS”.</li>
+<li>Shell are command interpreter<ul>
+<li>Allow interactive, use when runing. Dynamic.</li>
+<li>Will map key word to some program to run</li>
+</ul>
+</li>
+<li>Command-line shell are programmable. (Don’t know what this means)</li>
+<li>There are different flavor of shell, <strong>bash</strong> is the popular one.</li>
+</ul>
+<h3 id="Shell’s-logic"><a href="#Shell’s-logic" class="headerlink" title="Shell’s logic"></a>Shell’s logic</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">loop. </span><br><span class="line">    if (user) print a promptr</span><br><span class="line">    1. read a line of user input</span><br><span class="line">    2. apply transformation</span><br><span class="line">    3. split lineinto words using whitespace</span><br><span class="line">    4. use first word in line as command name</span><br><span class="line">    5. execute commands</span><br><span class="line">end loop. And wait for next prompt</span><br></pre></td></tr></table></figure>
+
+<h3 id="Processing-Shell-input-lin"><a href="#Processing-Shell-input-lin" class="headerlink" title="Processing Shell input lin"></a>Processing Shell input lin</h3><ul>
+<li>Transformation could be<ul>
+<li>variable expansion</li>
+<li>command expansion</li>
+<li>arithmetic</li>
+<li>words spliting</li>
+<li>pathname globbing</li>
+<li>I&#x2F;O redirection</li>
+<li>first word use as program name, other name as argument</li>
+</ul>
+</li>
+</ul>
+<h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>Print it’s argument to stdout</p>
+<ul>
+<li><strong>flag -n</strong>, do not output a trailing new line</li>
+<li><strong>flag -e</strong>, enable interpretation of backslash escape</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// print \n and a new line after</span><br><span class="line">echo &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// print new line and a new line after</span><br><span class="line">echo -e &#x27;\n&#x27;</span><br><span class="line"></span><br><span class="line">// print new line</span><br><span class="line">echo -e -n &#x27;\n&#x27;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">UNSW Course</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Comp2041</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/COMP2041//" class="article-tag-list-link color4">COMP2041</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/17/COMP2041-Lecture-1/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Git-Chapter-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -919,215 +1227,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/04/28/Graph-Algorithm/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/28/DFS/">DFS</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/28/DFS/" class="archive-article-date">
-  	<time datetime="2022-04-28T03:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>I am pretty good at DFS, so i will keep this part empty.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Graph</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/28/DFS/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-BFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/28/BFS/">BFS</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/28/BFS/" class="archive-article-date">
-  	<time datetime="2022-04-28T03:40:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Algorithm-of-BFS-search"><a href="#Algorithm-of-BFS-search" class="headerlink" title="Algorithm of BFS search"></a>Algorithm of BFS search</h2><p>Given a graph G(V, E), the edges of given vertice v, is adj[v].</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// This algorithm construct a BFS tree</span><br><span class="line">// Color represented</span><br><span class="line">//  1. Wite, undiscovered</span><br><span class="line">//  2. Gret, discovered but uninspected</span><br><span class="line">//  3. Black, discovered and inspected</span><br><span class="line">// u.d store the distance from s to u</span><br><span class="line">// u.pi store the parent of u : defined as the node discovered u</span><br><span class="line">BFS(G, s)</span><br><span class="line">    // Initialize all node to white (undiscovered)</span><br><span class="line">    <span class="keyword">for</span> each vertex u belong G.V - &#123; s &#125;</span><br><span class="line">        u.color = white</span><br><span class="line">        u.d = infinity</span><br><span class="line">        u.pi = NIL</span><br><span class="line">    </span><br><span class="line">    // Discovered s</span><br><span class="line">    s.color = gret</span><br><span class="line">    s.d = 0</span><br><span class="line">    s.pi = NIL</span><br><span class="line"></span><br><span class="line">    // Create queue (include as discover process)</span><br><span class="line">    Q = empty</span><br><span class="line">    enqueue(Q, s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> Q != empty </span><br><span class="line">        // Inspect front element</span><br><span class="line">        u = dequeue(Q)</span><br><span class="line">        <span class="keyword">for</span> each v belong to G.Adj[u]</span><br><span class="line">            // Disover the undiscovered vertice that are adjacent to u</span><br><span class="line">            <span class="keyword">if</span> v.color == white</span><br><span class="line">                v.color = grey</span><br><span class="line">                v.d = u.d + 1</span><br><span class="line">                v.pi = u </span><br><span class="line">                enqueue(v)</span><br><span class="line">        // Finish inspect u</span><br><span class="line">        u.color = black</span><br></pre></td></tr></table></figure>
-
-<h4 id="Discussion-of-shortest-path"><a href="#Discussion-of-shortest-path" class="headerlink" title="Discussion of shortest path"></a>Discussion of shortest path</h4><p>Define shortest path as shortest path &lt;&#x3D; all exist path.</p>
-<p>Lemma 22.1 Let G &#x3D; (V,E) be a directed or undirrected graph, let s belong to v be an arbitary vertex. Then for any edge(u,v) belong to E<br>            Shortest distance(s, v) &lt;&#x3D; Shortest distance(s, u) + 1.   (1)</p>
-<p>Proof:<br>    Suppose v is reachtable from S, then there are total two cases<br>        1. There exist shorter path from s to u, else than through v. Then choose this path. (1) hold.<br>        2. There do not exist shorter path, or path else than through v. Choose path to v, and edge(v,u). (1) hold</p>
-<p>Lemma 22.2 Let G &#x3D; (V,E) be a directed or undirrected graph, and suppose BFS is run on G from a given source vertex s belong V. Then upon termination,<br>            each vertice, v.d &gt;&#x3D; shortest path(s, v)</p>
-<p>At first, v.d do not necessarly represent distance, so one can not chaim it have to be smaller than path, at least require explaniation.<br>From the algorithm, each vertice must have a parent node, denote u, and v.d &#x3D; u.d + 1. Then, by trace parent vertice of each vertice, we can<br>draw a path from v to s, by property that each vertice must have a parent vertice. </p>
-<p>This path is greater or equal to the shortest path.</p>
-<p>Lemma 22.3 Suppose during the execution of BFS, the queue Q contain following vertex<br>            {v1, v2,…vr}, where v1 is the head of Q and vr is the tail<br>            Then, vr.d &lt;&#x3D; v1.d + 1 and vi.d &lt; vi+1.d.</p>
-<pre><code>Proof by induction.
-At begining of BFS, there is only s in queue. Hence statement is true.
-Assuming the above holds, by dequeue v1, v2 become head. 
-vi.d &lt; vi+1.d unaffected for now.
-vr.d &lt;= v1.d + 1 &lt; = v2.d + 1. Hence it also hold.
-
-Now consider 2 cases
-    1. No adjacent vertex added, then the above obviously hold.
-    2. Adjacent vertex u, added to the list.
-        u.d = v1.d + 1. And vr.d &lt;= v1.d + 1 &lt;= u.d. Thus vi.d &lt; vi+1.d hold.
-        u.d = v1.d + 1 &lt;= v2.d + 1. Thus vr.d &lt; vi+1.d hold
-</code></pre>
-<p>Collorary 22.4<br>If vi enqueue early than vj, the v1.d &lt;&#x3D; vj.d.</p>
-<p>Theorem 22.5<br>BFS search always produce shortest path.<br>During the BFS search, from s, for every other node blong G(V, E) have property<br>    v.d &#x3D; shortest path(s, v)</p>
-<p>Prove by contradiction. Suppose there exist a node v such that<br>    v.d !&#x3D; shortest path(s, v).</p>
-<p>By lemma 22.1, we know v.d &gt;&#x3D; shortest path(s, v), then we can deduce v.d &gt; shortrest path(s,v).<br>Vertex v have to be reachtable, else both infinity.<br>Because it is reachtable, consider the parent node of v, denote u that have preceding shortest path, discussed in lemma 22.2<br>we have shortest path(s,v) &#x3D; shortest path(s, u) + 1,<br>Then we have<br>v.d &gt; sd(s,v) &#x3D; sd(s, u) + 1 &#x3D; u.d + 1. </p>
-<p>Then, consider the v’s color when u have being dequeue.<br>It either be white (undiscovered)<br>    then we know v.d &#x3D; u.d + 1. Contradiction.<br>If v is black,<br>    then it enqueue before u, v.d &lt;&#x3D; u.d. Contradiction, discussed above, in order to contradict the theorem, v.d &gt; sd(s, d), thus also greater than u.d + 1.<br>If v is gray,<br>    then it painted before dequeue u, painted by the vertex  denoted by w. And w is enqueue before u, so w.d &lt;&#x3D; u.d, and v.d &#x3D; w.d + 1 &lt;&#x3D; u.d + 1.<br>    Again by analysis, it have to be greater than u.d + 1. Hence contradiction&#x2F;</p>
-<p>Thus, we conclude for all vertice v, after BFS(s, v), v.d is the sd(s, v). And we can obatin a shortest path from s to v.parent, and by repeat this process.</p>
-<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>Enqueue, dequeue takes O(1), so the time devoted for dequeueing and enququeing takes O(V). Because BFS require scan each vertex at most one time, then for adjency list it would be O(E) and adjency matrix would be O(V^2). So the total running time would be O(V + E) or O(V + V^2) depend on the implementation. For dense graph, it’s O(E) for both implementation, for dense graph adjency list will be slightly better. </p>
-<h2 id="BFS-tree"><a href="#BFS-tree" class="headerlink" title="BFS tree"></a>BFS tree</h2><p>Assume original graph G(V, E)<br>then by BFS search, we will get<br>    G(Gpi, Epi).<br>    where Vp &#x3D; {v : v.pi !&#x3D; Nil} &amp;&amp; {s} &#x2F;&#x2F; This will eliminate node not reachtable<br>    Epi {v.pi, v: v belong vp}          &#x2F;&#x2F; Include all edges that are linked</p>
-<p>Gpi is a BFT, the shortest path in this curve from s to any v will also be shortest path from s to v.<br>And abs(E) &#x3D; abs(V) - 1, this is preserved from tree property. </p>
-<p>Lemma BFS result a BFT. (No comments needed for this one)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Graph</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/28/BFS/">Show all >></a>
         </p>
       
 
