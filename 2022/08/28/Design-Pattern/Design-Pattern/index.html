@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>JavaScript The Definitive Guide Chapter 6 Note | David&#39;s Hexo Blog</title>
+  <title>Design Pattern | David&#39;s Hexo Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="6.1 Introduction to ObjectAn object is a composite value, it aggregate multiple values and allows you to store and retrive.  A property has a name and value, the name can be string, symbol but no prop">
+  <meta name="description" content="Design Pattern [Chapter 1 - 5] Chapter 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript The Definitive Guide Chapter 6 Note">
-<meta property="og:url" content="http://example.com/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-6-Note/index.html">
+<meta property="og:title" content="Design Pattern">
+<meta property="og:url" content="http://example.com/2022/08/28/Design-pattern/Design-Pattern/index.html">
 <meta property="og:site_name" content="David&#39;s Hexo Blog">
-<meta property="og:description" content="6.1 Introduction to ObjectAn object is a composite value, it aggregate multiple values and allows you to store and retrive.  A property has a name and value, the name can be string, symbol but no prop">
+<meta property="og:description" content="Design Pattern [Chapter 1 - 5] Chapter 1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-04T06:07:50.000Z">
-<meta property="article:modified_time" content="2022-06-11T04:41:47.245Z">
+<meta property="article:published_time" content="2022-08-28T10:38:54.000Z">
+<meta property="article:modified_time" content="2022-08-31T09:41:06.942Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -165,155 +165,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript-The-Definitive-Guide-Chapter-6-Note" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Design-pattern/Design-Pattern" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript The Definitive Guide Chapter 6 Note
+      Design Pattern
     </h1>
   
 
         
-        <a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-6-Note/" class="archive-article-date">
-  	<time datetime="2022-06-04T06:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-04</time>
+        <a href="/2022/08/28/Design-pattern/Design-Pattern/" class="archive-article-date">
+  	<time datetime="2022-08-28T10:38:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="6-1-Introduction-to-Object"><a href="#6-1-Introduction-to-Object" class="headerlink" title="6.1 Introduction to Object"></a>6.1 Introduction to Object</h3><p>An object is a composite value, it aggregate multiple values and allows you to store and retrive. </p>
-<p>A <strong>property</strong> has a name and value, the name can be string, symbol but no properties can have duplicate name. </p>
-<p>From OOP point of view, property can be classify as</p>
-<ul>
-<li>Own property</li>
-<li>Inherited property</li>
+        <h2 id="Design-Pattern-Chapter-1-5"><a href="#Design-Pattern-Chapter-1-5" class="headerlink" title="Design Pattern [Chapter 1 - 5]"></a>Design Pattern [Chapter 1 - 5]</h2><ul>
+<li><a href="/2022/08/31/Design-pattern/design-pattern-chap1/" title="Chapter 1">Chapter 1</a></li>
 </ul>
-<p>Beside above, each property have three property attributes, (By default, three property is set to be true)</p>
-<ul>
-<li>The <strong>writable</strong> attribute specifie whether the value of property can be set.</li>
-<li>The <strong>enumerable</strong> attribute specifies whether the property name is retruned in <strong>for&#x2F;in</strong> loop.</li>
-<li>The <strong>configurable</strong> attribute specifies whether the prpperty can be deleted and whether its attribute can be altered.</li>
-</ul>
-<h3 id="6-2-Creating-Objects"><a href="#6-2-Creating-Objects" class="headerlink" title="6.2 Creating Objects"></a>6.2 Creating Objects</h3><p><strong>Object Literal</strong> is the easiest way to create object, which is a comma seperated list enclosed with curly braces. Each time <strong>object literal</strong> execute, it create new and unique object, and if one want compare two identical object both created by this, it will return false. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let empty = &#123;&#125;;</span><br><span class="line">let point =  &#123;x : 9, y : 0&#125;;</span><br><span class="line">let point2 = &#123;x : 9, y : 0&#125;;</span><br><span class="line">// point !== point2 as two refer to different object</span><br><span class="line"></span><br><span class="line">let p2    = &#123;x : point.x, y : point.y + 1&#125;;    // Initialize using other object</span><br><span class="line">let book  = &#123;</span><br><span class="line">    name = &quot;A book&quot;;</span><br><span class="line">    &quot;main title&quot; = &quot;title&quot;;</span><br><span class="line">    &quot;object-name&quot; = &quot;book&quot;;         // The property have white space, hyphen, thus uses string literal form</span><br><span class="line">    author : &#123;</span><br><span class="line">        x : &quot;David&quot;, y : &quot;Zhou&quot;;    // Of course object can include object</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Second method is create object using <strong>new</strong>, the new keyword must be followed by a <strong>constructor function</strong>. JavaScript build-in type included the constructor </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let o = new Object();</span><br><span class="line">let a = new Array();</span><br><span class="line">let m = new Map();</span><br><span class="line">let d = new Date();</span><br></pre></td></tr></table></figure>
-
-<p>Third method <strong>Object.create()</strong> creates a new object, uses its first argument as the prototype of that object, and second argument describe property of new object, </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let o = Object.create(&#123;x : 1, y : 2&#125;);          // Create o inherited from object &#123;x : 1, y : 2&#125;</span><br><span class="line">let invalid = Object.create(null);              // Special one, invalid&#x27;s property is null which means it won&#x27;t inherited prototye from object</span><br><span class="line">                                                // And so this object can&#x27;t inherits many operation such as to_string()</span><br><span class="line">let empty = Object.create(Object.prototype);    // This is a valid empty object, still can do what Object type can do</span><br></pre></td></tr></table></figure>
-
-<p>One example of usage is to use this to create a new object that inherits from other object, and pass the newly created object to the function</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;x : 1 , y : &quot;word&quot;&#125;;</span><br><span class="line">function(Object.create(obj));   // Instead of pass object &quot;obj&quot;, we passed an object that inherited &quot;obj&quot; meant it have all property &quot;obj&quot; have and is distinct from it</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="6-3-Querying-and-Setting-Properties"><a href="#6-3-Querying-and-Setting-Properties" class="headerlink" title="6.3 Querying and Setting Properties"></a>6.3 Querying and Setting Properties</h3><h5 id="Access-property"><a href="#Access-property" class="headerlink" title="Access property"></a>Access property</h5><p>To obtain value of all property, it can use ‘.’ or ‘[]’.</p>
-<ul>
-<li>To use ‘.’, it must followed by name without space, hyphen, </li>
-<li>use ‘[]’ it must followed by something that can be convert to string, or a value or a symbol and that string&#x2F;number&#x2F;symbol correspond to the property.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">book.name;</span><br><span class="line">book[&quot;name&quot;];       // Legel</span><br><span class="line">book[&quot;main title&quot;];       // Legel</span><br><span class="line"></span><br><span class="line">let x = &quot;name&quot;;</span><br><span class="line">book[x];            // Legel, access book.name</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The way using ‘.’ is aligh with must strong typed language, and since it uses the identifier which isn’t a type in JS language, it can’t be modified. On the other hand, using ‘[]’ accept anything that can be converted to string, and it can be manipuated. In some case, we won’t able to know the identifier’s name in advance and so one must use ‘[]’ which gives much more flexibility. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// One demonstraction of using string, as in this case the stockname can be determine prior program run</span><br><span class="line">function addStock(portfolio, stockname, share) &#123;</span><br><span class="line">    portfolio[stockname] = shares;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Combination of &#x27;[]&#x27; and for/in loop is very useful for access, modify property</span><br><span class="line">function computeValue(portfolio) &#123;</span><br><span class="line">    let sum = 0.0;</span><br><span class="line">    for (stock in portfolio) &#123;</span><br><span class="line">        let share = portfolio[stock];</span><br><span class="line">        let price = getQuote(stock);</span><br><span class="line">        total == share * price;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h5><p>JavaScript object have a set of “own property” and a set of “Inherited property “. When search property <strong>x</strong> from object <strong>o</strong>, JavaScript will first inspect if <strong>x</strong> is <strong>o</strong>‘s own property, if it’s not, it will then repeat this process on <strong>o</strong>‘s prototype until it either found the property or the prototype is <strong>null</strong> which meant it’s the fundamental prototype. </p>
-<p>Assign same property name will always create or reassign the <strong>own property</strong>, the property that exist in <strong>inherited property</strong> will be hidden if <strong>own property</strong> have same name. When assignment, <strong>inherited property</strong> only examined to determine if assignment is allowed. For example, if name is read-only property for prototype, then the assignment is not allowed. However, if it’s allowed, it will create a new same name <strong>own property</strong> and never modify the prototype’s property. The only exception is when property is a <strong>accessor</strong> property. Detail in 6.10.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;&#125;;                 // Create an empty object &quot;o&quot;, o&#x27;s prototype is build-in “object”</span><br><span class="line">o.x = 3;                    // Add property x</span><br><span class="line">let p = Object.create(o);   // p inherits from o</span><br><span class="line">p.y = 1;</span><br><span class="line">let q = Object.create(p);   // q inherits from q </span><br><span class="line"></span><br><span class="line">let f = q.toString();       // toString inherits from q&#x27;s prototype, o</span><br><span class="line">q.z = q.x + q.y;            // legel, x, y are property from q&#x27;s prototype chain </span><br><span class="line">q.x = 2;                    // q now have own property x, z the o&#x27;s x being hidden</span><br></pre></td></tr></table></figure>
-
-<h5 id="Property-Access-Error"><a href="#Property-Access-Error" class="headerlink" title="Property Access Error"></a>Property Access Error</h5><p>Attemp to access object will return <strong>undefined</strong> for the property doesnt exist. However, access property within <strong>undefined</strong> or <strong>null</strong> will cause error. Use <strong>?.</strong> or <strong>&amp;&amp;</strong> operator to guard this kind of error. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let surname = book?.author?.surname;</span><br></pre></td></tr></table></figure>
-
-
-<p>–Attemp to set object on <strong>null</strong> or <strong>undefined</strong> also cause TypeError, set other value cause problem when some property is read-only and cannot set. –</p>
-<h3 id="6-4-Deleting-Property"><a href="#6-4-Deleting-Property" class="headerlink" title="6.4 Deleting Property"></a>6.4 Deleting Property</h3><p><strong>Delete</strong> remove property, it evaluated true in following case</p>
-<ol>
-<li>Delete property successful. </li>
-<li>Delete did nothing. (Property do not exist, property isnt own property)</li>
-<li>Delete is meaningless.</li>
-</ol>
-<p>It fail at following case</p>
-<ol>
-<li>Property is non-configurable. Fail to delete, and evaluated as fail.</li>
-</ol>
-<h3 id="6-5-Testing-Property"><a href="#6-5-Testing-Property" class="headerlink" title="6.5 Testing Property"></a>6.5 Testing Property</h3><p>Here is three ways to examine if the property is within object, using either string or symbol.</p>
-<ol>
-<li><strong>in</strong> operator return true is property exist either in <strong>own property</strong> or <strong>inherited property</strong>. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;x : 1&#125;;</span><br><span class="line">&quot;x&quot; in o;           // =&gt; true</span><br><span class="line">&quot;y&quot; in o;           // =&gt; false</span><br><span class="line">&quot;toString&quot; in o;    // =&gt; true</span><br></pre></td></tr></table></figure></li>
-<li><strong>hasOwnProperty()</strong> only test own object<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;x : 1&#125;;</span><br><span class="line">o.hasOwnProperty(&quot;x&quot;);           // =&gt; true</span><br><span class="line">o.hasOwnProperty(&quot;y&quot;);           // =&gt; false</span><br><span class="line">o.hasOwnProperty(&quot;toString&quot;);    // =&gt; false</span><br></pre></td></tr></table></figure></li>
-<li><strong>propertyIsEnumerable()</strong> only test own object and check if attribute is <strong>enumerable</strong> will be explore in chapter 14<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;x : 1&#125;;</span><br><span class="line">o.propertyIsEnumerable(&quot;x&quot;);           // =&gt; true</span><br><span class="line">o.propertyIsEnumerable(&quot;y&quot;);           // =&gt; false</span><br><span class="line">o.propertyIsEnumerable(&quot;toString&quot;);    // =&gt; false</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>And another way to examine is to check if property is undefined. </p>
-<h3 id="6-6-Enumerating-Properties"><a href="#6-6-Enumerating-Properties" class="headerlink" title="6.6 Enumerating Properties"></a>6.6 Enumerating Properties</h3><p>There are few ways to examine enumerable property. The <strong>for&#x2F;in</strong> loop runs the body of loop once for all enumerable property (own or inherited), assigning name to the variable </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;</span><br><span class="line">    x : 1,</span><br><span class="line">    y : 3,</span><br><span class="line">    z : 2,</span><br><span class="line">&#125;;</span><br><span class="line">o.propertyIsEnumerable(&quot;toString&quot;)  // =&gt; false, build-in method have enumerable set false</span><br><span class="line"></span><br><span class="line">for (let i in o) &#123;</span><br><span class="line">    // Access x, y ,z own added property default to be enumerable</span><br><span class="line">    // i will be string of property&#x27;s name</span><br><span class="line">    console.log(i);</span><br><span class="line"></span><br><span class="line">    // You can further check if i is own </span><br><span class="line">    if (o.hasOwnProperty(i)) &#123;</span><br><span class="line">        console.log(`o do have property $&#123;i&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">    if (typeof o.i === &quot;function&quot;) &#123;</span><br><span class="line">        console.log(`o do have method $&#123;i&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>As an alternative, one can first get an array of property names, then using <strong>for&#x2F;of</strong> loop to access the array, the following method all gives only own property</p>
-<ul>
-<li><strong>Object.keys()</strong> return an array of names of the enumerable own properties that are string(does not include symbol).</li>
-<li><strong>Object.getOwnPropertyName()</strong> works as <strong>Object.keys()</strong> but include non-enumerable own properties as well (still not include symbol). </li>
-<li><strong>Object.getOwnPropertySymbol()</strong>, return name of symbol, enumerable and non-enumerable.</li>
-<li><strong>Object.ownKey()</strong>, return every own property.</li>
-</ul>
-<p>The rules of order are given below</p>
-<ul>
-<li>Property name are non-negative will interpret as integer, put first and order by size.</li>
-<li>Property name are string, ordered by the sequence added to the object.</li>
-<li>Property name are symbol, ordered by the sequence added to the object.</li>
-</ul>
-<p><strong>for&#x2F;in()</strong> loop will not tightly specific this order, the implementation will typically follow the above then repeat same process on the chained prototype. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;</span><br><span class="line">    a  : [1,2,3,4],</span><br><span class="line">    x  : 1,</span><br><span class="line">    y  : 3,</span><br><span class="line">    z  : 2,</span><br><span class="line">    1  : &quot;test legel&quot;,</span><br><span class="line">    12 : &quot;test legel&quot;,</span><br><span class="line">&#125;;</span><br><span class="line">o.addEnd = &quot;Add&quot;;</span><br><span class="line"></span><br><span class="line">// [ &#x27;1&#x27;, &#x27;12&#x27;, &#x27;a&#x27;, &#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;, &#x27;addEnd&#x27; ]</span><br><span class="line">let ar = Object.keys(o);</span><br><span class="line">console.log(ar);</span><br><span class="line"></span><br><span class="line">// Sequence then will be </span><br><span class="line">// 1, 12, a, x, y, z, addEnd</span><br><span class="line">for (let i in o) &#123;</span><br><span class="line">    console.log(i);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="6-7-Extending-Object"><a href="#6-7-Extending-Object" class="headerlink" title="6.7 Extending Object"></a>6.7 Extending Object</h3><p>A common operation in JS is needing to copy the properties of one object to another, and JavaScript have build-in <strong>Object.assign()</strong>,</p>
-<p><strong>Object.assign()</strong> takes two or more arguments and will copy-set property from second argument to the first argument, it will override property is the name is the same. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;</span><br><span class="line">    x : 1,</span><br><span class="line">    y : 3,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let defaults = &#123;</span><br><span class="line">    x : 0,</span><br><span class="line">    y : 0,</span><br><span class="line">    z : 0,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Object.assign(o, defaults);</span><br><span class="line">console.log(o);</span><br><span class="line"></span><br><span class="line">// To avoid override original property</span><br><span class="line">o = Object(&#123;&#125;, defaults, o);</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-8-Serize-Object"><a href="#6-8-Serize-Object" class="headerlink" title="6.8 Serize Object"></a>6.8 Serize Object</h3><p>Covered in detail 11.6.</p>
-<h3 id="6-9-Object-Methods"><a href="#6-9-Object-Methods" class="headerlink" title="6.9 Object Methods"></a>6.9 Object Methods</h3><p>Unless explicitly created by <strong>Object.create(null)</strong>, object in JavaScript have inherits from <strong>Object.prototype</strong>. The <strong>Object.prototyp</strong> have a handful useful method, which describe in this section</p>
-<p>Covered in previous section,  </p>
-<ul>
-<li><strong>hashOwnProperty()</strong></li>
-<li><strong>propertyIsEnumerable()</strong><br>and static function defined on <strong>Object</strong> constructor</li>
-<li><strong>Object.create()</strong></li>
-<li><strong>Object.key()</strong></li>
-</ul>
-<h5 id="toString-and-to-LocaleString"><a href="#toString-and-to-LocaleString" class="headerlink" title="toString() and to LocaleString()"></a>toString() and to LocaleString()</h5><p><strong>toString()</strong> method takes no argument, and it will convert object to string whenever the conversion is needed eg(+, method expect string). The default method only provide minimal info, so sometimes you would define ur own <strong>toString()</strong>,</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let s = &#123;x : 1, y : 2&#125;;</span><br><span class="line">console.log(s.toString());          // =&gt; [object Object] (eg super unuseful)</span><br><span class="line"></span><br><span class="line">// Define own toString</span><br><span class="line">let point = &#123;</span><br><span class="line">    x : 1,</span><br><span class="line">    y : 2,</span><br><span class="line">    toString : function() &#123;return `(x : $&#123;this.x&#125;, y : $&#123;this.y&#125;)`&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">console.log(point.toString());      // =&gt; (x : 1, y : 2)</span><br></pre></td></tr></table></figure>
-
-<p><strong>localeString()</strong> is like above, but preserve some localize characteric. An example would be date, number class’s <strong>localeString()</strong> will format according to local conversion. For the default, the object’s <strong>localeString()</strong> is just calling <strong>toString()</strong>. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// Define own toString</span><br><span class="line">let point = &#123;</span><br><span class="line">    x : 1000,</span><br><span class="line">    y : 2000,</span><br><span class="line">    toString : function() &#123;return `(x : $&#123;this.x&#125;, y : $&#123;this.y&#125;)`&#125;,</span><br><span class="line">    toLocaleSrting : function() &#123;</span><br><span class="line">        &#123;return `(x : $&#123;this.x.toLocaleString()&#125;, y : $&#123;this.y.toLocaleString()&#125;)`&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(point.toString());      // =&gt; (x : 1,000, y : 2,000)</span><br></pre></td></tr></table></figure>
-
-<h5 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h5><p>The <strong>valueOf()</strong> is used in context when a primitive value is needed, typically a number. The default <strong>valueOf()</strong> don’t have anything meaningful, some build-in classes does define meaningful <strong>valueOf()</strong> such as date convert to number, which allows &lt; and &gt; to be meaningful. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// Define own valueOf to be the distance</span><br><span class="line">let point = &#123;</span><br><span class="line">    x : 1000,</span><br><span class="line">    y : 2000,</span><br><span class="line">    valueOf : function() &#123;return Math.hypot(this.x, this.y); &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// And now we can have meaningful compare</span><br><span class="line">if (point.valueOf() &gt; 100) &#123;</span><br><span class="line">    console.log(&quot;point is out of 100 meter radius&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="toJSON-method"><a href="#toJSON-method" class="headerlink" title="toJSON() method"></a>toJSON() method</h5><p><strong>Object.prototype</strong> does not define <strong>toJSON()</strong>, but <strong>JSON.stringify()</strong> method does look if <strong>toJSON</strong> exist, and invoked if so. </p>
-<h3 id="Extended-Object-Literal-Syntax"><a href="#Extended-Object-Literal-Syntax" class="headerlink" title="Extended Object Literal Syntax"></a>Extended Object Literal Syntax</h3><p>Some extended syntax</p>
-<h5 id="Shorthand-Properties"><a href="#Shorthand-Properties" class="headerlink" title="Shorthand Properties"></a>Shorthand Properties</h5><p>The object can define properties using other variable</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let x = 1, y = 1;</span><br><span class="line">let o = &#123;x , y, &#125;;</span><br><span class="line">console.log(o.x + o.y); // =&gt; 2</span><br></pre></td></tr></table></figure>
-
-<h5 id="Computed-Property-Names"><a href="#Computed-Property-Names" class="headerlink" title="Computed Property Names"></a>Computed Property Names</h5><p>Suppose you want to create property that can’t be decide statically, they will be dynamically determined and stored in variable, you have to create object and use <strong>[]</strong> to add these property. And <strong>ES6</strong> have feature for you to do <strong>[]</strong> in create process</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const PROPERTY_NAME = &quot;P1&quot;;</span><br><span class="line">function computePropertyName() &#123;return &quot;P&quot; + 2;&#125;</span><br><span class="line"></span><br><span class="line">let p = &#123;</span><br><span class="line">    [PROPERTY_NAME] : 1,</span><br><span class="line">    [computePropertyName()] : 2,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(p); // =&gt; &#123; P1: 1, P2: 2 &#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Symbols-as-Property-Names"><a href="#Symbols-as-Property-Names" class="headerlink" title="Symbols as Property Names"></a>Symbols as Property Names</h5><p>This will be covered later, as I don’t fully understand how symbol works</p>
-<h5 id="Spread-Operator"><a href="#Spread-Operator" class="headerlink" title="Spread Operator"></a>Spread Operator</h5><p><strong>…</strong> can be used inside an object literal that “spread out” the property, <strong>…</strong> is not a operator rather than a special-case suntax that available only within object literal, it used in other JS context, but only do “spread” in object literal context. If the property name overlap, the value of property comes with the ones appear at the last.</p>
-<p>From my point of view, this might be an alternative useful tool for extending.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let position = &#123;x : 1, y : 0&#125;;</span><br><span class="line">let dimensions = &#123;width : 0, height : 3&#125;;</span><br><span class="line"></span><br><span class="line">// Note used in object literal</span><br><span class="line">let rect = &#123;... position, ...dimensions&#125;;</span><br><span class="line"></span><br><span class="line">let position2 = &#123;x : 2&#125;;</span><br><span class="line">let rect2 = &#123;...position, ...dimensions, ...position2&#125;;</span><br><span class="line">console.log(rect2.x);       // =&gt; 2</span><br></pre></td></tr></table></figure>
-
-<p>The spread operator have time compleixty <strong>O(n)</strong> for n property, so try not use it in nested loop.</p>
-<h5 id="Shorthand-Methods"><a href="#Shorthand-Methods" class="headerlink" title="Shorthand Methods"></a>Shorthand Methods</h5><p>In <strong>ES6</strong>, it allows us to define method much more succinct,</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// Normal</span><br><span class="line">let obj = &#123;</span><br><span class="line">    name   : &quot;object&quot;,</span><br><span class="line">    side   : 10,</span><br><span class="line">    area   : function() return 22; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// shorter</span><br><span class="line">let obj = &#123;</span><br><span class="line">    name   : &quot;object&quot;,</span><br><span class="line">    side   : 10,</span><br><span class="line">    area() &#123; return 22; &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>The name of function are identical to the property’s rule, it allows variable, space and symbol. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const FUN_NAME = &quot;name&quot;;</span><br><span class="line">const symbol   = Symbol();</span><br><span class="line"></span><br><span class="line">let weirdMethod &#123;</span><br><span class="line">    [FUN_NAME](x)  &#123;return x;&#125;,</span><br><span class="line">    [symbol](x)    &#123;return x;&#125;,</span><br><span class="line">    &quot;- - Weird&quot;(x) &#123;return x;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Property-Getters-and-Stters"><a href="#Property-Getters-and-Stters" class="headerlink" title="Property Getters and Stters"></a>Property Getters and Stters</h5><p>JavaScript support <strong>accessor</strong> which have one or two accessor methods: a <strong>getter</strong> or a <strong>setter</strong>, basically it defines another property that you can define own set of rules for accessing the property, depend on your implementation. The idea of <strong>accessor</strong> is to build up an abstraction layer, and provides an opportunity for validation check (sometimes you won’t want user access it directly).</p>
-<p>When a program queries a values of an accessor property, JS invoke <strong>getter</strong> method, similarly when set a value of an accessor property, JS invokes <strong>setter</strong> method. If a accessor property only have <strong>getter</strong>, it’s read-only and if an accessor property only have <strong>setter</strong>, it’s write only. </p>
-<p>The syntax for deine is like the following</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;</span><br><span class="line">    // An ordinary data property</span><br><span class="line">    dataProp : &quot;value&quot;,</span><br><span class="line"></span><br><span class="line">    get accessProp()      &#123;return  this.dataProp; &#125;,</span><br><span class="line">    set accessProp(value) &#123;this.dataProp = value; &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(o.accessProp);  // =&gt; value</span><br><span class="line">o.accessProp = 3;</span><br><span class="line">console.log(o.accessProp);  // =&gt; 3</span><br></pre></td></tr></table></figure>
       
 
       
@@ -334,18 +209,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/06/08/COMP1531-team/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/08/29/JS-DOM/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          COMP1531 team
+          JS-DOM
         
       </div>
     </a>
   
   
-    <a href="/2022/06/04/JavaScript-The-Definitive-Guide-Chapter-5-Note/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript The Definitive Guide Chapter 5 Note</div>
+    <a href="/2022/06/23/Linux-Command-Line-and-Shell-Scripting-Bible-Chapter-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux Command Line and Shell Scripting Bible Chapter 1</div>
       <i class="icon-circle-right"></i>
     </a>
   

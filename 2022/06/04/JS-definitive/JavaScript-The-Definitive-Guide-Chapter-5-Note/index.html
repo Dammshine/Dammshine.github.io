@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>JavaScript The Definitive Guide Chapter 8 Note | David&#39;s Hexo Blog</title>
+  <title>JavaScript The Definitive Guide Chapter 5 Note | David&#39;s Hexo Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="8.0 Introduction to Function A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as parameter. Function accept values, known as ar">
+  <meta name="description" content="As said, david&#39;s blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript The Definitive Guide Chapter 8 Note">
-<meta property="og:url" content="http://example.com/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/index.html">
+<meta property="og:title" content="JavaScript The Definitive Guide Chapter 5 Note">
+<meta property="og:url" content="http://example.com/2022/06/04/JS-definitive/JavaScript-The-Definitive-Guide-Chapter-5-Note/index.html">
 <meta property="og:site_name" content="David&#39;s Hexo Blog">
-<meta property="og:description" content="8.0 Introduction to Function A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as parameter. Function accept values, known as ar">
+<meta property="og:description" content="As said, david&#39;s blog">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-13T00:24:55.000Z">
-<meta property="article:modified_time" content="2022-06-20T09:37:36.400Z">
+<meta property="article:published_time" content="2022-06-04T06:07:45.000Z">
+<meta property="article:modified_time" content="2022-06-04T06:07:45.273Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -165,88 +165,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript-The-Definitive-Guide-Chapter-8-Note" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JS-definitive/JavaScript-The-Definitive-Guide-Chapter-5-Note" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript The Definitive Guide Chapter 8 Note
+      JavaScript The Definitive Guide Chapter 5 Note
     </h1>
   
 
         
-        <a href="/2022/06/13/JavaScript-The-Definitive-Guide-Chapter-8-Note/" class="archive-article-date">
-  	<time datetime="2022-06-13T00:24:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-13</time>
+        <a href="/2022/06/04/JS-definitive/JavaScript-The-Definitive-Guide-Chapter-5-Note/" class="archive-article-date">
+  	<time datetime="2022-06-04T06:07:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="8-0-Introduction-to-Function"><a href="#8-0-Introduction-to-Function" class="headerlink" title="8.0 Introduction to Function"></a>8.0 Introduction to Function</h3><ul>
-<li>A function is a block of code can be execute any number of time. Function definition includes a list of identifier, known as <strong>parameter</strong>. Function accept values, known as <strong>argument</strong>. (Not understanding by now)</li>
-<li>Function in object is <strong>method</strong>.</li>
-<li>In JS, function is object, so it can be manipuated.</li>
-<li>JS function defintion can be nested within other function, and they have access to any variables that are in scope where they are defined.</li>
-</ul>
-<h3 id="8-1-Definition-of-Function"><a href="#8-1-Definition-of-Function" class="headerlink" title="8.1 Definition of Function"></a>8.1 Definition of Function</h3><p>There are several ways to define function, using <strong>functon</strong> and <strong>arrow-function</strong> is encounted in previous section. Inside the class, <strong>6.10.5 and 6.10.6</strong> covers the method, and getter, setter function. </p>
-<p>Special kind of function, <strong>generator function</strong> and <strong>async function</strong> will be covered in later section&#x2F;</p>
-<h5 id="Function-Declarations"><a href="#Function-Declarations" class="headerlink" title="Function Declarations"></a>Function Declarations</h5><p>Function declaration consist of keyword <strong>function</strong> followed by these component,</p>
-<ul>
-<li>An identifier that names a function. </li>
-<li>A pair of parentheses around comma-seperated list of identifer as the <strong>parameter</strong> name.</li>
-<li>A pair of curly braces, with statements. The coding block of function, also known as <strong>body</strong>.</li>
-</ul>
-<p>JS function become a variable, that will be <strong>hoisted</strong> to the top of enclosing script. It have behavior similar to variable declared using <strong>var</strong> keyword. </p>
-<p>JS return will stop the function and return the expression. If expression is empty, or no return statement, it would then return undefined.</p>
-<p>Prior to ES6, function are only allowed to define at the top. For ES6, it’s allowed but only visible within the block</p>
-<h5 id="Function-Expression"><a href="#Function-Expression" class="headerlink" title="Function Expression"></a>Function Expression</h5><p>Function expression are thoes function definition without the identifier, a using case have seen is when we define <strong>inline</strong> function. A function varibale actually declared a function object and assign to that varibale, but it is up to you to assign a newly defined function object to a const, variable if you are gonna refer it many times.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// This function expression defines a function square the parameter,</span><br><span class="line">// abd we assign it to const, const is better practice than variable</span><br><span class="line">const square = function(x) &#123; return x * x; &#125;;</span><br><span class="line"></span><br><span class="line">// This function expression included a name, the local scope of function will binding of that name to the function object</span><br><span class="line">// Which is used for recursion</span><br><span class="line">const f = function fact(x) &#123;if (x &lt;= 1) return 1; else return x * fact(x-1);&#125;;</span><br><span class="line"></span><br><span class="line">// function can be used as argument to other function</span><br><span class="line">// known as inline function</span><br><span class="line"></span><br><span class="line">// functions can be defined and immediately invoked</span><br><span class="line">const square = (function(x) &#123; return x * x; &#125;)(10);</span><br></pre></td></tr></table></figure>
-
-<p>There is important difference between create <strong>function f()</strong> and assign function expression to variable <strong>f</strong>. The function will be “hoisted” so that it can be used before it is defined, it actually get created before code will run. On the other hand, it can’t for the variable case, because it doesn’t make sense to call, refer it before define it(or initialize it). </p>
-<h5 id="Arrow-Function"><a href="#Arrow-Function" class="headerlink" title="Arrow Function"></a>Arrow Function</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// arrow function have form</span><br><span class="line">//          paramter     function body</span><br><span class="line">const sum = (x, y)    =&gt; &#123;return x + y; &#125;;</span><br><span class="line"></span><br><span class="line">// And if the function body only have single return, one can omit the return and curly brace</span><br><span class="line">const sum = (x, y)    =&gt; x + y;</span><br><span class="line"></span><br><span class="line">// further more, if function only have one parameter, one can omit parantheis</span><br><span class="line">const double = x =&gt; 2 * x;</span><br><span class="line"></span><br><span class="line">// If no argument, one have to include an empty paranthesis</span><br><span class="line"></span><br><span class="line">// if the returned is an object, and only one line of return statement, </span><br><span class="line">// you need either put object literal into parenthesis, or give a explicit return</span><br><span class="line">const f = x =&gt; &#123; return &#123;value : x&#125;; &#125;;</span><br><span class="line">const g = x =&gt; (&#123;value : x&#125;);</span><br><span class="line"></span><br><span class="line">const invalid = x =&gt; &#123;value : x&#125;;       // returns nothing, it treat &#123;&#125; as body and value : x as the label statement</span><br></pre></td></tr></table></figure>
-
-<p>There are two key difference between arrow function and normal function</p>
-<ol>
-<li>Arrow inherits the value of <strong>this</strong> keyword from the emvironment they are defined</li>
-<li>Arrow don’t have <strong>prototype</strong> property, they can’t be used as constructor function for new classes.</li>
-</ol>
-<h5 id="Nested-functions"><a href="#Nested-functions" class="headerlink" title="Nested functions"></a>Nested functions</h5><p>Basically nested function can access the parameter, variable of function nested in. </p>
-<p>Will be looked back again in 8.6.</p>
-<h3 id="8-2-Invoking-Function"><a href="#8-2-Invoking-Function" class="headerlink" title="8.2 Invoking Function"></a>8.2 Invoking Function</h3><p>JS function will be invoked in following ways:</p>
-<ul>
-<li>As functions</li>
-<li>As methods</li>
-<li>As constructor (not yet encountered)</li>
-<li>Indirectly through their <strong>call()</strong> and <strong>apply()</strong> methods</li>
-<li>Implicitly, via JS language fewture that do not appear like normal function invocaton</li>
-</ul>
-<h5 id="Function-invocation-and-Method-invocation"><a href="#Function-invocation-and-Method-invocation" class="headerlink" title="Function invocation and Method invocation"></a>Function invocation and Method invocation</h5><p>The one important difference between two is <strong>this</strong> object refers. In non-strict mode, function invocation have <strong>this</strong> refers to <strong>global</strong> and it probably meant <strong>this</strong> have access to all variable definded in scope of <strong>global</strong>. Then, for strict mode, function invocation have <strong>this</strong> refers to <strong>undefined</strong>. </p>
-<p>For method invocation, <strong>this</strong> will refers to <strong>object</strong>.</p>
-<p>Another important thing, is <strong>this</strong> can be returned, however it can’t be assigned a value becasue it’s a keyword. </p>
-<h5 id="Syntax-highlight"><a href="#Syntax-highlight" class="headerlink" title="Syntax highlight"></a>Syntax highlight</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// Conditional invocation, </span><br><span class="line">// instead of</span><br><span class="line">(f != null &amp;&amp; f !== undefined) ? f(x) : undefined;</span><br><span class="line"></span><br><span class="line">// use</span><br><span class="line">f?.(x);</span><br><span class="line"></span><br><span class="line">// Always return this in ur function</span><br><span class="line">// and one can use function chaining</span><br><span class="line">new Square().x().y().size(211).draw();</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="Nested-function"><a href="#Nested-function" class="headerlink" title="Nested function"></a>Nested function</h5><p><strong>This</strong> keyword is not scoped the way variable are, nested function won’t inherit <strong>this</strong> value of the containing function, if function invoked as a nested function, it’s this would be either global or undefined. There are few ways to around this</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">let o = &#123;</span><br><span class="line">    m = function() &#123;</span><br><span class="line">        let self = this;</span><br><span class="line">        </span><br><span class="line">        function f() &#123;</span><br><span class="line">            // this is not defined,</span><br><span class="line">            // but can access self</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // if want to use self</span><br><span class="line">        // use arrow function</span><br><span class="line">        const f = () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // and function expression won&#x27;t be hoisted</span><br><span class="line">        // or use bind</span><br><span class="line">        const f  (function() &#123;</span><br><span class="line">            this === o;</span><br><span class="line">        &#125;).bind(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Constructor-Invocation"><a href="#Constructor-Invocation" class="headerlink" title="Constructor Invocation"></a>Constructor Invocation</h5><p>Covered in more detail in chapter 9.</p>
-<h5 id="Indirect-Invodation"><a href="#Indirect-Invodation" class="headerlink" title="Indirect Invodation"></a>Indirect Invodation</h5><p>Function have own method, <strong>call()</strong> and <strong>apply()</strong>, which allows to specify the <strong>this</strong> which allows simulate method although function isn’t. </p>
-<h5 id="Implicit-Function-Invocation"><a href="#Implicit-Function-Invocation" class="headerlink" title="Implicit Function Invocation"></a>Implicit Function Invocation</h5><ul>
-<li>Calling <strong>getter</strong>, <strong>settter</strong> method. </li>
-<li>When an object is used in a string context. <strong>toString()</strong> and <strong>valueOf()</strong>.</li>
-<li>Loop over elements.</li>
-<li>Template literal.</li>
-<li>Proxy Object.</li>
-</ul>
-<h3 id="Function-Arguments-and-Parameters"><a href="#Function-Arguments-and-Parameters" class="headerlink" title="Function Arguments and Parameters"></a>Function Arguments and Parameters</h3><ul>
-<li>default value. If argument provided is less than paraneter list, then the ones not provided will be ommited. Setting default will give default value if argument not provided, the default value can literally be anything, include using argument is specified. </li>
-<li>rest (syntax …), allows arbitary number of arguments. The argument more than specified argument will be initialize as an array. And that’s not same as spread operator.</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// a&#x27;s default is 3, it will be created a initialize 3 if only one argument provided</span><br><span class="line">function getProperty(o, a = 3) &#123;</span><br><span class="line">    return a + o;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function max(i, ...rest) &#123;</span><br><span class="line">    let max = i;</span><br><span class="line">    for (num of rest) &#123;</span><br><span class="line">        if (num &gt; max) max = num;</span><br><span class="line">    &#125;</span><br><span class="line">    return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
       
 
       
@@ -267,18 +206,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/06/23/Linux-Command-Line-and-Shell-Scripting-Bible/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/06/04/JS-definitive/JavaScript-The-Definitive-Guide-Chapter-6-Note/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Linux Command Line and Shell Scripting Bible
+          JavaScript The Definitive Guide Chapter 6 Note
         
       </div>
     </a>
   
   
-    <a href="/2022/06/11/JavaScript-The-Definitive-Guide-Chapter-7-Note/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript The Definitive Guide Chapter 7 Note</div>
+    <a href="/2022/05/27/JS-definitive/JavaScript-The-Definitive-Guide-Chapter-1-Note/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript The Definitive Guide Chapter 2 Note</div>
       <i class="icon-circle-right"></i>
     </a>
   

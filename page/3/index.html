@@ -165,6 +165,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Graph-Algorithm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/28/Graph-Algorithm/">Graph Algorithm</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/28/Graph-Algorithm/" class="archive-article-date">
+  	<time datetime="2022-04-28T04:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>Ideology of DFS search is to dig as deep as it goes. It normally implemented using recursion, can using stack to improve it’s performance. It will also generate <strong>DFS forest</strong>, which will be a group of trees in the graph, each indicate a connected component. </p>
+<p>The performance of DFS search normally is O(V + E) or O(V^2) as it inspect each vertex at most once. </p>
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>Ideology of BFS is to visit the neighbour in a consistent fashion. This algorithm is useful for path finding as it garunteed the shortest path in undirected graph. </p>
+<p>The performance of DFS search normally is O(V + E) or O(V^2) as it inspect each vertex at most once. </p>
+<h2 id="Cycle-Detection"><a href="#Cycle-Detection" class="headerlink" title="Cycle Detection"></a>Cycle Detection</h2><p>Cycle detection is a basic problem. It normally implemented using DFS search, the maths behind it is </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G has a cycle  &lt;=&gt;  G has a back edge</span><br></pre></td></tr></table></figure>
+
+<p>Along construction of DFS forest, back-edge is thoes edge that connect to the ancestor node that isn’t the parent. (When graph is directed graph, the cycle detection getting more tricky. <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/261573/best-algorithm-for-detecting-cycles-in-a-directed-graph">https://stackoverflow.com/questions/261573/best-algorithm-for-detecting-cycles-in-a-directed-graph</a>) </p>
+<p>The general algorithm for undirected graph would be </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">bool isDAGHelper(Graph g, int v, int p, int *visit, int size) &#123;</span><br><span class="line">	// Modify visit status</span><br><span class="line">	visit[v] = 1;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (GraphIsAdjacent(g, v, i) == <span class="literal">true</span> &amp;&amp; visit[i] == 0) &#123;</span><br><span class="line">			<span class="keyword">if</span> (isDAGHelper(g, i, v,visit, size) == <span class="literal">true</span>) &#123;</span><br><span class="line">				<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (GraphIsAdjacent(g, v, i) == <span class="literal">true</span> &amp;&amp; i != p) <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool hasCycle(Graph g) &#123;</span><br><span class="line">	int size = GraphNumVertices(g);</span><br><span class="line">	int *visit = calloc(size + 1, sizeof(int));</span><br><span class="line">	</span><br><span class="line">    </span><br><span class="line">    // When the graph is directed, this algorithm wont work because the back edge it detecting may be a cross edge</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (visit[i] == 0 &amp;&amp; isDAGHelper(g, i, i,visit, size) == <span class="literal">true</span>) &#123;</span><br><span class="line">			free(visit);</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	free(visit);</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Connected-Component"><a href="#Connected-Component" class="headerlink" title="Connected Component"></a>Connected Component</h2><h2 id="Hamiltonian-path-and-circuit"><a href="#Hamiltonian-path-and-circuit" class="headerlink" title="Hamiltonian path and circuit"></a>Hamiltonian path and circuit</h2><h2 id="Euler-path-and-circuit"><a href="#Euler-path-and-circuit" class="headerlink" title="Euler path and circuit"></a>Euler path and circuit</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Graph</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/28/Graph-Algorithm/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-DFS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1055,153 +1155,6 @@ Now consider 2 cases
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/04/26/Function-Pointer/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Makefile-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/Makefile-0/">Makefile</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/26/Makefile-0/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:52:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
-<p>In C, the compiler have following stages</p>
-<ul>
-<li>Pre-processing<ol>
-<li>In this stage, the compiler will do things such as, macro substitution, testing for condition, directives and file inclusion.</li>
-</ol>
-</li>
-<li>Compilation<ol>
-<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
-</ol>
-</li>
-<li>Linking<ol>
-<li>In this stage, the compiler will link multiple programs as one program.</li>
-</ol>
-</li>
-</ul>
-<p>Gcc compiler, for compilering</p>
-<ol>
-<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
-<li>-E : This command gives pro-processed file.</li>
-<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
-<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
-</ol>
-<p><img src="/.com//c-stages.png" alt="Alt Text"></p>
-<p>Gcc compiler, for advanced</p>
-<ol>
-<li>-Werror: Will compile the source and show warning.</li>
-<li>-Wall  : Will check error, but treat all warning as error.</li>
-</ol>
-<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
-<ul>
-<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
-<li>Minimal re-compilation <ul>
-<li>Based on dependencies, and also the time of latest change.</li>
-</ul>
-</li>
-</ul>
-<p>A <strong>dependency</strong> specify</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
-<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
-<p>Few more things to note: </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
-<ul>
-<li>A <strong>target</strong> is always on a new line,<ul>
-<li>Followed by a ‘:’</li>
-<li>Followed by files that it depend on</li>
-<li>Make can also compile the target speicify in makefile</li>
-</ul>
-</li>
-<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
-<li>and must indented by a <strong>TAB</strong></li>
-</ul>
-</li>
-</ul>
-<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
-<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
-<ul>
-<li>CC refers to the compiler (gcc in this case)</li>
-<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
-<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
-<li>One can also specifying own variable</li>
-</ul>
-<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/Makefile-0/">Show all >></a>
         </p>
       
 
