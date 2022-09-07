@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | David&#39;s Hexo Blog</title>
+  <title>COMP2521-week1 | David&#39;s Hexo Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="As said, david&#39;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="David&#39;s Hexo Blog">
-<meta property="og:url" content="http://example.com/archives/page/4/index.html">
+  <meta name="description" content="Lecture 1: General Outline This course is about general design, the theory learned in this course can be applied to any languages.  This course tests understanding to the theory.  Course goal Develop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COMP2521-week1">
+<meta property="og:url" content="http://example.com/2022/09/06/COMP2511/2511-week1/index.html">
 <meta property="og:site_name" content="David&#39;s Hexo Blog">
-<meta property="og:description" content="As said, david&#39;s blog">
+<meta property="og:description" content="Lecture 1: General Outline This course is about general design, the theory learned in this course can be applied to any languages.  This course tests understanding to the theory.  Course goal Develop">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-06T01:27:53.000Z">
+<meta property="article:modified_time" content="2022-09-07T03:25:03.592Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -163,480 +165,255 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-COMP2511/2511-week1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      COMP2521-week1
+    </h1>
+  
+
+        
+        <a href="/2022/09/06/COMP2511/2511-week1/" class="archive-article-date">
+  	<time datetime="2022-09-06T01:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Lecture-1-General-Outline"><a href="#Lecture-1-General-Outline" class="headerlink" title="Lecture 1: General Outline"></a>Lecture 1: General Outline</h3><ul>
+<li>This course is about general design, the theory learned in this course can be applied to any languages. </li>
+<li>This course tests understanding to the theory. </li>
+<li>Course goal<ul>
+<li>Develop appreciation for <strong>elegantly</strong>, <strong>flexible</strong>, <strong>maintainble</strong> and <strong>reusable system</strong>. </li>
+<li>Understanding difefrent method pradigm and methodologies, <ul>
+<li>Object-oriented Paradigm</li>
+<li>Functional Paradigm</li>
+<li>Concurrent Paradigm</li>
+</ul>
+</li>
+<li>In <strong>systematic</strong> apparoach. <ul>
+<li>Be able to follow <strong>systematic</strong> OO design <strong>process</strong>.</li>
+<li>Be able to interpret and use tools for OO design.</li>
+</ul>
+</li>
+<li>Understand the role of and apply widely used <strong>Design pattern</strong>, (not specific pattern, but categories of patterns)<ul>
+<li>Behavioural patterns </li>
+<li>Structural patterns</li>
+<li>Creational patterns</li>
+<li>Programming patterns (exceptions, generic programming)</li>
+<li>Testing patterns</li>
+</ul>
+</li>
+<li>Creating a medium-scale system from scrach<ul>
+<li>Be able to analysis, refactor and work with code started by someone else</li>
+<li>Create medium-scale systems using Java</li>
+</ul>
+</li>
+<li>Working with<ul>
+<li>Java</li>
+<li>VScode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Access outline<ul>
+<li>Class mark (15%) out of 60<ul>
+<li>Take 7 out of 8</li>
+<li>2 mark for participatioon</li>
+<li>6 part for lab exercise</li>
+<li>There are two weeks with no lab</li>
+</ul>
+</li>
+<li>Assignment 1 (20%)<ul>
+<li>Due week4</li>
+</ul>
+</li>
+<li>Project (Assignment 2) (25%)<ul>
+<li>In pair with Jacky</li>
+</ul>
+</li>
+<li>Assignment 3 (concurrency) (5%) + (5% bonus)</li>
+<li>Exam (35%)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Lecture-1-2-OOP-in-Java"><a href="#Lecture-1-2-OOP-in-Java" class="headerlink" title="Lecture 1,2 : OOP in Java"></a>Lecture 1,2 : OOP in Java</h3><ul>
+<li>OOP and Object-oriented Design<ul>
+<li>C++, C# and Java (Same cluster I would say)</li>
+</ul>
+</li>
+<li>Java introduction<ul>
+<li>Java is backward compatible, python is not.</li>
+<li>Java is Platform independent,<ul>
+<li>Code in python compile to java’s own byte-code and then translate to system.</li>
+<li>System will download indiviual JRE that interpret Java’s bytecode.</li>
+</ul>
+</li>
+<li>Interpreter and compiler<ul>
+<li>Java, python is interpreter, which transfer to bytecode, not machine code. (.java &#x3D;&gt; .class)<ul>
+<li>Interpreter can’t do that, as it can’t see the following code. </li>
+<li>It will do dynamic optimization, while running the code.</li>
+</ul>
+</li>
+<li>C is compiler, which transfer to machine code. <ul>
+<li>Compiler can optimize while generate machine code.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java’s platform<ul>
+<li>Multi-threaded (fast, use resource efficiently)</li>
+<li>Garbage collection system. </li>
+<li>Strong typed. (C is actually not, as u can treat byte as any form of data).  <ul>
+<li>Strong type and weak type.</li>
+<li>Dynamic type and static type.</li>
+</ul>
+</li>
+<li>Interpreter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="OOP-in-Java"><a href="#OOP-in-Java" class="headerlink" title="OOP in Java"></a>OOP in Java</h5><ul>
+<li>Object oriented Programming<ul>
+<li><strong>Action-oriented</strong><ul>
+<li>Focus is to do a task, break that task into smaller task and group those functions together, formed program.</li>
+</ul>
+</li>
+<li><strong>Object-oriented</strong><ul>
+<li>Focus on <strong>class</strong>. On creating own user-defined types called <strong>classes</strong></li>
+<li>Each class contains property and methods. </li>
+<li>OOP encusulates he above, those tied strongly together. </li>
+<li>Object have the property of <strong>information hiding</strong>. </li>
+<li>Instance of <strong>classes</strong> is <strong>object</strong>.</li>
+</ul>
+</li>
+<li>Generic type. (Iterator)</li>
+</ul>
+</li>
+</ul>
+<h5 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h5><ul>
+<li>A form of software <strong>resusability</strong> in which new classes are crated from existing classes, by absrobing their attributess and behaviours. </li>
+<li>Instead of define a completely new class. </li>
+<li>Add more attributes and method to the <strong>Sub-class</strong>. </li>
+<li><strong>Inhertance</strong> form tree-like <strong>hierarchical</strong>.</li>
+</ul>
+<p><strong>“Is-a”</strong>, describes inheritance relationship. </p>
+<ul>
+<li>Object of a subclass can be also treated as an object of the super class. Vice-versa isn’t true</li>
+</ul>
+<p><strong>Very important</strong><br>Don’t inheritance, unless <strong>all or most</strong> inheritance make sense. </p>
+<ul>
+<li>Circle is an oval. But circle have less property compare to oval. Should oval inherits circle?</li>
+</ul>
+<p><strong>“has-a”</strong> relationship, association relationship</p>
+<ul>
+<li>A class has an <strong>object from another class</strong> to store it’s sate or do work<ul>
+<li>Some generic algorithm is has?</li>
+</ul>
+</li>
+<li>“Has-a” relationshipare example of creating new classes by <strong>composition</strong> of existng classes.</li>
+</ul>
+<h5 id="Designing-a-class"><a href="#Designing-a-class" class="headerlink" title="Designing a class"></a>Designing a class</h5><ul>
+<li>Think of all function a class should offer. </li>
+<li>Always <strong>keep data private</strong>. To make it more flexible, as change this class do not affect other part of code. </li>
+<li>Consider <strong>different ways</strong> an object may be <strong>created</strong>.</li>
+<li>Always initialize data. </li>
+<li>Free up associated resources. </li>
+<li>Break up classes that have too many <strong>responsibilities</strong>.</li>
+</ul>
+<h5 id="Introduction-to-Classes-and-Object"><a href="#Introduction-to-Classes-and-Object" class="headerlink" title="Introduction to Classes and Object"></a>Introduction to Classes and Object</h5><p>Example a circle, </p>
+<ul>
+<li>Store info<ul>
+<li>Center coordinate</li>
+<li>Radius</li>
+<li>Pi (which should be stored?)</li>
+</ul>
+</li>
+<li>Store method<ul>
+<li>Circumference</li>
+<li>Area</li>
+</ul>
+</li>
+<li>Initialize , which is the constructor</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Circle</span> &#123;</span><br><span class="line">    <span class="comment">// Static associated with class</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">pi</span> <span class="operator">=</span> <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Instance variable, </span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> r;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getter and setter method not shown here</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Simple constructor</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">this</span>.y = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">this</span>.r = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> r)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">        <span class="built_in">this</span>.r = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Methods</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">circumference</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span> * pi * r;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">area</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pi * r * r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="super-and-this"><a href="#super-and-this" class="headerlink" title="super() and this()"></a>super() and this()</h5><p><strong>super()</strong> is the parent class’s constructor. </p>
+<h3 id="Personal-Objective-outline"><a href="#Personal-Objective-outline" class="headerlink" title="Personal Objective outline"></a>Personal Objective outline</h3><ol>
+<li>98+ for this course. (I need a very high Wam!!!)</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/28/AVL-tree/" class="archive-article-date">
-  	<time datetime="2022-04-28T01:01:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/28/AVL-tree/">AVL tree</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/27/Sorting/" class="archive-article-date">
-  	<time datetime="2022-04-26T19:51:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-27</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/09/07/MATH3411/3411-week1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          3411-week1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/06/COMP2511/COMP2521/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">COMP2511</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/27/Sorting/">Sorting</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Sorting</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/Tree/" class="archive-article-date">
-  	<time datetime="2022-04-26T09:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/Tree/">Tree</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/Stack-and-Queue/" class="archive-article-date">
-  	<time datetime="2022-04-26T08:30:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/Stack-and-Queue/">Stack and Queue</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ADT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/Function-Pointer/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:56:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/Function-Pointer/">Function Pointer</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/Makefile-0/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:52:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/Makefile-0/">Makefile</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Language</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/ADT/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/ADT/">ADT</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ADT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Theory</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/Performance-Analysis/" class="archive-article-date">
-  	<time datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/Performance-Analysis/">Performance Analysis</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Theory</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/26/Comp-2521-Revision-Plan/" class="archive-article-date">
-  	<time datetime="2022-04-26T02:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/26/Comp-2521-Revision-Plan/">Comp 2521 Revision Plan</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">COMP2521</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/25/My-blog/" class="archive-article-date">
-  	<time datetime="2022-04-25T04:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/25/My-blog/">My blog</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -660,8 +437,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
