@@ -165,6 +165,503 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Performance-Analysis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/26/Performance-Analysis/">Performance Analysis</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/26/Performance-Analysis/" class="archive-article-date">
+  	<time datetime="2022-04-26T05:03:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Analysis-of-Algorithm"><a href="#Analysis-of-Algorithm" class="headerlink" title="Analysis of Algorithm"></a>Analysis of Algorithm</h2><p><strong>Analyzing</strong> an algorithm, have come to mean of predicting the resource of algorithm required for size of problem. By analyzing several canidate algorithms, we can  identifying the most desirable one. </p>
+<p>There is a few terms need to be well defined here</p>
+<ol>
+<li><strong>Input size</strong>, the best notion for <strong>input size</strong> depend on the problem, such as for sorting number, the input size is number of integer as the input. </li>
+<li><strong>Running time</strong>, one should adopt the notion that our model of analysis assume CPU takes constant operation every seconds, thus <strong>running time</strong> can also be reconigized as the number of primititive operation that CPU supported. </li>
+<li><strong>Memory</strong>, one correlate of additional memory from input, that the algorithm required.</li>
+</ol>
+<h4 id="Order-of-growth"><a href="#Order-of-growth" class="headerlink" title="Order of growth"></a>Order of growth</h4><p>We shall make one more simplifying abstraction, which is the <strong>rate of growth</strong>, which is ignore all coefficent and smaller rate of growth term in estimating algorithm’s performance. When we look at input size large enough, it eventually will make only the order of growth of running time relevant. </p>
+<p>We now define big O notation, this will give us upper bound,<br>O(g(n)) &#x3D; {f(n) : there exist positive constant c and n0 such that f(n) &lt; c * g(n) for all n &gt; n0.}</p>
+<p>Suppose two function have same Big-Oh function, then two function have same order of growth. Furthemore, a bigger-order growth function can’t be Big-Oh function for a lower-order growth function. As there do not exist a positive constant n that can component the difference brought by the order-growth difference. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(n) is O(g(n)) <span class="keyword">if</span> f(n) is asymptotically less than or equal to g(n)</span><br><span class="line">f(n) is Ω(g(n)) <span class="keyword">if</span> f(n) is asymptotically greater than or equal to g(n)</span><br><span class="line">f(n) is Θ(g(n)) <span class="keyword">if</span> f(n) is asymptotically equal to g(n)</span><br></pre></td></tr></table></figure>
+<p>(<strong>Copied from Ashish’s lecture slide</strong>)</p>
+<h4 id="Empirical-Analysis"><a href="#Empirical-Analysis" class="headerlink" title="Empirical Analysis"></a>Empirical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Program the algorithm</li>
+<li>Generate different size of input</li>
+<li>Record time and plot</li>
+</ol>
+<p>Very inefficent. </p>
+<h4 id="Theoretical-Analysis"><a href="#Theoretical-Analysis" class="headerlink" title="Theoretical Analysis"></a>Theoretical Analysis</h4><p>Consist of step</p>
+<ol>
+<li>Using pseudocode to describe the algorithm, ignore detail and actual langauge syntx that is irrelevant to algorithm. </li>
+<li>Characterise the running time as a function of input size n.</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Theory</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/26/Performance-Analysis/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Comp-2521-Revision-Plan" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/26/Comp-2521-Revision-Plan/">Comp 2521 Revision Plan</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/26/Comp-2521-Revision-Plan/" class="archive-article-date">
+  	<time datetime="2022-04-26T02:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Plan-Outline"><a href="#Plan-Outline" class="headerlink" title="Plan Outline"></a>Plan Outline</h1><h2 id="Thoery-Part"><a href="#Thoery-Part" class="headerlink" title="Thoery Part"></a>Thoery Part</h2><ul>
+<li><strong>makefile</strong><ol>
+<li>Commands for compile fire</li>
+<li>Type of files</li>
+<li>Syntax for makefile</li>
+<li><strong>Core property for makefile</strong></li>
+</ol>
+</li>
+<li><strong>Analysis of algoritm</strong><ol>
+<li>Big O complexity</li>
+</ol>
+</li>
+<li><strong>ADT</strong></li>
+<li><strong>Function pointer</strong></li>
+</ul>
+<h2 id="Data-Structure-and-Algorithm-part"><a href="#Data-Structure-and-Algorithm-part" class="headerlink" title="Data Structure and Algorithm part"></a>Data Structure and Algorithm part</h2><ul>
+<li><p><strong>Stack and queue</strong></p>
+<ol>
+<li>Array implementation<ol>
+<li>Circular array</li>
+<li>Performance analysis</li>
+</ol>
+</li>
+<li>Linked list implementation</li>
+</ol>
+</li>
+<li><p><strong>Tree</strong></p>
+<ol>
+<li>Binary Search Tree<ol>
+<li>Property</li>
+<li>Implementation<ol>
+<li>Join two tree</li>
+<li>Deletion from BST</li>
+</ol>
+</li>
+<li>Performance analysis</li>
+<li>Possible improvement<ol>
+<li>Insert at root</li>
+<li>Partition</li>
+</ol>
+</li>
+<li>Tree Traversal</li>
+</ol>
+</li>
+<li>AVL Tree<ol>
+<li>Property</li>
+<li>Implementation <ol>
+<li>Insert</li>
+<li>Delete</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>2-3-4 Tree<ol>
+<li>Property<ol>
+<li>General B-tree terms</li>
+</ol>
+</li>
+<li>Implementation<ol>
+<li>Insertion to 2-3-4 Tree</li>
+</ol>
+</li>
+<li>Performance analysis</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>Graph</strong></p>
+<ol>
+<li>Type of graph<ol>
+<li>Directed &#x2F; Undirected</li>
+<li>Weight &#x2F; Unweighted</li>
+<li>Terminology used in graph<ol>
+<li>Euler’s path</li>
+<li>Hamiliton’s path</li>
+<li>Connected &#x2F; Complete Graph</li>
+<li>Clique</li>
+<li>Tree and Spanning Tree</li>
+<li>Forest</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Graph representation<ol>
+<li>Adjaceny Matrix</li>
+<li>Adjaceny List</li>
+<li>Memory cost analysis</li>
+</ol>
+</li>
+<li>Graph algorithm<ol>
+<li>DFS</li>
+<li>BFS</li>
+<li>Cycle Detection</li>
+<li>Connected Component</li>
+<li>Hamiltonian path and circuit</li>
+<li>Euler path and circuit</li>
+</ol>
+</li>
+<li>MST problem<ol>
+<li>Property behind greedy algorithm<ol>
+<li>Relaxation</li>
+<li>Greedy algorithm</li>
+</ol>
+</li>
+<li>Prim’s algorithm with performance analysis<ol>
+<li>Array implementation</li>
+<li>Heap implementation</li>
+<li>Fibnocci heap implementation</li>
+</ol>
+</li>
+<li>Kruskal’s algorithm with performance analysis<ol>
+<li>Cycle detection</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Shortest Path Problem<ol>
+<li><strong>Negative cycle discussion</strong></li>
+<li><strong>Bellman Ford’s algorithm</strong></li>
+<li>Dijistra’s algorithmn</li>
+<li>Performance analysis <ol>
+<li>Unweighted (Equivalent as connected component)</li>
+<li>Weighted</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>All Pair Shortest Path Problem</strong><ol>
+<li>Discussion about matrix multiplication<ol>
+<li>Ring in maths</li>
+</ol>
+</li>
+<li>Dijistra’s algorithm</li>
+<li>Floyd-warshall’s algorithm</li>
+</ol>
+</li>
+<li><strong>Topological Sort</strong><ol>
+<li>Property of DAG</li>
+<li>Cycle detection</li>
+<li>DFS</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>Sorting</strong></p>
+<ol>
+<li>General property of sorting<ol>
+<li>Stable&#x2F; unstable    </li>
+<li>Adaptive</li>
+</ol>
+</li>
+<li>O(n^2) sort<ol>
+<li>Insertion Sort<ol>
+<li>Shell Sort</li>
+</ol>
+</li>
+<li>Selection Sort</li>
+<li>Bubble Sort</li>
+<li>Summary of performance</li>
+</ol>
+</li>
+<li>O(n*log(n)) sort<ol>
+<li>Merge Sort<ol>
+<li>Recursive approach (Top  down)</li>
+<li>Iterative approach (Bottom up)</li>
+<li>Performance analysis</li>
+</ol>
+</li>
+<li>QuickSort<ol>
+<li>Naive quick sort</li>
+<li>Improved quick sort</li>
+<li>Performance analysis</li>
+</ol>
+</li>
+<li>HeapSort, <strong>will be discussed in heap</strong></li>
+</ol>
+</li>
+<li>Comparison Sort<ol>
+<li>Decision Tree model</li>
+<li>Lower bound for comparison sort</li>
+<li>non-comparative sorting algorithm<ol>
+<li><strong>Counting sort</strong></li>
+<li>Radix Sort</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>Heap</strong></p>
+<ol>
+<li>Property</li>
+<li>Implementation</li>
+<li>Application 1 : Priority queue</li>
+</ol>
+</li>
+<li><p><strong>Hashtable</strong></p>
+<ol>
+<li>Hash table<ol>
+<li>Chaining<ol>
+<li>Analysis for chaining</li>
+</ol>
+</li>
+<li>Open Addressing<ol>
+<li>Linear probing</li>
+<li><strong>Quadratic probing</strong></li>
+<li>Double Hashing</li>
+<li>Analysis for open addressing</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Hashing function<ol>
+<li>Division</li>
+<li><strong>Mutiplication</strong></li>
+<li><strong>Universal hashing</strong></li>
+<li><strong>Perfect Hashing</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>Tries (No idea right now)</strong></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/26/Comp-2521-Revision-Plan/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-My-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/25/My-blog/">My blog</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/25/My-blog/" class="archive-article-date">
+  	<time datetime="2022-04-25T04:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h2><p>The binary-heap structure is a complete binary-tree like array. By providing the index, one can find it’s parent, left child, right child.</p>
+<p>There are two kind of binary-heap, max-heap which is root greater than children, and vice versa for min-heap. </p>
+<p>We define height as same as BST. And heap have property</p>
+<ol>
+<li>Add element, remove element from Heap. O(log(n)).</li>
+<li>Build-heap, O(n)</li>
+<li>Heap-sort , O(nlog(n))</li>
+</ol>
+<p>In an array, the parent, child of index which denoting the node as the index, can be calculated. </p>
+<ol>
+<li>Parent(i) &#x3D; i &#x2F; 2</li>
+<li>left(i)   &#x3D; 2 * i</li>
+<li>right(i)  &#x3D; 2 * i + 1</li>
+</ol>
+<h2 id="Maintain-the-heap-property"><a href="#Maintain-the-heap-property" class="headerlink" title="Maintain the heap property"></a>Maintain the heap property</h2><p>Assume, the an array A satifsy heap property, with one index i added to the array. The left and right satisfy heap property, while index i do not. Then, heap will let this value float down</p>
+<p>Heapify(A, i)<br>l &#x3D; left(i)<br>r &#x3D; right(i)<br>choose largest among l, r and i.<br>If largest !&#x3D; i, exchange the value of i and largest<br>    Heapify(A, largest)</p>
+<p>The worst case is when the bottom level of tree is half full, in this case the running time will be T(n） &#x3D; T（3&#x2F;4 * n） + 1. </p>
+<h2 id="Building-a-heap"><a href="#Building-a-heap" class="headerlink" title="Building a heap"></a>Building a heap</h2><p>Prior heapify, we have an array. We can use heapify apply to every index that have child, and build up the heap. The sequence of visiting is from bottom and build up, as one can oberserve, the pre-condition fo MAX_HEAPIFY is it’s two children are already heap. By apply MAX-HEAPIFY from bottom, we can make sure this property will hold.</p>
+<p>BUILD_MAX_HEAP(A)<br>for (i &#x3D; A.size() &#x2F; 2 .. 1)<br>    MAX_HEAPIFY(A, i)</p>
+<p>Now, we shall start to analysis the correctness.</p>
+<ol>
+<li>Initialization. Prior the for loop, we can view the leave node in original array already being heapify as these nodes don’t have children, which makes it valid. Then we would have floor(A.size() &#x2F; 2) + 1 .. A.size(), are already heap. </li>
+<li>Maintenance. We can assume that before every MAX_HEAPIFY(A, i) executed, the index i + 1.. A.size() have already heapfiied. This will hold prior first iteration.  And then, the MAX-HEAPIFY(A, i) will make the array heapify from i .. A.size(). </li>
+<li>Termination. After last iteration, which would be i &#x3D; 1. We will have 1 .. A.size() being heapify. Thus, we conclude the heap being build.</li>
+</ol>
+<p>After analysis of correctness, we shall discuss the time complexity of BUILD_MAX_HEAP(A). </p>
+<p>Firstly, we can note that MAX_HEAPIFY(A, i) have timeplexity of at most O(log(n)), and it being called for abs(A.size() &#x2F; 2 .. 1) times, which is O(n) times. And it’s upper-bound would be O(n * log(n)). </p>
+<p>$\lfloor f \rfloor$</p>
+<p>Then, by oberving the time complexity of MAX_HEAPIFY(A, i) correlates to it’s position i (height of this position), we can further derive a tighter upperbound. By visualting a complete BST, one simple property we can ultilize is that there is at most floor(n &#x2F; 2 ^ h) nodes, in a given height. And, the running time of MAX_HEAPIFY(A, i) will be h.<br>Then, the running time would be sum of h [ max_height .. 1( h * (n &#x2F; 2 ^ h)) ]<br>                                         &#x3D; n * sum of h (h &#x2F; 2 ^ h )          (n is constant here )<br>                                         &#x3D; 2 * n                              (By sum of sequence)</p>
+<p>So that we have O(n). </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/25/My-blog/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

@@ -16,7 +16,7 @@
 <meta property="og:description" content="Lecture 1: General Outline This course is about general design, the theory learned in this course can be applied to any languages.  This course tests understanding to the theory.  Course goal Develop">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-06T01:27:53.000Z">
-<meta property="article:modified_time" content="2022-09-07T03:25:03.592Z">
+<meta property="article:modified_time" content="2022-09-12T00:45:02.829Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -346,6 +346,77 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Circle</span> &#123;</span><br><span class="line">    <span class="comment">// Static associated with class</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">pi</span> <span class="operator">=</span> <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Instance variable, </span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> r;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getter and setter method not shown here</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Simple constructor</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">this</span>.y = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">this</span>.r = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> r)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">        <span class="built_in">this</span>.r = r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Methods</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">circumference</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span> * pi * r;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">area</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pi * r * r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="super-and-this"><a href="#super-and-this" class="headerlink" title="super() and this()"></a>super() and this()</h5><p><strong>super()</strong> is the parent class’s constructor. </p>
+<h3 id="Java-Textbook"><a href="#Java-Textbook" class="headerlink" title="Java Textbook"></a>Java Textbook</h3><h5 id="First-3-chapters"><a href="#First-3-chapters" class="headerlink" title="First 3 chapters"></a>First 3 chapters</h5><p>A few things worth notice</p>
+<ol>
+<li>string in Java is immutable. And plain “&#x3D;&#x3D;” will compare as obejet.</li>
+<li>For mutable usage, use StringBuilder.</li>
+<li>Java’s commandline argument is exclude command and filename. </li>
+<li>Java’s char is 16bits. </li>
+<li>Java offers break label. </li>
+<li>Java offers bigInt.</li>
+</ol>
+<h5 id="Chapter-4-Object-and-Classes"><a href="#Chapter-4-Object-and-Classes" class="headerlink" title="Chapter 4 Object and Classes"></a>Chapter 4 Object and Classes</h5><p><strong>C++ Note</strong>:</p>
+<ul>
+<li>Should think Java’a variable as an anonymous pointer in C++. It can be uninitialize. (Default to be null)</li>
+<li>All Java objects lives on a heap.  </li>
+<li>Java don’t have copy constructor, assign constructor. It got <strong>clone()</strong> method but that’s it.</li>
+</ul>
+<p><strong>Date and localDate</strong>:</p>
+<ul>
+<li>Java designer decided to seperate the concerns of keeping date, and representing date. It is a good design, because it seperate the class to represent different concept. </li>
+<li>LocalDate class provide static method for creating <strong>localDate</strong> object. And provide ultility method that modify date, return new <strong>localDate</strong> for you. </li>
+<li><strong>Date</strong> class will give UTC format time. Java then deprecate it’s calender side method, as it replaced by <strong>localDate</strong> class.</li>
+</ul>
+<p><strong>Mutator and Accessor</strong>:</p>
+<ul>
+<li>Some method retrurns a new object.</li>
+<li>Some method will modify existing object being called. It’s called “<strong>mutator</strong>“. </li>
+<li>Some method will access properties stored in the object. It’s called “<strong>accessor</strong>“.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.DayOfWeek;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">App</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// Use this to creaye a new local date Object</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Capture current month and date</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">month</span> <span class="operator">=</span> date.getMonthValue();</span><br><span class="line">        <span class="type">int</span> <span class="variable">today</span> <span class="operator">=</span> date.getDayOfMonth();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Assign date to the first day of the month</span></span><br><span class="line">        date = date.minusDays(today - <span class="number">1</span>);</span><br><span class="line">        <span class="type">DayOfWeek</span> <span class="variable">weekday</span> <span class="operator">=</span> date.getDayOfWeek();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> weekday.getValue();  <span class="comment">//1-&gt; monday, 2-&gt;tuesday, 3-&gt;wednesday, 4-&gt;thursday, 5-&gt;friday</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Mon Tue Wed Thu Fri Sat Sun&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; value; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// While stays in this month</span></span><br><span class="line">        <span class="keyword">while</span> (date.getMonthValue() == month) &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%3d&quot;</span>, date.getDayOfMonth());</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfMonth() == today)</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            </span><br><span class="line">            date = date.plusDays(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (date.getDayOfWeek().getValue() == <span class="number">1</span>) System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="LocalDate"><a href="#LocalDate" class="headerlink" title="LocalDate"></a>LocalDate</h6><ul>
+<li>static LocalTime now() <ul>
+<li>constructs an object that represents the current date.</li>
+</ul>
+</li>
+<li>static LocalTime of()<ul>
+<li>Construct object according to the given data</li>
+</ul>
+</li>
+<li>Utility<ul>
+<li>getYear()</li>
+<li>getMonthValue()</li>
+<li>getDayOfMonth()</li>
+<li>DayOfWeek getDayOfWeek()</li>
+</ul>
+</li>
+<li>LocalDate plusDays(int n)</li>
+<li>LocalDate minusDyas(int n)</li>
+</ul>
+<h6 id="Object-and-class"><a href="#Object-and-class" class="headerlink" title="Object and class"></a>Object and class</h6><ul>
+<li>Do not return reference. That breaks encupsulation. </li>
+<li>For static methods, there is “factory methods” that construct object. <ul>
+<li><strong>Constructor</strong> can’t have name. </li>
+<li>Can’t vary which object initialized.</li>
+</ul>
+</li>
+<li>Main method<ul>
+<li>Can be called without initialize an object. So all main method is static. When program start, there aren’t any objects. </li>
+<li>Every class has it’s own main method. It can be used for unit testing.</li>
+</ul>
+</li>
+<li>Java function copies value<ul>
+<li>Reference will be copied. </li>
+<li>Inside variable has reference value, but not reference to reference.</li>
+<li>Object can swap value by method <strong>value</strong>.</li>
+</ul>
+</li>
+<li>Construction<ul>
+<li>Java have default field initialization. And can have <strong>explicit field initialization</strong>.</li>
+</ul>
+</li>
+</ul>
 <h3 id="Personal-Objective-outline"><a href="#Personal-Objective-outline" class="headerlink" title="Personal Objective outline"></a>Personal Objective outline</h3><ol>
 <li>98+ for this course. (I need a very high Wam!!!)</li>
 </ol>
