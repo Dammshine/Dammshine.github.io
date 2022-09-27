@@ -300,6 +300,28 @@
 </ul>
 </li>
 </ul>
+<h2 id="Exception-in-Java"><a href="#Exception-in-Java" class="headerlink" title="Exception in Java"></a>Exception in Java</h2><p>An exception is an event, which during the execution of a program that disrupts the normal flow of the program’s instructions. When an error occurmm, an <strong>exception</strong> object is created, and this object will search the call stack from top to buttom. </p>
+<h4 id="Three-klinds-of-exception"><a href="#Three-klinds-of-exception" class="headerlink" title="Three klinds of exception"></a>Three klinds of exception</h4><ul>
+<li>Checked exception </li>
+<li>Error</li>
+<li>Runtime Exception</li>
+</ul>
+<p>Checked exception. These are the exceptions that are checked at compile time. A fully checked exception is a checked exceptionn where all iut’s children classes are also checked. In java, an exception typ[e determines whether it’s checked or unchecked. </p>
+<p>Unchecked is vice versa. Not checked at compile time. </p>
+<h4 id="User-defined-Exception-In-Java"><a href="#User-defined-Exception-In-Java" class="headerlink" title="User defined Exception In Java"></a>User defined Exception In Java</h4><ul>
+<li>Checked exception extend <strong>exception</strong> class.</li>
+<li>Unchecked exception extend <strong>RuntimeRxception</strong> class.</li>
+</ul>
+<h4 id="Exceptions-Summaary-Points"><a href="#Exceptions-Summaary-Points" class="headerlink" title="Exceptions: Summaary Points"></a>Exceptions: Summaary Points</h4><ul>
+<li>Consider your exception-handling and error-recovery strategy in the design process. </li>
+<li>Sometimes you can <strong>prevent an exception</strong> by validating data first. </li>
+<li>If an exception can be handled meaningfully in a method, the method should catch.</li>
+<li>Programmer handle checked exception</li>
+<li>If unchecked exceptions are expected, you must handle them graccefully. </li>
+<li>Only the first matching catch is executed.</li>
+<li>Exception are part of API documentation and contract. </li>
+<li>Assertion can be used to check preconditions, post-conditions and invariants.</li>
+</ul>
 
       
 
