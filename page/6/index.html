@@ -165,6 +165,268 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Makefile-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/26/Makefile-0/">Makefile</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/26/Makefile-0/" class="archive-article-date">
+  	<time datetime="2022-04-26T05:52:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h4 id="Compiler-Gcc"><a href="#Compiler-Gcc" class="headerlink" title="Compiler : Gcc"></a>Compiler : Gcc</h4><p>Compilers are programs that convert program source code to executable form, “executable” might be <strong>machine code</strong> which are those machine can read (C, C++), or bytecode which is low-levl code can be processed by software interpreter (java). </p>
+<p>In C, the compiler have following stages</p>
+<ul>
+<li>Pre-processing<ol>
+<li>In this stage, the compiler will do things such as, macro substitution, testing for condition, directives and file inclusion.</li>
+</ol>
+</li>
+<li>Compilation<ol>
+<li>In this stage, the compiler will translate source code to the language that machine can read.</li>
+</ol>
+</li>
+<li>Linking<ol>
+<li>In this stage, the compiler will link multiple programs as one program.</li>
+</ol>
+</li>
+</ul>
+<p>Gcc compiler, for compilering</p>
+<ol>
+<li>-c : This command compile the gram give the object file as output. Which can be used in linking stage.</li>
+<li>-E : This command gives pro-processed file.</li>
+<li>gcc -o name a.o b.o : Linkes a.o, b.o into <strong>executable program</strong>.</li>
+<li>gcc a.c b.c d.c: This command compile a.c, b.c , d.c as a <strong>executable program</strong>, there must include a main in .c files.</li>
+</ol>
+<p><img src="/.com//c-stages.png" alt="Alt Text"></p>
+<p>Gcc compiler, for advanced</p>
+<ol>
+<li>-Werror: Will compile the source and show warning.</li>
+<li>-Wall  : Will check error, but treat all warning as error.</li>
+</ol>
+<h4 id="Makefile-Syntax"><a href="#Makefile-Syntax" class="headerlink" title="Makefile Syntax"></a>Makefile Syntax</h4><p>Compilation process is complex for large systems, and the <strong>make</strong> command assist by allowing</p>
+<ul>
+<li>Programmers to document depencies in code (<strong>Off topic : Topological sort</strong>).</li>
+<li>Minimal re-compilation <ul>
+<li>Based on dependencies, and also the time of latest change.</li>
+</ul>
+</li>
+</ul>
+<p>A <strong>dependency</strong> specify</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target : source1 source2 </span><br><span class="line">        <span class="built_in">command</span> to build target from sources</span><br></pre></td></tr></table></figure>
+<p>and the <strong>target</strong> is rebuild if the source changed after last compile. </p>
+<p>Few more things to note: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">game : main.o  graphics.o  world.o</span><br><span class="line">	gcc -o game main.o graphics.o world.o</span><br><span class="line"></span><br><span class="line">main.o : main.c graphics.h world.h</span><br><span class="line">	gcc -Wall -Werror -c main.c</span><br><span class="line"></span><br><span class="line">graphics.o : graphics.c world.h </span><br><span class="line">	gcc -Wall -Werror -c graphics.c</span><br><span class="line"></span><br><span class="line">world.o : world.c</span><br><span class="line">	gcc -Wall -Werror -c world.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>A <strong>target</strong> is always on a new line,<ul>
+<li>Followed by a ‘:’</li>
+<li>Followed by files that it depend on</li>
+<li>Make can also compile the target speicify in makefile</li>
+</ul>
+</li>
+<li>The <strong>action</strong>(gcc part) is always on a new line<ul>
+<li>and must indented by a <strong>TAB</strong></li>
+</ul>
+</li>
+</ul>
+<p>If no argument is given, the make command only build the first target in <strong>makefile</strong>, to ensure all file getting compiled, one should specify a target thet contains all files we want to build as the first target. </p>
+<p>Beside <strong>target</strong> and <strong>action</strong>, makefile also have <strong>variable</strong></p>
+<ul>
+<li>CC refers to the compiler (gcc in this case)</li>
+<li>CFLAGS contains compiler directives&#x2F;options (-Wall and -Werror)</li>
+<li>LDFLAGS is a list of link (or “load”) directive (Not seen so far)</li>
+<li>One can also specifying own variable</li>
+</ul>
+<p><strong>Above is from <a target="_blank" rel="noopener" href="https://web.physics.utah.edu/~p5720/rsrc/make.html">https://web.physics.utah.edu/~p5720/rsrc/make.html</a></strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Language</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/COMP2521//" class="article-tag-list-link color4">COMP2521</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/26/Makefile-0/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ADT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/26/ADT/">ADT</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/26/ADT/" class="archive-article-date">
+  	<time datetime="2022-04-26T05:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Abstract-data-Type"><a href="#Abstract-data-Type" class="headerlink" title="Abstract data Type"></a>Abstract data Type</h2><p>A <strong>data type</strong> is</p>
+<ul>
+<li>A set of values</li>
+<li>A collection of operations on thoes value</li>
+</ul>
+<p>An <strong>abstract data type</strong> is</p>
+<ul>
+<li>An approach to implementing data types, that seperate users and implementer, <ul>
+<li>Implementer will provide interface (how to use) and implementation</li>
+<li>User only need to know interface.</li>
+</ul>
+</li>
+</ul>
+<p>Many of ADT deals with </p>
+<ul>
+<li>Collection of items, that often contain a key(or themselve is a key)<ul>
+<li>Particular structure that provide great efficency, but user want to reduce complexity for them to use it more easiy. So we hide the detail.<ul>
+<li>linked list, tree, graph</li>
+</ul>
+</li>
+<li>Particular usage, that user only need the result.<ul>
+<li>matrix, set, dictionary, stack, queue</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>We want to distinguish</p>
+<ul>
+<li><strong>DT</strong> (Non-abstract data type)<ul>
+<li>Internal of da structure is visible. (character, C string)</li>
+</ul>
+</li>
+<li><strong>GADT</strong><ul>
+<li>C++ template like data type. Can have mutiple type. (C++ STL, vector<typename>)</typename></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ADT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Theory</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/26/ADT/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Performance-Analysis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

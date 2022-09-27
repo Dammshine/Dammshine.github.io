@@ -165,6 +165,183 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-COMP2511/2511-week3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/27/COMP2511/2511-week3/">COMP2521-week3</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/27/COMP2511/2511-week3/" class="archive-article-date">
+  	<time datetime="2022-09-27T01:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Design-Principles"><a href="#Design-Principles" class="headerlink" title="Design Principles"></a>Design Principles</h2><ul>
+<li>Making sure your software does what costomer wants it to do. </li>
+<li>Applying OO design principles to<ul>
+<li>To ensure the system is flexible and extensible to accomodate changes in requirements</li>
+<li>To strive for a maintainable, reusable, extensible design. </li>
+<li>A change in requiremnets, reveals the problem with the system</li>
+<li>Change is constant, and system should continually improve when you add these changes.</li>
+</ul>
+</li>
+<li>Bad design slows us down from changes</li>
+</ul>
+<h4 id="Design-Smells"><a href="#Design-Smells" class="headerlink" title="Design Smells"></a>Design Smells</h4><p>Design smell </p>
+<ul>
+<li>Symptom of poor design</li>
+<li>Caused by <strong>violation</strong> of key design principles</li>
+<li>Has structure in software that suggest <strong>refactoring</strong>.</li>
+</ul>
+<h5 id="Rigidity"><a href="#Rigidity" class="headerlink" title="Rigidity"></a>Rigidity</h5><ul>
+<li>Tendency of software being too difficult to change even in simple ways. </li>
+<li>A single change causes a cascade of changes to other dependent modules.</li>
+</ul>
+<h5 id="Fragility"><a href="#Fragility" class="headerlink" title="Fragility"></a>Fragility</h5><ul>
+<li>Tendency of the software to break in many places when a single change is made</li>
+</ul>
+<h5 id="Immobility"><a href="#Immobility" class="headerlink" title="Immobility"></a>Immobility</h5><ul>
+<li>Hard to reuse</li>
+<li>Has parts that could be useful to other system, but the effort needed and risk in disentangling the system is too high.</li>
+</ul>
+<h5 id="Viscosity"><a href="#Viscosity" class="headerlink" title="Viscosity"></a>Viscosity</h5><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Viscosity_(programming)#:~:text=In%20object%20oriented%20programming%2C%20viscosity,the%20system%20has%20high%20viscosity">https://en.wikipedia.org/wiki/Viscosity_(programming)#:~:text=In%20object%20oriented%20programming%2C%20viscosity,the%20system%20has%20high%20viscosity</a>. </p>
+<ul>
+<li>Easier to write hack code, instead of code fit design.</li>
+</ul>
+<h5 id="Opacity"><a href="#Opacity" class="headerlink" title="Opacity"></a>Opacity</h5><ul>
+<li>Tnedency of hard to understand. Code not written in a clear and expressive manner.</li>
+</ul>
+<h5 id="Needless-complexity-x2F-repetition"><a href="#Needless-complexity-x2F-repetition" class="headerlink" title="Needless complexity&#x2F;repetition"></a>Needless complexity&#x2F;repetition</h5><p>Explain by its name.</p>
+<h4 id="Characters-of-Good-Design"><a href="#Characters-of-Good-Design" class="headerlink" title="Characters of Good Design"></a>Characters of Good Design</h4><ul>
+<li>Loose Coupling<ul>
+<li>Degree of interdependence. </li>
+<li>Loose cupkling allows component to be used and modified independently of each other.</li>
+</ul>
+</li>
+<li>High Cohesion<ul>
+<li>Degree to which all elements of a component or class or module work together as a functional unit.</li>
+<li>Much easier to maintain and less frequently changed and have higher probability of reusability.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Several-Design-Principles-and-one-goal"><a href="#Several-Design-Principles-and-one-goal" class="headerlink" title="Several Design Principles and one goal"></a>Several Design Principles and one goal</h2><ul>
+<li>Design Patterns (GOF)<ul>
+<li>Program to an interfacem, not to an implementation</li>
+<li>Favor composition over ionheritance</li>
+</ul>
+</li>
+<li>Separation of Concerns (SOC)</li>
+<li>SOLID Principles</li>
+<li>Pragmatic Programming<ul>
+<li>DRY</li>
+<li>kiss</li>
+</ul>
+</li>
+<li>Less Fragile Systems</li>
+</ul>
+<h4 id="Solid"><a href="#Solid" class="headerlink" title="Solid"></a>Solid</h4><ul>
+<li>Single responsibility priinciple: A class should only have a single responsiobility.</li>
+<li>Open-closed principle: Software entities should be open for extension, but closed for modification. </li>
+<li>Likov substitution principle: Objects in a program should be replaceable with instances of their subtypes without alterning the correctness of that program. </li>
+<li>Interface segregation principle: Many client-specific interfaces are better than one general-purpose interface.</li>
+<li>Deprendency inverstion principle: One should “depend upon abstraction, [not] concretions”</li>
+</ul>
+<h2 id="When-to-use-design-principles"><a href="#When-to-use-design-principles" class="headerlink" title="When to use design principles"></a>When to use design principles</h2><ul>
+<li>Design principles help eliminate design smells</li>
+<li>Do not apply when there is no <strong>design smells</strong>.</li>
+<li>Unconditionally conforming to a principle.</li>
+</ul>
+<h4 id="Design-Principle-1"><a href="#Design-Principle-1" class="headerlink" title="Design Principle #1"></a>Design Principle #1</h4><ul>
+<li>Classes should know about and interact with as few classes as possible. Reduce interaction. </li>
+<li>Help us design “looselu coupled” system.</li>
+</ul>
+<p>A method in an object should only invoke methods of</p>
+<ul>
+<li>A method M in an object O can call on any other method within O itself. </li>
+<li>Can call any method of paramters passed to the method M.</li>
+<li>Can call method of an object, if object instantiate within the method. </li>
+<li>Can call method is direct component of this class. </li>
+<li><strong>Not those object returned by a method.</strong></li>
+</ul>
+<h4 id="Design-Principle-2-Likov-substitution-principle"><a href="#Design-Principle-2-Likov-substitution-principle" class="headerlink" title="Design Principle #2 Likov substitution principle"></a>Design Principle #2 Likov substitution principle</h4><p>Basically, it emphasis inheritance must be an <strong>Is-a</strong> relationship. </p>
+<ul>
+<li>Contravariance</li>
+<li>Covariance</li>
+<li>Pre-condition</li>
+<li>Post-condition</li>
+<li>Invariance</li>
+</ul>
+<h5 id="Rules-1-Method-Argument-Types"><a href="#Rules-1-Method-Argument-Types" class="headerlink" title="Rules 1: Method Argument Types"></a>Rules 1: Method Argument Types</h5><p>The overriden subtype method argument type can be identical or wider than the supertype method argument types.<br>Java support this. By enforsing argument. While I can see JavaScript don’t LOL.</p>
+<h5 id="Rules-2-Return-Types"><a href="#Rules-2-Return-Types" class="headerlink" title="Rules 2: Return Types"></a>Rules 2: Return Types</h5><p><strong>The return type of the overriden subtype method can be narrower than the return type of the supertype method.</strong> This is called <strong>covariance</strong> of the return type. </p>
+<p>Covariance indicates when a subtype is accepted in place of a supertype. </p>
+<p>Java support this, but it prevent returing a wider type. </p>
+<h5 id="Rules-3-Execeptions"><a href="#Rules-3-Execeptions" class="headerlink" title="Rules 3: Execeptions"></a>Rules 3: Execeptions</h5><p><strong>The subtypemethod can throw fewer or narroer exception</strong>. </p>
+<p>The client only able to handle the method of super class, if it throw the wider exception, it will break. </p>
+<h5 id="Rules-4-Class-Invariant"><a href="#Rules-4-Class-Invariant" class="headerlink" title="Rules 4: Class Invariant"></a>Rules 4: Class Invariant</h5><p>Sub-class need to preserver it’s superclass invariance. </p>
+<h5 id="Rules-5-Histroy-Constraint"><a href="#Rules-5-Histroy-Constraint" class="headerlink" title="Rules 5: Histroy Constraint"></a>Rules 5: Histroy Constraint</h5><p>Sub-class shouldn’t allow state change that the base class didn’t allow. </p>
+<h5 id="Rules-6-Preconditions"><a href="#Rules-6-Preconditions" class="headerlink" title="Rules 6: Preconditions"></a>Rules 6: Preconditions</h5><p>Preconditions shgould be weaken. So user won’t notice the difference. If restricted, then it will break client’s code, as it may be designed according to the super class. </p>
+<h5 id="Rules-7-Postconditions"><a href="#Rules-7-Postconditions" class="headerlink" title="Rules 7: Postconditions"></a>Rules 7: Postconditions</h5><p>Postcondition is a condition that should be met after a methiod is executed. The subclass must strengthen the postconditions.</p>
+<h2 id="Solve-LSP-problem"><a href="#Solve-LSP-problem" class="headerlink" title="Solve LSP problem"></a>Solve LSP problem</h2><ul>
+<li>Delegation <ul>
+<li>Delegate the functionality to another class</li>
+</ul>
+</li>
+<li>Composition<ul>
+<li>Avoid <strong>is-a</strong> relationship.</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/27/COMP2511/2511-week3/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-COMP9444/week2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -206,7 +383,15 @@
 <h2 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h2><p>System is presented both input and output, and the system is trying to predict closer output. </p>
 <p>Curve Fitting Example, is when the training model is too complicate. </p>
 <p>One way to avoid overfitting in neural networks is to <strong>limit number of hidden nodes, connections or independent paranters in the network</strong>. In general, will divide data set into training, validation and test set, typically as the number of hidden unit increasing, the training set accuracy will increase but validation set will decrease. </p>
-<p>Another way is called <strong>dropout</strong>. </p>
+<p>Another way is called <strong>dropout</strong>. During <strong>Mini-batch</strong> training, randomly pick some node won’t be active, with a certain percentage. The remaining node will do what they can to achieeve the task. At the end, all node will be active, and multiply each node by it’s dropout factor. Force network remove some redundancy, spread out responsibility to every node. </p>
+<p>Another way to view dropout is that it implicitly (and efficiently) simulates an ensemble of different architectures.</p>
+<p><strong>Ensembling</strong> (on-sembling) train different classifier are trained on the same task, the final class is decided by “voting” among them. The dropout as implicit <strong>ensembling</strong>. </p>
+<h2 id="Huffman-Coding"><a href="#Huffman-Coding" class="headerlink" title="Huffman Coding"></a>Huffman Coding</h2><ol>
+<li>Single symbol -&gt; unique binary code</li>
+<li>Compression must be lossless</li>
+<li>Unique decodability</li>
+</ol>
+<p>Encoding message length(bits), there is a threshold value between redundancy and losing information. Information and uncertainty is related, </p>
 
       
 
@@ -220,6 +405,89 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/09/18/COMP9444/week2/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-COMP9444/pytorch-chapter0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/18/COMP9444/pytorch-chapter0/">pytorch-chapter0</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/18/COMP9444/pytorch-chapter0/" class="archive-article-date">
+  	<time datetime="2022-09-18T01:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“”” c++<br>&#x2F;&#x2F; At first, I mark all dominos that L &#x3D;&gt; 1<br>&#x2F;&#x2F;                                   R &#x3D;&gt; -1<br>&#x2F;&#x2F;                                   . &#x3D;&gt; 0<br>&#x2F;&#x2F; Use another array to track if the domino being affected<br>&#x2F;&#x2F; In each iteration, L &#x3D;&gt; +1 only affect those got 1 and unvisited<br>&#x2F;&#x2F;                    R &#x3D;&gt; -1<br>vector<int> visited(dominoes.size(), 0);<br>vector<int> dominoesStatus(dominoes.size(), 0);<br>queue<int> qDominoes;<br>for (int i &#x3D; 0; i &lt; dominoes.size(); i++) {<br>    if (dominoes[i] &#x3D;&#x3D; ‘L’) {<br>        dominoesStatus[i] &#x3D; 1;<br>        qDominoes.push(i);<br>        visited[i] &#x3D; 1;<br>    } else if (dominoes[i] &#x3D;&#x3D; ‘R’) {<br>        dominoesStatus[i] &#x3D; -1;<br>        qDominoes.push(i);<br>        visited[i] &#x3D; 1;<br>    } else {<br>        dominoesStatus[i] &#x3D; 0;<br>    }<br>}</int></int></int></p>
+<p>while (!qDominoes.empty()) {<br>    int inspect &#x3D; qDominoes.front();<br>    qDominoes.pop();</p>
+<pre><code>if (dominoesStatus[inspect] == 0) &#123;
+    continue;
+&#125;
+
+if (inspect &gt; 0 &amp;&amp; dominoesStatus[inspect] == 1 
+    &amp;&amp; dominoesStatus[inspect - 1] != 1 &amp;&amp; visited[inspect - 1] != 1) &#123;
+    dominoesStatus[inspect - 1] += 1;
+    qDominoes.push(inspect - 1);
+    visited[inspect - 1] = 1;
+&#125;
+if (inspect &lt; (dominoes.size() - 1) &amp;&amp; dominoesStatus[inspect] == -1 
+    &amp;&amp; dominoesStatus[inspect + 1] != -1 &amp;&amp; visited[inspect + 1] != 1) &#123;
+    dominoesStatus[inspect + 1] -= 1;
+    qDominoes.push(inspect + 1);
+    visited[inspect + 1] = 1;
+&#125;
+</code></pre>
+<p>}</p>
+<p>for (int i &#x3D; 0; i &lt; dominoesStatus.size(); i++) {<br>    if (dominoesStatus[i] &#x3D;&#x3D; 1) {<br>        dominoes[i] &#x3D; ‘L’;<br>    } else if (dominoesStatus[i] &#x3D;&#x3D; -1) {<br>        dominoes[i] &#x3D; ‘R’;<br>    } else {<br>        dominoes[i] &#x3D; ‘.’;<br>    }<br>}<br>return dominoes;<br>“””</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/18/COMP9444/pytorch-chapter0/">Show all >></a>
         </p>
       
 
@@ -737,196 +1005,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/09/13/COMP9444/COMP9444/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-COMP2511/2511-week2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/12/COMP2511/2511-week2/">COMP2521-week2</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/12/COMP2511/2511-week2/" class="archive-article-date">
-  	<time datetime="2022-09-12T01:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Lecture-2-Inheritance"><a href="#Lecture-2-Inheritance" class="headerlink" title="Lecture 2: Inheritance"></a>Lecture 2: Inheritance</h3><h5 id="Subclasses-and-Inheritance"><a href="#Subclasses-and-Inheritance" class="headerlink" title="Subclasses and Inheritance"></a>Subclasses and Inheritance</h5><p>Task: Create Graphical circle on top of head</p>
-<ul>
-<li>First approach: Copy and paste</li>
-<li><strong>GraphicalCircle</strong> include a circle so that it can make use of code in class <strong>circle</strong>.  <ul>
-<li>Has-a relationship. </li>
-<li>Method forwarding, means simply use method from otherwhere. </li>
-<li>Have more control, can choose method want to use.</li>
-</ul>
-</li>
-<li><strong>GraphicalCircle</strong> inherits the class. <ul>
-<li><strong>GraphicalCircle</strong> is a circle, it can be treat as a circle.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GraphicalCircle</span> &#123;</span><br><span class="line">    Circle c;</span><br><span class="line">    Color outline, fill;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Very simple constructor</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">GraphicalCircle</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Basically use Circle as it&#x27;s element</span></span><br><span class="line">        c = <span class="keyword">new</span> <span class="title class_">Circle</span>();</span><br><span class="line">        <span class="built_in">this</span>.outline = Color.black;</span><br><span class="line">        <span class="built_in">this</span>.fill = Color.white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Abstract-Classes"><a href="#Abstract-Classes" class="headerlink" title="Abstract Classes"></a>Abstract Classes</h5><p>Class that have at least one method not implemented (then itself become abstract), ot can declare as <strong>abstract</strong></p>
-<ul>
-<li>Leave the implementation detail to it’s sub-class. <ul>
-<li>sub-class implements all methods can be used as real-class</li>
-<li>else it is a sub-class.</li>
-</ul>
-</li>
-<li>Abstract class can’t be instantiated.</li>
-</ul>
-<h5 id="Single-Inheritance-versus-Multiple-Inheritance"><a href="#Single-Inheritance-versus-Multiple-Inheritance" class="headerlink" title="Single Inheritance versus Multiple Inheritance"></a>Single Inheritance versus Multiple Inheritance</h5><p>A new class can extend exactly one superclass, known as <strong>single inheritance</strong>.<br>A situation known as DIamond inheritance problem. </p>
-<p>Some other language support it. Java can only use one super class. </p>
-<h5 id="Interface-in-Java"><a href="#Interface-in-Java" class="headerlink" title="Interface in Java"></a>Interface in Java</h5><p>Interface are like abstract classes</p>
-<ul>
-<li>All method within interface are implicitly abstract. </li>
-<li>Variabe decalred in the interface must be <strong>static and final</strong>.</li>
-<li>Class extends its superclass, and optionally <strong>implements</strong> an interface.</li>
-<li>it can implements multiple interfaces.</li>
-</ul>
-<p>Interface can also be extended. </p>
-<h5 id="Method-Forwarding"><a href="#Method-Forwarding" class="headerlink" title="Method Forwarding"></a>Method Forwarding</h5><p>Composition. A class that implement interface can use other class’s method. </p>
-<h3 id="Lecture-3-Domain-Modelling-using-UML"><a href="#Lecture-3-Domain-Modelling-using-UML" class="headerlink" title="Lecture 3: Domain Modelling using UML"></a>Lecture 3: Domain Modelling using UML</h3><h5 id="Domain-modelling"><a href="#Domain-modelling" class="headerlink" title="Domain modelling"></a>Domain modelling</h5><p><strong>Domain Models</strong> are used to visually represent relationship between (object, concept). <strong>Clarify</strong> and <strong>communicate</strong> important domain specific concepts and used during the requirements gathering and <strong>design phase</strong>. </p>
-<p><strong>Conceptual models</strong>, or <strong>domain objct models</strong>. There are many different modelling frameworks.  </p>
-<h5 id="Requirements-Analysis"><a href="#Requirements-Analysis" class="headerlink" title="Requirements Analysis"></a>Requirements Analysis</h5><p><strong>Requirement analysis</strong> determine external behaviour. </p>
-<p><strong>Domain modelling</strong> determine internal behaviour. More like qeusodocode. Support clarification of requirement, requirement helps develop the model. </p>
-<h5 id="Ubiquitous-Language"><a href="#Ubiquitous-Language" class="headerlink" title="Ubiquitous Language"></a>Ubiquitous Language</h5><p>Things in design, must represent real thing in domain expect’s mental model.</p>
-<p><strong>Noun</strong> : Object&#x2F;entity, classes(interface) in java.<br><strong>Verb</strong> : Relationship. </p>
-<h5 id="UML-Class-Diagram"><a href="#UML-Class-Diagram" class="headerlink" title="UML Class Diagram"></a>UML Class Diagram</h5><ul>
-<li>Classes: <ul>
-<li>Student</li>
-<li>Course</li>
-</ul>
-</li>
-<li>Relationships<ul>
-<li>Dependency, the loosest form of relationship, a class in some way depends on another. </li>
-<li>Aggregation, has-a instance of other class.</li>
-<li>Composition, has-a relationship, but two are composited can’t be seperated. </li>
-<li>Association, some way depended n other. Undirected, it is not yet clear what direction occurs. </li>
-<li>Direct Association, a class used another class in some way, has knowledge of another.</li>
-</ul>
-</li>
-</ul>
-<h5 id="Attributes-vs-Classes"><a href="#Attributes-vs-Classes" class="headerlink" title="Attributes vs Classes"></a>Attributes vs Classes</h5><p>If the concept can be represented by number or string, then <strong>attribute</strong>. Otherwise, a class. </p>
-<h2 id="Assignment-1"><a href="#Assignment-1" class="headerlink" title="Assignment 1"></a>Assignment 1</h2><ul>
-<li>Understand the problem space.</li>
-<li>Thoughtful Planning.</li>
-<li>Programming by COntract.</li>
-<li>Robust Programming</li>
-<li>Building block.</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/12/COMP2511/2511-week2/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Interval-Tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/08/Interval-Tree/">Interval Tree</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/08/Interval-Tree/" class="archive-article-date">
-  	<time datetime="2022-09-08T00:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Aim"><a href="#Aim" class="headerlink" title="Aim:"></a>Aim:</h3><p>To maintained dynamically set of elements, with each element x contain an interval. </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/08/Interval-Tree/">Show all >></a>
         </p>
       
 

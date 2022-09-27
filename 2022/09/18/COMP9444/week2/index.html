@@ -16,7 +16,7 @@
 <meta property="og:description" content="Learning Outcomes Compute Entropy and KL-Divergence for discrete probability distributions Compute probabilities using Bayes’s Rule Describe the basics of supervised learning Explain how to avoid over">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-18T01:27:53.000Z">
-<meta property="article:modified_time" content="2022-09-26T07:46:48.461Z">
+<meta property="article:modified_time" content="2022-09-26T08:10:33.723Z">
 <meta property="article:author" content="David Zhou">
 <meta property="article:tag" content="Git, DSA, Leetcode">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,15 @@
 <h2 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h2><p>System is presented both input and output, and the system is trying to predict closer output. </p>
 <p>Curve Fitting Example, is when the training model is too complicate. </p>
 <p>One way to avoid overfitting in neural networks is to <strong>limit number of hidden nodes, connections or independent paranters in the network</strong>. In general, will divide data set into training, validation and test set, typically as the number of hidden unit increasing, the training set accuracy will increase but validation set will decrease. </p>
-<p>Another way is called <strong>dropout</strong>. </p>
+<p>Another way is called <strong>dropout</strong>. During <strong>Mini-batch</strong> training, randomly pick some node won’t be active, with a certain percentage. The remaining node will do what they can to achieeve the task. At the end, all node will be active, and multiply each node by it’s dropout factor. Force network remove some redundancy, spread out responsibility to every node. </p>
+<p>Another way to view dropout is that it implicitly (and efficiently) simulates an ensemble of different architectures.</p>
+<p><strong>Ensembling</strong> (on-sembling) train different classifier are trained on the same task, the final class is decided by “voting” among them. The dropout as implicit <strong>ensembling</strong>. </p>
+<h2 id="Huffman-Coding"><a href="#Huffman-Coding" class="headerlink" title="Huffman Coding"></a>Huffman Coding</h2><ol>
+<li>Single symbol -&gt; unique binary code</li>
+<li>Compression must be lossless</li>
+<li>Unique decodability</li>
+</ol>
+<p>Encoding message length(bits), there is a threshold value between redundancy and losing information. Information and uncertainty is related, </p>
 
       
 
@@ -228,9 +236,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/09/27/COMP2511/2511-week3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          COMP2521-week3
+        
+      </div>
+    </a>
   
-    <a href="/2022/09/17/COMP2511/2511-week5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2511-week5</div>
+  
+    <a href="/2022/09/18/COMP9444/pytorch-chapter0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pytorch-chapter0</div>
       <i class="icon-circle-right"></i>
     </a>
   

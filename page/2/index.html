@@ -165,6 +165,196 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-COMP2511/2511-week2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/12/COMP2511/2511-week2/">COMP2521-week2</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/12/COMP2511/2511-week2/" class="archive-article-date">
+  	<time datetime="2022-09-12T01:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Lecture-2-Inheritance"><a href="#Lecture-2-Inheritance" class="headerlink" title="Lecture 2: Inheritance"></a>Lecture 2: Inheritance</h3><h5 id="Subclasses-and-Inheritance"><a href="#Subclasses-and-Inheritance" class="headerlink" title="Subclasses and Inheritance"></a>Subclasses and Inheritance</h5><p>Task: Create Graphical circle on top of head</p>
+<ul>
+<li>First approach: Copy and paste</li>
+<li><strong>GraphicalCircle</strong> include a circle so that it can make use of code in class <strong>circle</strong>.  <ul>
+<li>Has-a relationship. </li>
+<li>Method forwarding, means simply use method from otherwhere. </li>
+<li>Have more control, can choose method want to use.</li>
+</ul>
+</li>
+<li><strong>GraphicalCircle</strong> inherits the class. <ul>
+<li><strong>GraphicalCircle</strong> is a circle, it can be treat as a circle.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GraphicalCircle</span> &#123;</span><br><span class="line">    Circle c;</span><br><span class="line">    Color outline, fill;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Very simple constructor</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">GraphicalCircle</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Basically use Circle as it&#x27;s element</span></span><br><span class="line">        c = <span class="keyword">new</span> <span class="title class_">Circle</span>();</span><br><span class="line">        <span class="built_in">this</span>.outline = Color.black;</span><br><span class="line">        <span class="built_in">this</span>.fill = Color.white;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Abstract-Classes"><a href="#Abstract-Classes" class="headerlink" title="Abstract Classes"></a>Abstract Classes</h5><p>Class that have at least one method not implemented (then itself become abstract), ot can declare as <strong>abstract</strong></p>
+<ul>
+<li>Leave the implementation detail to it’s sub-class. <ul>
+<li>sub-class implements all methods can be used as real-class</li>
+<li>else it is a sub-class.</li>
+</ul>
+</li>
+<li>Abstract class can’t be instantiated.</li>
+</ul>
+<h5 id="Single-Inheritance-versus-Multiple-Inheritance"><a href="#Single-Inheritance-versus-Multiple-Inheritance" class="headerlink" title="Single Inheritance versus Multiple Inheritance"></a>Single Inheritance versus Multiple Inheritance</h5><p>A new class can extend exactly one superclass, known as <strong>single inheritance</strong>.<br>A situation known as DIamond inheritance problem. </p>
+<p>Some other language support it. Java can only use one super class. </p>
+<h5 id="Interface-in-Java"><a href="#Interface-in-Java" class="headerlink" title="Interface in Java"></a>Interface in Java</h5><p>Interface are like abstract classes</p>
+<ul>
+<li>All method within interface are implicitly abstract. </li>
+<li>Variabe decalred in the interface must be <strong>static and final</strong>.</li>
+<li>Class extends its superclass, and optionally <strong>implements</strong> an interface.</li>
+<li>it can implements multiple interfaces.</li>
+</ul>
+<p>Interface can also be extended. </p>
+<h5 id="Method-Forwarding"><a href="#Method-Forwarding" class="headerlink" title="Method Forwarding"></a>Method Forwarding</h5><p>Composition. A class that implement interface can use other class’s method. </p>
+<h3 id="Lecture-3-Domain-Modelling-using-UML"><a href="#Lecture-3-Domain-Modelling-using-UML" class="headerlink" title="Lecture 3: Domain Modelling using UML"></a>Lecture 3: Domain Modelling using UML</h3><h5 id="Domain-modelling"><a href="#Domain-modelling" class="headerlink" title="Domain modelling"></a>Domain modelling</h5><p><strong>Domain Models</strong> are used to visually represent relationship between (object, concept). <strong>Clarify</strong> and <strong>communicate</strong> important domain specific concepts and used during the requirements gathering and <strong>design phase</strong>. </p>
+<p><strong>Conceptual models</strong>, or <strong>domain objct models</strong>. There are many different modelling frameworks.  </p>
+<h5 id="Requirements-Analysis"><a href="#Requirements-Analysis" class="headerlink" title="Requirements Analysis"></a>Requirements Analysis</h5><p><strong>Requirement analysis</strong> determine external behaviour. </p>
+<p><strong>Domain modelling</strong> determine internal behaviour. More like qeusodocode. Support clarification of requirement, requirement helps develop the model. </p>
+<h5 id="Ubiquitous-Language"><a href="#Ubiquitous-Language" class="headerlink" title="Ubiquitous Language"></a>Ubiquitous Language</h5><p>Things in design, must represent real thing in domain expect’s mental model.</p>
+<p><strong>Noun</strong> : Object&#x2F;entity, classes(interface) in java.<br><strong>Verb</strong> : Relationship. </p>
+<h5 id="UML-Class-Diagram"><a href="#UML-Class-Diagram" class="headerlink" title="UML Class Diagram"></a>UML Class Diagram</h5><ul>
+<li>Classes: <ul>
+<li>Student</li>
+<li>Course</li>
+</ul>
+</li>
+<li>Relationships<ul>
+<li>Dependency, the loosest form of relationship, a class in some way depends on another. </li>
+<li>Aggregation, has-a instance of other class.</li>
+<li>Composition, has-a relationship, but two are composited can’t be seperated. </li>
+<li>Association, some way depended n other. Undirected, it is not yet clear what direction occurs. </li>
+<li>Direct Association, a class used another class in some way, has knowledge of another.</li>
+</ul>
+</li>
+</ul>
+<h5 id="Attributes-vs-Classes"><a href="#Attributes-vs-Classes" class="headerlink" title="Attributes vs Classes"></a>Attributes vs Classes</h5><p>If the concept can be represented by number or string, then <strong>attribute</strong>. Otherwise, a class. </p>
+<h2 id="Assignment-1"><a href="#Assignment-1" class="headerlink" title="Assignment 1"></a>Assignment 1</h2><ul>
+<li>Understand the problem space.</li>
+<li>Thoughtful Planning.</li>
+<li>Programming by COntract.</li>
+<li>Robust Programming</li>
+<li>Building block.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/12/COMP2511/2511-week2/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Interval-Tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/08/Interval-Tree/">Interval Tree</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/08/Interval-Tree/" class="archive-article-date">
+  	<time datetime="2022-09-08T00:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Aim"><a href="#Aim" class="headerlink" title="Aim:"></a>Aim:</h3><p>To maintained dynamically set of elements, with each element x contain an interval. </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/08/Interval-Tree/">Show all >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MATH3411/Discreat-logic-and-proof" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -936,173 +1126,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/09/06/COMP2511/COMP2521/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Design-pattern/design-pattern-chap1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/31/Design-pattern/design-pattern-chap1/">Chapter 1. Intro to Design Patterns</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/31/Design-pattern/design-pattern-chap1/" class="archive-article-date">
-  	<time datetime="2022-08-31T09:38:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Design-Principle"><a href="#Design-Principle" class="headerlink" title="Design Principle"></a>Design Principle</h2><ul>
-<li>Identify the aspects of your application that vary and seperate them from what stays the same.</li>
-<li>Favor composition over inheritance.</li>
-<li>Program to interfaces, not implementation. (Create an general interface and put it there) Amend, I need a concreat example for this</li>
-</ul>
-<h2 id="Strategy-Pattern"><a href="#Strategy-Pattern" class="headerlink" title="Strategy Pattern"></a>Strategy Pattern</h2><p>Defines a family of algorithms, encapsulate each one, and make them interchangeable. Strategy let the algorithm vary independently from clients that use it. </p>
-<h2 id="Tool-box"><a href="#Tool-box" class="headerlink" title="Tool box"></a>Tool box</h2><ul>
-<li>OO Basics<ul>
-<li>Abstraction</li>
-<li>Encapsulation</li>
-<li>Polymorphism</li>
-<li>Inheritance</li>
-</ul>
-</li>
-<li>OO Principles<ul>
-<li><strong>Encapsulate what varies (change)</strong></li>
-<li><strong>Favor composition over inheritance</strong></li>
-<li><strong>Program to interfaces, not implementation</strong></li>
-</ul>
-</li>
-<li>OO Patterns<ul>
-<li>Strategy pattern</li>
-</ul>
-</li>
-</ul>
-<h2 id="Bullet-points"><a href="#Bullet-points" class="headerlink" title="Bullet points"></a>Bullet points</h2><ul>
-<li>Knowing the OO basics does not make u a good OO designer.</li>
-<li>Good OO designs are reusable, extensibel and maintainable. </li>
-<li>Patterns show you how to build system, with good OO design quality.</li>
-<li>Pattern are proven by object-oriented experience.</li>
-<li>Patterns doin’t give you code, they give you general solution to design problems. You apply them to your specific application.</li>
-<li>Pattern aren’t invented, they are discovered.</li>
-<li>Most patterns and principles address issues of change in software.</li>
-<li>Most patterns allow some part of a system to vary independently of all other parts. <strong>Loose coupling.</strong></li>
-<li>We often try to make what varies in a system and encasulate it. </li>
-<li>Patterns provide a shared language that can maximize your value of your communication with other developers.</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/31/Design-pattern/design-pattern-chap1/">Show all >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/29/JS-DOM/">JS-DOM</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/29/JS-DOM/" class="archive-article-date">
-  	<time datetime="2022-08-28T23:16:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Document-Object-Model"><a href="#Document-Object-Model" class="headerlink" title="Document Object Model"></a>Document Object Model</h2><ol>
-<li>Represent tree of nodes&#x2F;elements created by he browser</li>
-<li>Js can be used to read&#x2F;write&#x2F;manipulate the Dom</li>
-<li>Object oriented Representation</li>
-</ol>
-<p>From my understanding DOM is basically what HTML specified, and will form a model at the browser. Then, we able to us JS to manipulate this model. Change of the model will reflected by what shown in the browser. </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/29/JS-DOM/">Show all >></a>
         </p>
       
 
